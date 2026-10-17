@@ -60,8 +60,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-screen flex-col">
         <ScrollToTop />
         <RevealOnScroll />
-        <TopBar data={site.navbar.topBar} contact={site.footer.contact} socials={site.footer.socials} />
-        <Navbar data={site.navbar} contact={site.footer.contact} socials={site.footer.socials} />
+        <Navbar
+          data={site.navbar}
+          contact={site.footer.contact}
+          socials={site.footer.socials}
+          topBar={<TopBar data={site.navbar.topBar} contact={site.footer.contact} socials={site.footer.socials} />}
+        />
         <main className="flex-1">{children}</main>
         <Footer data={site.footer} />
       </body>

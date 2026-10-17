@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import type { AurelianHeroSlide } from "@/data";
 import { ArrowLeft, ArrowRight } from "@/components/Icons";
+import { Headline } from "@/components/SplitWords";
 
 const AUTOPLAY_MS = 6500;
 
@@ -11,7 +12,12 @@ type HeroSliderProps = {
   slides: AurelianHeroSlide[];
 };
 
-/** Cross-fading background photos; the active slide slowly zooms and its text rises in. */
+const pad = (n: number) => String(n).padStart(2, "0");
+
+/*
+ * Full-screen cross-fading photos under the transparent header. The active photo slowly zooms; its
+ * label and headline animate in word by word; a gold bar shows the time left on the slide.
+ */
 export default function HeroSlider({ slides }: HeroSliderProps) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -30,12 +36,12 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
     <section
       aria-roledescription="carousel"
       aria-label={slides[0].title}
-      className="relative isolate flex min-h-[560px] items-center overflow-hidden bg-wine-deep text-white sm:min-h-[640px] lg:min-h-[calc(100svh-136px)]"
+      className="relative isolate flex min-h-[600px] items-center overflow-hidden bg-wine-deep pt-(--header-h) text-white h-svh max-h-[1100px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       {slides.map((s, i) => (
-        <div key={s.image.src} aria-hidden={i !== index} className={`absolute inset-0 -z-20 transition-opacity duration-[1200ms] ${i === index ? "opacity-100" : "opacity-0"}`}>
+        <div key={s.image.src} aria-hidden={i !== index} className={`absolute inset-0 -z-20 transition-opacity duration-[1400ms] ${i === index ? "opacity-100" : "opacity-0"}`}>
           <Image
             src={s.image.src}
             alt={s.image.alt}
@@ -43,73 +49,81 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
             priority={i === 0}
             quality={85}
             sizes="100vw"
-            className={`object-cover transition-transform duration-[7000ms] ease-out ${i === index ? "scale-110" : "scale-100"}`}
+            className={`object-cover transition-transform duration-[8000ms] ease-out ${i === index ? "scale-110" : "scale-100"}`}
           />
         </div>
       ))}
-      {/* Dark wash so the white text stays readable on every photo */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-wine-deep/95 via-wine-deep/75 to-wine-deep/35" />
+      {/* Dark wash so the white text stays readable on every photo, deeper at the top under the header */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-wine-deep/90 via-wine-deep/60 to-wine-deep/20" />
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-1/3 bg-linear-to-b from-black/45 to-transparent" />
 
-      <div className="container-site py-20 lg:py-24">
+      <div className="container-site pb-24">
         {/* Re-mounted per slide so the text animates in each time */}
-        <div key={index} className="max-w-[640px]">
+        <div key={index} data-words-now className="max-w-[640px]" style={{ "--words-delay": "450ms" } as CSSProperties}>
           <p className="flex items-center gap-4 font-sans text-[11px] font-semibold uppercase tracking-[0.3em] text-white/90 sm:text-[12px] lg:text-[13px]">
             <span aria-hidden="true" className="h-px w-10 origin-left animate-[hero-rule_0.8s_var(--ease-out)_both] bg-gold" />
             <span className="animate-[hero-label_1.1s_var(--ease-out)_0.2s_both]">{slide.label}</span>
           </p>
-          <h1 aria-label={slide.title} className="mt-3 font-display text-[28px] font-semibold leading-[1.15] sm:text-[36px] lg:text-[46px]">
-            {slide.title.split(" ").map((word, i) => (
-              <Fragment key={i}>
-                <span aria-hidden="true" className="inline-block overflow-hidden pb-1 align-bottom">
-                  <span className="inline-block origin-bottom-left animate-[hero-word_0.9s_var(--ease-out)_both]" style={{ animationDelay: `${0.45 + i * 0.12}s` }}>
-                    {word}
-                  </span>
-                </span>{" "}
-              </Fragment>
-            ))}
-            <span
-              aria-hidden="true"
-              className="inline-block animate-[hero-dot_0.6s_var(--ease-out)_both] text-gold"
-              style={{ animationDelay: `${0.55 + slide.title.split(" ").length * 0.12}s` }}
-            >
-              .
-            </span>
+          <h1 className="mt-3 font-display text-[28px] font-semibold leading-[1.15] sm:text-[36px] lg:text-[46px]">
+            <Headline line1={slide.title} />
           </h1>
         </div>
       </div>
 
       {total > 1 && (
-        <>
-          <button
-            type="button"
-            onClick={() => go(-1)}
-            aria-label="Previous slide"
-            className="absolute left-4 top-1/2 hidden size-12 -translate-y-1/2 place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-gold hover:bg-gold xl:grid 2xl:left-8"
-          >
-            <ArrowLeft className="size-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => go(1)}
-            aria-label="Next slide"
-            className="absolute right-4 top-1/2 hidden size-12 -translate-y-1/2 place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-gold hover:bg-gold xl:grid 2xl:right-8"
-          >
-            <ArrowRight className="size-5" />
-          </button>
-          <div className="absolute inset-x-0 bottom-8 flex justify-center gap-3">
-            {slides.map((s, i) => (
+        <div className="absolute inset-x-0 bottom-0 border-t border-white/15">
+          <div className="container-site flex h-20 items-center justify-between gap-6">
+            <div className="flex items-center gap-5" aria-hidden="true">
+              <span className="font-display text-[22px] font-semibold leading-none text-white">{pad(index + 1)}</span>
+              {/* Time left on this slide; restarts per slide and pauses on hover */}
+              <span className="relative h-px w-24 bg-white/25 sm:w-40">
+                <span
+                  key={index}
+                  className="absolute inset-0 origin-left bg-gold"
+                  style={{ animation: `grow-x ${AUTOPLAY_MS}ms linear both`, animationPlayState: paused ? "paused" : "running" }}
+                />
+              </span>
+              <span className="font-display text-[22px] font-semibold leading-none text-white/50">{pad(total)}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              {slides.map((s, i) => (
+                <button
+                  key={s.title}
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  aria-label={`Slide ${i + 1}`}
+                  aria-current={i === index ? "true" : undefined}
+                  className="sr-only focus:not-sr-only"
+                >
+                  {i + 1}
+                </button>
+              ))}
               <button
-                key={s.title}
                 type="button"
-                onClick={() => setIndex(i)}
-                aria-label={`Slide ${i + 1}`}
-                aria-current={i === index ? "true" : undefined}
-                className={`h-2.5 rounded-full transition-[width,background-color] duration-500 ${i === index ? "w-10 bg-gold" : "w-2.5 bg-white/50 hover:bg-white"}`}
-              />
-            ))}
+                onClick={() => go(-1)}
+                aria-label="Previous slide"
+                className="grid size-11 place-items-center border border-white/30 text-white transition-colors hover:border-gold hover:bg-gold"
+              >
+                <ArrowLeft className="size-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => go(1)}
+                aria-label="Next slide"
+                className="grid size-11 place-items-center border border-white/30 text-white transition-colors hover:border-gold hover:bg-gold"
+              >
+                <ArrowRight className="size-4" />
+              </button>
+            </div>
           </div>
-        </>
+        </div>
       )}
+
+      {/* Scroll cue */}
+      <span aria-hidden="true" className="absolute bottom-24 left-1/2 hidden h-14 w-px -translate-x-1/2 overflow-hidden bg-white/20 md:block">
+        <span className="animate-scroll-line absolute inset-0 bg-gold" />
+      </span>
     </section>
   );
 }

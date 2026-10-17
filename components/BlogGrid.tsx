@@ -17,7 +17,7 @@ export default function BlogGrid({ items, perPage, buttonLabel, scrollTargetId }
 
   return (
     <>
-      <div className="mt-14 grid gap-6 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+      <div className="mt-14 grid gap-x-6 gap-y-10 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
         {pageItems.map((post, i) => (
           <BlogCard key={post.slug} post={post} buttonLabel={buttonLabel} delay={(i % 3) + 1} />
         ))}

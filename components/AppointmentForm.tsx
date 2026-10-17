@@ -35,7 +35,7 @@ export default function AppointmentForm({ fields, timeSlots, modes, submitLabel,
   const sending = status === "sending";
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-x-5 gap-y-6 sm:grid-cols-2">
+    <form onSubmit={onSubmit} className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
       <InputField id="name" label={fields.name.label} placeholder={fields.name.placeholder} autoComplete="name" required />
       <InputField id="email" type="email" label={fields.email.label} placeholder={fields.email.placeholder} autoComplete="email" required />
       <InputField id="phone" type="tel" label={fields.phone.label} placeholder={fields.phone.placeholder} autoComplete="tel" required />
@@ -44,7 +44,7 @@ export default function AppointmentForm({ fields, timeSlots, modes, submitLabel,
       <SelectField id="time" label={fields.time.label} placeholder={fields.time.placeholder} options={timeSlots} required />
 
       <fieldset className="min-w-0 sm:col-span-2">
-        <legend className="mb-2 block text-[14px] font-semibold text-ink">
+        <legend className="label mb-3 block text-[10px]! text-muted">
           {fields.mode.label}
           <span className="ml-1 text-gold">*</span>
         </legend>
@@ -52,7 +52,7 @@ export default function AppointmentForm({ fields, timeSlots, modes, submitLabel,
           {modes.map((mode, i) => (
             <label
               key={mode}
-              className="flex items-center gap-3 rounded-[3px] border border-line bg-mist px-4 py-3.5 text-[15px] font-semibold text-ink transition-colors hover:border-gold has-checked:border-wine has-checked:bg-wine has-checked:text-white"
+              className="flex items-center gap-3 border border-line px-4 py-3.5 text-[15px] font-semibold text-ink transition-colors hover:border-gold has-checked:border-wine has-checked:bg-wine has-checked:text-white"
             >
               <input type="radio" name="mode" value={mode} defaultChecked={i === 0} required className="size-4 accent-gold" />
               {mode}
@@ -65,7 +65,7 @@ export default function AppointmentForm({ fields, timeSlots, modes, submitLabel,
         <TextareaField id="message" label={fields.message.label} placeholder={fields.message.placeholder} rows={3} />
       </div>
       <div className="sm:col-span-2">
-        <button type="submit" disabled={sending} className="btn w-full bg-wine text-white hover:bg-gold disabled:opacity-70 sm:w-auto">
+        <button type="submit" disabled={sending} className="btn btn-primary w-full disabled:opacity-70 sm:w-auto">
           {sending ? sendingLabel : submitLabel}
           {!sending && <ArrowRight className="size-4" />}
         </button>

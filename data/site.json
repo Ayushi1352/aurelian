@@ -285,6 +285,13 @@
         "variants": {
           "AurelianFooter1": {
             "statement": "A full-service law firm giving steadfast counsel to individuals, families and businesses since 2001.",
+            "ctaLabel": "Get in Touch",
+            "ctaTitle": "Let's Discuss Your Case",
+            "ctaButton": {
+              "label": "Book Appointment",
+              "href": "/book-appointment"
+            },
+            "backToTop": "Back to top",
             "contact": {
               "title": "Get in Touch",
               "address": [

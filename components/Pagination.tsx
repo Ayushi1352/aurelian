@@ -30,7 +30,7 @@ export default function Pagination({ page, totalPages, onChange, scrollTargetId,
     if (scrollTargetId) document.getElementById(scrollTargetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  const arrow = `grid size-12 place-items-center rounded-full border transition-colors disabled:opacity-30 ${
+  const arrow = `grid size-12 place-items-center border transition-colors disabled:opacity-30 ${
     dark ? "border-white/25 text-white enabled:hover:border-gold enabled:hover:bg-gold" : "border-line text-wine enabled:hover:border-wine enabled:hover:bg-wine enabled:hover:text-white"
   }`;
 
@@ -48,8 +48,8 @@ export default function Pagination({ page, totalPages, onChange, scrollTargetId,
               onClick={() => go(n)}
               aria-label={`Page ${n}`}
               aria-current={n === page ? "page" : undefined}
-              className={`grid size-12 place-items-center rounded-full font-display text-[22px] font-semibold leading-none transition-colors ${
-                n === page ? "bg-wine text-gold-light" : dark ? "text-white/60 hover:text-white" : "text-ink hover:bg-gold-pale"
+              className={`grid size-12 place-items-center font-display text-[22px] font-semibold leading-none transition-colors ${
+                n === page ? "bg-wine text-gold-light" : dark ? "text-white/60 hover:text-white" : "text-ink hover:text-gold"
               }`}
             >
               {String(n).padStart(2, "0")}

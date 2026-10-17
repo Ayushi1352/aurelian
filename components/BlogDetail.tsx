@@ -18,7 +18,7 @@ function ContentBlock({ block }: { block: Block }) {
       return <h2 className="display-3 mt-12 text-ink">{block.text}</h2>;
     case "quote":
       return (
-        <blockquote className="relative my-12 rounded-[3px] border-l-4 border-gold bg-mist px-7 py-8 sm:px-10">
+        <blockquote className="relative my-12 border-l-2 border-gold py-2 pl-7 sm:pl-10">
           <p className="statement italic text-wine">&ldquo;{block.text}&rdquo;</p>
         </blockquote>
       );
@@ -27,7 +27,7 @@ function ContentBlock({ block }: { block: Block }) {
         <ul className="mt-6 space-y-3">
           {block.items?.map((item, i) => (
             <li key={item} className="flex items-start gap-4 text-[17px] leading-[1.7] text-ink">
-              <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-wine font-display text-[15px] font-semibold text-gold-light">{i + 1}</span>
+              <span className="w-7 shrink-0 font-display text-[20px] font-semibold leading-[1.4] text-gold">{String(i + 1).padStart(2, "0")}</span>
               {item}
             </li>
           ))}
@@ -52,9 +52,9 @@ export default function BlogDetail({ data = site.blogDetailPage, post, allPosts 
     <section className="section-space">
       <div className="container-site grid gap-14 lg:grid-cols-[1fr_360px] xl:gap-20">
         <article className="min-w-0">
-          <div data-reveal="up" className="relative aspect-[16/9] overflow-hidden rounded-[3px] bg-bone">
+          <div data-reveal="wipe" className="relative aspect-[16/9] overflow-hidden rounded-[32px] bg-bone">
             <Image src={post.image.src} alt={post.image.alt} fill quality={85} sizes="(min-width: 1024px) 60vw, 92vw" className="object-cover" />
-            <span className="label absolute left-5 top-5 rounded-[3px] bg-wine px-4 py-2 text-[11px]! text-gold-light">{post.category}</span>
+            <span className="label absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-[10px]! text-wine">{post.category}</span>
           </div>
 
           <ul data-reveal="up" className="mt-7 flex flex-wrap gap-x-6 gap-y-2 border-b border-line pb-6 text-[14px] text-muted">
@@ -76,7 +76,7 @@ export default function BlogDetail({ data = site.blogDetailPage, post, allPosts 
           </div>
 
           <div className="mt-14 border-t border-line pt-8">
-            <Link href={parent.href} className="group btn border border-wine text-wine hover:bg-wine hover:text-white">
+            <Link href={parent.href} className="group btn btn-outline">
               <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
               {backLabel}
             </Link>
@@ -84,13 +84,13 @@ export default function BlogDetail({ data = site.blogDetailPage, post, allPosts 
         </article>
 
         <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
-          <div className="rounded-[3px] border border-line bg-mist p-6 sm:p-7">
-            <h2 className="display-3 text-ink">{recentLabel}</h2>
+          <div className="rounded-[28px] bg-mist p-6 sm:p-7">
+            <h2 className="label text-gold">{recentLabel}</h2>
             <ul className="mt-5 space-y-4">
               {recent.map((p) => (
                 <li key={p.slug}>
                   <Link href={`/blogs/${p.slug}`} className="group flex items-center gap-4">
-                    <span className="relative size-20 shrink-0 overflow-hidden rounded-[3px] bg-bone">
+                    <span className="relative size-20 shrink-0 overflow-hidden rounded-full bg-bone">
                       <Image src={p.image.src} alt={p.image.alt} fill quality={75} sizes="80px" className="object-cover transition-transform duration-700 group-hover:scale-110" />
                     </span>
                     <span className="min-w-0">

@@ -1,19 +1,24 @@
 import Link from "next/link";
 import { site, type AurelianNotFoundData, type SectionProps } from "@/data";
-import { ArrowRight, FeatureIcon } from "@/components/Icons";
+import { Headline } from "@/components/SplitWords";
+import { ArrowRight } from "@/components/Icons";
 
+/** Full-screen dark page under the transparent header: oversized outlined code, title and a way home. */
 export default function NotFoundMessage({ data = site.notFoundPage }: SectionProps<AurelianNotFoundData>) {
   return (
-    <section className="bg-mist section-space">
+    <section className="flex min-h-svh items-center bg-wine-deep pb-20 pt-[calc(var(--header-h)+48px)] text-white">
       <div className="container-site flex flex-col items-center text-center">
-        <div className="arch relative grid w-full max-w-[340px] place-items-center bg-wine px-6 pb-10 pt-14 text-white sm:max-w-[400px]">
-          <span aria-hidden="true" className="arch absolute inset-3 border border-gold-light/40" />
-          <FeatureIcon name="scale" className="size-12 text-gold-light" />
-          <p className="mt-2 font-display text-[clamp(96px,16vw,150px)] font-semibold italic leading-none text-gold-light">{data.code}</p>
-        </div>
-        <h1 className="display-2 mt-10 text-ink">{data.title}</h1>
-        <p className="lead mt-4 max-w-[480px] text-body">{data.text}</p>
-        <Link href={data.button.href} className="btn mt-9 bg-wine text-white hover:bg-gold">
+        <p
+          aria-hidden="true"
+          className="animate-[zoom-in_1.2s_var(--ease-out)_both] font-display text-[clamp(120px,22vw,260px)] font-semibold italic leading-none text-transparent [-webkit-text-stroke:1px_var(--color-gold)]"
+        >
+          {data.code}
+        </p>
+        <h1 data-words-now className="display-2 mt-4 text-balance">
+          <Headline line1={data.title} />
+        </h1>
+        <p className="mt-4 max-w-[480px] animate-[rise_0.9s_var(--ease-out)_0.6s_both] text-[16px] leading-[1.8] text-white/70">{data.text}</p>
+        <Link href={data.button.href} className="btn btn-gold mt-9 animate-[rise_0.9s_var(--ease-out)_0.75s_both]">
           {data.button.label}
           <ArrowRight className="size-4" />
         </Link>

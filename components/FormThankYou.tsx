@@ -19,7 +19,7 @@ export default function FormThankYou({ title, message, name, hiding = false, onC
     <div
       role="status"
       aria-live="polite"
-      className={`relative flex flex-col items-start justify-center rounded-[3px] bg-wine-deep px-8 py-12 text-white transition-[opacity,translate] duration-400 sm:px-12 ${
+      className={`relative flex flex-col items-start justify-center bg-wine-deep px-8 py-12 text-white transition-[opacity,translate] duration-400 sm:px-12 ${
         hiding ? "translate-y-2 opacity-0" : "animate-toast opacity-100"
       } ${className}`}
     >
@@ -27,7 +27,7 @@ export default function FormThankYou({ title, message, name, hiding = false, onC
         type="button"
         onClick={onClose}
         aria-label="Close message"
-        className="absolute right-4 top-4 grid size-11 place-items-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-gold hover:bg-gold hover:text-white"
+        className="absolute right-4 top-4 grid size-11 place-items-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:bg-gold hover:text-white"
       >
         <CloseIcon className="size-5" />
       </button>

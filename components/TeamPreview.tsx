@@ -21,7 +21,7 @@ export default function TeamPreview({ data = site.teamPreviewSection, items = si
           line2={titleLine2}
           text={text}
           action={
-            <Link href={button.href} className="btn border border-wine text-wine hover:bg-wine hover:text-white">
+            <Link href={button.href} className="btn btn-outline">
               {button.label}
               <ArrowRight className="size-4" />
             </Link>

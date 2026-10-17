@@ -2,18 +2,13 @@
 
 import { useEffect, useState } from "react";
 import type { AurelianTestimonial } from "@/data";
-import { ArrowLeft, ArrowRight, QuoteMark, Star } from "@/components/Icons";
+import { ArrowLeft, ArrowRight, QuoteMark } from "@/components/Icons";
 
 const AUTOPLAY_MS = 7000;
 
-const initials = (name: string) =>
-  name
-    .split(" ")
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("");
+const pad = (n: number) => String(n).padStart(2, "0");
 
-/** One quote card at a time; all quotes share one grid cell so the height never jumps. */
+/** One large centred quote at a time; all quotes share one grid cell so the height never jumps. */
 export default function TestimonialSlider({ items }: { items: AurelianTestimonial[] }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -26,78 +21,58 @@ export default function TestimonialSlider({ items }: { items: AurelianTestimonia
   }, [index, paused, total]);
 
   const go = (step: number) => setIndex((i) => (i + step + total) % total);
+  const arrow = "grid size-12 place-items-center border border-white/25 text-white transition-colors hover:border-gold hover:bg-gold";
 
   return (
     <div
       data-reveal="up"
-      data-delay="2"
-      className="relative"
+      data-delay="4"
+      className="mx-auto mt-14 max-w-[900px] border-t border-white/15 pt-14 text-center lg:mt-16"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      <span aria-hidden="true" className="absolute -right-3 -top-3 hidden h-full w-full rounded-[3px] border border-gold-light/30 sm:block" />
-      <div className="relative rounded-[3px] bg-white p-7 text-ink shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-10 lg:p-12">
-        <div className="flex items-start justify-between gap-6">
-          <QuoteMark className="h-10 w-14 text-gold" />
-          <span className="flex gap-1 text-gold" aria-hidden="true">
-            {Array.from({ length: 5 }, (_, i) => (
-              <Star key={i} className="size-4" />
-            ))}
-          </span>
-        </div>
+      <QuoteMark className="mx-auto h-9 w-12 text-gold" />
 
-        <div className="mt-8 grid" aria-live="polite">
-          {items.map((t, i) => {
-            const active = i === index;
-            return (
-              <figure
-                key={t.name}
-                aria-hidden={!active}
-                className={`[grid-area:1/1] transition-[opacity,translate] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${active ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}
-              >
-                <blockquote className="statement text-ink">&ldquo;{t.quote}&rdquo;</blockquote>
-                <figcaption className="mt-8 flex items-center gap-4">
-                  <span aria-hidden="true" className="grid size-14 shrink-0 place-items-center rounded-full bg-wine font-display text-[22px] font-semibold text-gold-light">
-                    {initials(t.name)}
-                  </span>
-                  <span>
-                    <span className="block font-display text-[24px] font-semibold leading-tight text-wine">{t.name}</span>
-                    <span className="label mt-1 block text-[11px]! text-muted">{t.role}</span>
-                  </span>
-                </figcaption>
-              </figure>
-            );
-          })}
-        </div>
-
-        {total > 1 && (
-          <div className="mt-10 flex items-center justify-between gap-6 border-t border-line pt-7">
-            <p className="label text-muted" aria-hidden="true">
-              <span className="text-wine">{String(index + 1).padStart(2, "0")}</span> / {String(total).padStart(2, "0")}
-            </p>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => go(-1)}
-                aria-label="Previous testimonial"
-                className="grid size-12 place-items-center rounded-full border border-line text-wine transition-colors hover:border-wine hover:bg-wine hover:text-white"
-              >
-                <ArrowLeft className="size-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => go(1)}
-                aria-label="Next testimonial"
-                className="grid size-12 place-items-center rounded-full border border-wine bg-wine text-white transition-colors hover:border-gold hover:bg-gold"
-              >
-                <ArrowRight className="size-5" />
-              </button>
-            </div>
-          </div>
-        )}
+      <div className="mt-8 grid" aria-live="polite">
+        {items.map((t, i) => {
+          const active = i === index;
+          return (
+            <figure
+              key={t.name}
+              aria-hidden={!active}
+              className={`[grid-area:1/1] transition-[opacity,translate,filter] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                active ? "translate-y-0 opacity-100 blur-0" : "pointer-events-none translate-y-6 opacity-0 blur-[6px]"
+              }`}
+            >
+              <blockquote className="font-display text-[24px] font-medium italic leading-[1.4] text-white sm:text-[30px] lg:text-[36px]">&ldquo;{t.quote}&rdquo;</blockquote>
+              <figcaption className="mt-8">
+                <span className="block font-display text-[22px] font-semibold text-gold-light">{t.name}</span>
+                <span className="label mt-2 block text-[10px]! text-white/55">{t.role}</span>
+              </figcaption>
+            </figure>
+          );
+        })}
       </div>
+
+      {total > 1 && (
+        <div className="mt-12 flex items-center justify-center gap-6">
+          <button type="button" onClick={() => go(-1)} aria-label="Previous testimonial" className={arrow}>
+            <ArrowLeft className="size-4" />
+          </button>
+          <p className="flex items-center gap-4 font-display text-[18px] font-semibold text-white/50" aria-hidden="true">
+            <span className="text-white">{pad(index + 1)}</span>
+            <span className="relative h-px w-16 bg-white/20">
+              <span key={index} className="absolute inset-0 origin-left bg-gold" style={{ animation: `grow-x ${AUTOPLAY_MS}ms linear both`, animationPlayState: paused ? "paused" : "running" }} />
+            </span>
+            {pad(total)}
+          </p>
+          <button type="button" onClick={() => go(1)} aria-label="Next testimonial" className={arrow}>
+            <ArrowRight className="size-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

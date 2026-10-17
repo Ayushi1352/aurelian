@@ -19,7 +19,7 @@ export default function ContactForm({ fields, submitLabel, sendingLabel, thankYo
   const sending = status === "sending";
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-x-5 gap-y-6 sm:grid-cols-2">
+    <form onSubmit={onSubmit} className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
       <InputField id="name" label={fields.name.label} placeholder={fields.name.placeholder} autoComplete="name" required />
       <InputField id="email" type="email" label={fields.email.label} placeholder={fields.email.placeholder} autoComplete="email" required />
       <InputField id="phone" type="tel" label={fields.phone.label} placeholder={fields.phone.placeholder} autoComplete="tel" />
@@ -28,7 +28,7 @@ export default function ContactForm({ fields, submitLabel, sendingLabel, thankYo
         <TextareaField id="message" label={fields.message.label} placeholder={fields.message.placeholder} required />
       </div>
       <div className="sm:col-span-2">
-        <button type="submit" disabled={sending} className="btn w-full bg-wine text-white hover:bg-gold disabled:opacity-70 sm:w-auto">
+        <button type="submit" disabled={sending} className="btn btn-primary w-full disabled:opacity-70 sm:w-auto">
           {sending ? sendingLabel : submitLabel}
           {!sending && <ArrowRight className="size-4" />}
         </button>

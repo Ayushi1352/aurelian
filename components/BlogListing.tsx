@@ -6,7 +6,7 @@ export default function BlogListing({ data = site.blogPage }: SectionProps<Aurel
   const { label, titleLine1, titleLine2, text, perPage, cardButton, items } = data;
 
   return (
-    <section id="blog-list" className="scroll-mt-24 section-space">
+    <section id="blog-list" className="scroll-mt-24 bg-mist section-space">
       <div className="container-site">
         <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} align="center" />
         <BlogGrid items={items} perPage={perPage} buttonLabel={cardButton} scrollTargetId="blog-list" />

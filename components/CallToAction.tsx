@@ -2,49 +2,47 @@ import Image from "next/image";
 import Link from "next/link";
 import { site, type AurelianCtaData, type SectionProps } from "@/data";
 import { Eyebrow } from "@/components/SectionHeading";
+import { Headline } from "@/components/SplitWords";
 import { ArrowRight, Phone } from "@/components/Icons";
 
-/** Wine card that straddles the page and the footer: invitation and buttons on the left, photo + call line on the right. */
+/** Full-width drifting photo under a dark wash: centred invitation, two buttons and the phone line. */
 export default function CallToAction({ data = site.ctaSection }: SectionProps<AurelianCtaData>) {
   const { label, titleLine1, titleLine2, text, button, secondaryButton, callLabel, image } = data;
   const { phone } = site.footer.contact;
 
   return (
-    <section className="bg-linear-to-b from-white from-50% to-wine-deep to-50% pt-[var(--section-space)]">
-      <div className="container-site">
-        <div data-reveal="up" className="relative isolate grid overflow-hidden rounded-[3px] bg-wine text-white shadow-[0_40px_90px_rgba(37,10,16,0.35)] lg:grid-cols-[1.25fr_0.75fr]">
-          <div aria-hidden="true" className="pattern-dots absolute inset-0 -z-10" />
-          <div className="p-8 sm:p-12 lg:p-16">
-            <Eyebrow label={label} dark />
-            <h2 className="display-2 mt-5">
-              {titleLine1} <span className="italic text-gold-light">{titleLine2}</span>
-            </h2>
-            <p className="lead mt-5 max-w-[560px] text-white/75">{text}</p>
-            <div className="mt-9 flex flex-col gap-3 xs:flex-row">
-              <Link href={button.href} className="btn bg-gold text-white hover:bg-gold-bright">
-                {button.label}
-                <ArrowRight className="size-4" />
-              </Link>
-              <Link href={secondaryButton.href} className="btn border border-white/30 text-white hover:border-white hover:bg-white hover:text-wine">
-                {secondaryButton.label}
-              </Link>
-            </div>
-          </div>
+    <section className="relative isolate overflow-hidden bg-wine-deep text-white">
+      <span aria-hidden="true" className="parallax absolute inset-0 -z-20 block">
+        <Image src={image.src} alt="" fill quality={80} sizes="100vw" className="object-cover" />
+      </span>
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-wine-deep/80" />
 
-          <div className="relative min-h-[280px] lg:min-h-0">
-            <Image src={image.src} alt={image.alt} fill quality={80} sizes="(min-width: 1024px) 34vw, 100vw" className="object-cover" />
-            <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-wine-deep/90 via-wine-deep/30 to-transparent lg:bg-linear-to-r lg:from-wine lg:via-wine/20" />
-            <a href={`tel:${phone.replace(/\s/g, "")}`} className="group absolute bottom-6 left-6 right-6 flex items-center gap-4 rounded-[3px] bg-white/95 p-4 text-ink backdrop-blur sm:left-auto sm:max-w-[300px] lg:bottom-10 lg:right-10">
-              <span className="grid size-12 shrink-0 place-items-center rounded-full bg-gold text-white transition-colors group-hover:bg-wine">
-                <Phone className="size-5" />
-              </span>
-              <span className="leading-tight">
-                <span className="block text-[13px] text-muted">{callLabel}</span>
-                <span className="block font-display text-[22px] font-semibold text-wine">{phone}</span>
-              </span>
-            </a>
-          </div>
+      <div className="container-site flex flex-col items-center py-24 text-center lg:py-32">
+        <Eyebrow label={label} dark centered />
+        <h2 data-reveal="words" className="display-1 mt-6 max-w-[820px] text-balance">
+          <Headline line1={titleLine1} line2={titleLine2} />
+        </h2>
+        <p data-reveal="up" data-delay="3" className="mt-6 max-w-[600px] text-[16px] leading-[1.8] text-white/75 lg:text-[17px]">
+          {text}
+        </p>
+        <div data-reveal="up" data-delay="4" className="mt-10 flex w-full flex-col justify-center gap-3 xs:w-auto xs:flex-row">
+          <Link href={button.href} className="btn btn-gold">
+            {button.label}
+            <ArrowRight className="size-4" />
+          </Link>
+          <Link href={secondaryButton.href} className="btn btn-light">
+            {secondaryButton.label}
+          </Link>
         </div>
+        <a data-reveal="up" data-delay="5" href={`tel:${phone.replace(/\s/g, "")}`} className="group mt-10 flex items-center gap-4">
+          <span className="grid size-12 place-items-center border border-gold/60 text-gold-light transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-white">
+            <Phone className="size-5" />
+          </span>
+          <span className="text-left leading-tight">
+            <span className="label block text-[10px]! text-white/60">{callLabel}</span>
+            <span className="mt-1 block font-display text-[22px] font-semibold text-white">{phone}</span>
+          </span>
+        </a>
       </div>
     </section>
   );

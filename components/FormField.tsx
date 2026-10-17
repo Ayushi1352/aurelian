@@ -1,14 +1,14 @@
 import type { ComponentProps, ReactNode } from "react";
 import { ChevronDown } from "@/components/Icons";
 
-/** Boxed fields on a light ivory fill; gold border on focus. */
+/** Open fields with only a bottom line (Wix-style); the line turns gold on focus. */
 export const fieldClass =
-  "mt-2 block w-full min-w-0 rounded-[3px] border border-line bg-mist px-4 py-3.5 text-[16px] text-ink outline-none transition-[border-color,background-color,box-shadow] placeholder:text-muted/70 focus:border-gold focus:bg-white focus:shadow-[0_0_0_4px_rgba(180,138,79,0.15)]";
+  "mt-1 block w-full min-w-0 border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-[16px] text-ink outline-none transition-[border-color,box-shadow] placeholder:text-muted/60 focus:border-gold focus:shadow-[0_1px_0_0_var(--color-gold)]";
 
 function Label({ htmlFor, label, required, children }: { htmlFor: string; label: string; required?: boolean; children: ReactNode }) {
   return (
     <div className="min-w-0">
-      <label htmlFor={htmlFor} className="block text-[14px] font-semibold text-ink">
+      <label htmlFor={htmlFor} className="label block text-[10px]! text-muted">
         {label}
         {required && <span className="ml-1 text-gold">*</span>}
       </label>
@@ -58,7 +58,7 @@ export function SelectField({ id, label, required, placeholder, options, ...prop
             </option>
           ))}
         </select>
-        <ChevronDown className="pointer-events-none absolute right-4 top-1/2 mt-1 size-4 -translate-y-1/2 text-gold" />
+        <ChevronDown className="pointer-events-none absolute right-0 top-1/2 mt-1 size-4 -translate-y-1/2 text-gold" />
       </div>
     </Label>
   );

@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { site, type AurelianAboutIntroData, type SectionProps } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
-import { ArrowRight, Check, Phone } from "@/components/Icons";
+import { ArrowRight, Phone } from "@/components/Icons";
 
-/** Photo collage (arch + small square + years badge) beside a short story, three promises and a call line. */
+/** Two staggered rounded photos (tall left, square right with the years card under it), beside the story, promises and a call line. */
 export default function AboutIntro({ data = site.aboutIntroSection }: SectionProps<AurelianAboutIntroData>) {
   const { label, titleLine1, titleLine2, paragraphs, points, button, callLabel, image, imageSmall, highlight } = data;
   const { phone } = site.footer.contact;
@@ -12,50 +12,52 @@ export default function AboutIntro({ data = site.aboutIntroSection }: SectionPro
   return (
     <section className="section-space overflow-hidden">
       <div className="container-site grid items-center gap-16 lg:grid-cols-2 lg:gap-20 xl:gap-28">
-        <div data-reveal="up" className="relative mx-auto w-full max-w-[520px] pb-10 pr-10 sm:pb-14 sm:pr-16 lg:mx-0">
-          <div className="arch relative aspect-[4/5] overflow-hidden bg-bone">
-            <Image src={image.src} alt={image.alt} fill quality={85} sizes="(min-width: 1024px) 40vw, 90vw" className="object-cover" />
-          </div>
-          <div className="absolute bottom-0 right-0 aspect-square w-[46%] overflow-hidden rounded-[3px] border-[6px] border-white bg-bone shadow-[0_20px_50px_rgba(37,10,16,0.15)] sm:border-8">
-            <Image src={imageSmall.src} alt={imageSmall.alt} fill quality={85} sizes="(min-width: 1024px) 18vw, 42vw" className="object-cover" />
-          </div>
-          <div className="absolute left-0 top-[12%] grid size-[112px] place-items-center rounded-full bg-wine text-center text-white shadow-[0_16px_40px_rgba(37,10,16,0.3)] outline outline-1 outline-offset-4 outline-gold/60 sm:-left-6 sm:size-[136px]">
-            <span>
-              <span className="block font-display text-[36px] font-semibold leading-none text-gold-light sm:text-[44px]">{highlight.value}</span>
-              <span className="mx-auto mt-1 block max-w-[90px] text-[11px] leading-tight text-white/80 sm:text-[12px]">{highlight.label}</span>
+        <div className="mx-auto grid w-full max-w-[640px] grid-cols-[1.2fr_1fr] gap-4 sm:gap-5 lg:mx-0">
+          <div data-reveal="wipe" className="relative aspect-[3/4] overflow-hidden rounded-[20px] bg-bone">
+            <span className="parallax absolute inset-0 block">
+              <Image src={image.src} alt={image.alt} fill quality={85} sizes="(min-width: 1024px) 26vw, 50vw" className="object-cover" />
             </span>
+          </div>
+          <div className="flex flex-col gap-4 pt-14 sm:gap-5 sm:pt-20">
+            <div data-reveal="wipe" data-delay="3" className="relative aspect-square overflow-hidden rounded-[20px] bg-bone">
+              <Image src={imageSmall.src} alt={imageSmall.alt} fill quality={85} sizes="(min-width: 1024px) 20vw, 42vw" className="object-cover" />
+            </div>
+            <div data-reveal="up" data-delay="5" className="relative overflow-hidden rounded-[20px] bg-wine p-5 text-white sm:p-7">
+              <span aria-hidden="true" className="absolute -right-6 -top-6 size-24 rounded-full border border-gold/30" />
+              <span className="block font-display text-[42px] font-semibold leading-none text-gold-light sm:text-[56px]">{highlight.value}</span>
+              <span aria-hidden="true" className="mt-4 block h-px w-10 bg-gold" />
+              <span className="label mt-4 block text-[9px]! leading-[1.7] text-white/80 sm:text-[10px]!">{highlight.label}</span>
+            </div>
           </div>
         </div>
 
         <div>
           <SectionHeading label={label} line1={titleLine1} line2={titleLine2} />
           {paragraphs.map((p, i) => (
-            <p key={i} data-reveal="up" data-delay="2" className="lead mt-5 text-body">
+            <p key={i} data-reveal="up" data-delay="3" className="mt-5 text-[16px] leading-[1.8] text-body lg:text-[17px]">
               {p}
             </p>
           ))}
-          <ul data-reveal="up" data-delay="3" className="mt-8 space-y-3">
-            {points.map((point) => (
-              <li key={point} className="flex items-center gap-3 font-medium text-ink">
-                <span className="grid size-6 shrink-0 place-items-center rounded-full bg-gold-pale text-gold">
-                  <Check className="size-3.5" />
-                </span>
+          <ul className="mt-8 space-y-3">
+            {points.map((point, i) => (
+              <li key={point} data-reveal="left" data-delay={i + 4} className="flex items-center gap-4 font-medium text-ink">
+                <span aria-hidden="true" className="h-px w-6 shrink-0 bg-gold" />
                 {point}
               </li>
             ))}
           </ul>
-          <div data-reveal="up" data-delay="4" className="mt-10 flex flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-center sm:gap-10">
-            <Link href={button.href} className="btn self-start bg-wine text-white hover:bg-gold">
+          <div data-reveal="up" data-delay="6" className="mt-10 flex flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-center sm:gap-10">
+            <Link href={button.href} className="btn btn-primary self-start">
               {button.label}
               <ArrowRight className="size-4" />
             </Link>
-            <a href={`tel:${phone.replace(/\s/g, "")}`} className="group flex items-center gap-3">
-              <span className="grid size-12 place-items-center rounded-full bg-gold-pale text-gold transition-colors group-hover:bg-gold group-hover:text-white">
+            <a href={`tel:${phone.replace(/\s/g, "")}`} className="group flex items-center gap-4">
+              <span className="grid size-12 place-items-center rounded-full border border-gold/50 text-gold transition-colors duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-white">
                 <Phone className="size-5" />
               </span>
               <span className="leading-tight">
-                <span className="block text-[13px] text-muted">{callLabel}</span>
-                <span className="block font-display text-[22px] font-semibold text-wine">{phone}</span>
+                <span className="label block text-[10px]! text-muted">{callLabel}</span>
+                <span className="mt-1 block font-display text-[22px] font-semibold text-wine">{phone}</span>
               </span>
             </a>
           </div>

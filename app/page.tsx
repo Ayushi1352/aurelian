@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import PracticeMarquee from "@/components/PracticeMarquee";
 import AboutIntro from "@/components/AboutIntro";
 import PracticePreview from "@/components/PracticePreview";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -14,6 +15,7 @@ export default function HomePage() {
   return (
     <>
       <Hero data={site.hero} />
+      <PracticeMarquee items={site.practicePage.items} />
       <AboutIntro data={site.aboutIntroSection} />
       <PracticePreview data={site.practicePreviewSection} items={site.practicePage.items} />
       <WhyChooseUs data={site.whyChooseUsSection} />
