@@ -1,26 +1,405 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand palette, sampled from the Aurelian logo (wine arch + champagne-gold scales). */
+  --color-wine: #5c1a27;
+  --color-wine-dark: #3e111a;
+  --color-wine-deep: #250a10;
+  --color-wine-soft: #7a2a38;
+  --color-gold: #b48a4f;
+  --color-gold-bright: #c9a063;
+  --color-gold-light: #e0c491;
+  --color-gold-pale: #f3e8d6;
+
+  --color-ink: #1f1517;
+  --color-body: #5d5355;
+  --color-muted: #8b8183;
+  --color-line: #e7ddd2;
+
+  --color-mist: #f8f3ee;
+  --color-ivory: #fbf8f3;
+  --color-bone: #f4ede3;
+
+  /* Font files are loaded from Google Fonts by the <link> in app/layout.tsx. */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "DM Sans", Arial, sans-serif;
+
+  --breakpoint-xs: 480px;
+  --breakpoint-3xl: 1800px;
+}
+
+/* Space above and below every section - the same on every page, scaled per screen size. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --section-space: 72px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (width >= 768px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --section-space: 96px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (width >= 1280px) {
+  :root {
+    --section-space: 120px;
+  }
+}
+
+@utility section-space {
+  padding-block: var(--section-space);
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 20px;
+
+  @media (width >= 640px) {
+    padding-inline: 32px;
+  }
+
+  @media (width >= 1024px) {
+    padding-inline: 40px;
+  }
+}
+
+/* ── Type scale: classic serif headlines, readable sans body ── */
+@utility display-1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(44px, 5.4vw, 86px);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+
+@utility display-2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 3.9vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+}
+
+@utility display-3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(25px, 2.1vw, 32px);
+  line-height: 1.18;
+}
+
+@utility statement {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 2.3vw, 36px);
+  line-height: 1.35;
+}
+
+@utility lead {
+  font-size: 17px;
+  line-height: 1.75;
+
+  @media (width >= 1024px) {
+    font-size: 18px;
+  }
+}
+
+/* Small uppercase label above titles. */
+@utility label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  @media (width >= 1024px) {
+    font-size: 13px;
+  }
+}
+
+/* Uppercase buttons with a small radius. Colours are added per use. */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 14px 28px;
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  transition:
+    background-color 0.35s,
+    color 0.35s,
+    border-color 0.35s,
+    box-shadow 0.35s;
+
+  & svg {
+    flex-shrink: 0;
+    transition: translate 0.35s var(--ease-out);
+  }
+
+  &:hover svg {
+    translate: 4px 0;
+  }
+
+  @media (width >= 1024px) {
+    min-height: 58px;
+    padding-inline: 32px;
+  }
+}
+
+/* Text link with a line that grows on hover. */
+@utility link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease-out);
+
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+/* Signature shape: a courthouse arch (rounded top, square bottom). */
+@utility arch {
+  border-radius: 999px 999px 0 0;
+}
+
+/* Gold diamond used in labels and dividers (echoes the logo). */
+@utility diamond {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  rotate: 45deg;
+  background: currentColor;
+}
+
+/* Fine gold dotted texture for dark panels. */
+@utility pattern-dots {
+  background-image: radial-gradient(rgb(224 196 145 / 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@utility photo-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(37 10 16 / 0.35) 0%, rgb(37 10 16 / 0.25) 40%, rgb(37 10 16 / 0.88) 100%);
+}
+
+@utility photo-shade-side {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(37 10 16 / 0.9) 0%, rgb(37 10 16 / 0.6) 50%, rgb(37 10 16 / 0.25) 100%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Never let anything push the page sideways (clip keeps the sticky navbar working). */
+    overflow-x: clip;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    overflow-wrap: break-word;
+  }
+
+  a,
+  button:not(:disabled),
+  [role="button"],
+  [role="tab"],
+  select,
+  summary,
+  label:has(input[type="radio"]),
+  label:has(input[type="checkbox"]),
+  input[type="date"],
+  input[type="radio"],
+  input[type="checkbox"],
+  input[type="submit"] {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  /* Date picker icon opens the calendar, so it gets the pointer too. */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: #fff;
+  }
+}
+
+/*
+ * Motion.
+ *   data-reveal="up|left|right|zoom|fade|mask" plays when the element scrolls into view;
+ *   RevealOnScroll adds `data-revealed`. data-delay="1".."8" staggers it in 90ms steps.
+ * Elements stay visible without JS: they are only hidden while <html> has the `motion` class,
+ * which the inline script in the root layout sets.
+ */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 48px, 0);
+  }
+}
+
+@keyframes from-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-48px, 0, 0);
+  }
+}
+
+@keyframes from-right {
+  from {
+    opacity: 0;
+    transform: translate3d(48px, 0, 0);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Image uncovered from bottom to top, with the photo settling from a slight zoom. */
+@keyframes mask-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes scroll-line {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+:root.motion [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+}
+
+[data-reveal][data-revealed] {
+  animation-duration: 1s;
+  animation-timing-function: var(--ease-out);
+  animation-delay: var(--reveal-delay, 0ms);
+  animation-fill-mode: both;
+}
+
+[data-reveal="up"][data-revealed] {
+  animation-name: rise;
+}
+[data-reveal="left"][data-revealed] {
+  animation-name: from-left;
+}
+[data-reveal="right"][data-revealed] {
+  animation-name: from-right;
+}
+[data-reveal="zoom"][data-revealed] {
+  animation-name: zoom-in;
+}
+[data-reveal="fade"][data-revealed] {
+  animation-name: fade-in;
+}
+[data-reveal="mask"][data-revealed] {
+  animation-name: mask-up;
+  animation-duration: 1.4s;
+  animation-timing-function: cubic-bezier(0.77, 0, 0.18, 1);
+}
+[data-reveal="mask"][data-revealed] img {
+  animation: settle 2s var(--ease-out) var(--reveal-delay, 0ms) both;
+}
+
+[data-delay="1"] { --reveal-delay: 90ms; }
+[data-delay="2"] { --reveal-delay: 180ms; }
+[data-delay="3"] { --reveal-delay: 270ms; }
+[data-delay="4"] { --reveal-delay: 360ms; }
+[data-delay="5"] { --reveal-delay: 450ms; }
+[data-delay="6"] { --reveal-delay: 540ms; }
+[data-delay="7"] { --reveal-delay: 630ms; }
+[data-delay="8"] { --reveal-delay: 720ms; }
+
+@utility animate-toast {
+  animation: toast-in 0.45s var(--ease-out) both;
+}
+
+@utility animate-hero-zoom {
+  animation: hero-zoom 2.4s var(--ease-out) both;
+}
+
+@utility animate-scroll-line {
+  animation: scroll-line 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }
