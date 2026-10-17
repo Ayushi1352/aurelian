@@ -93,7 +93,7 @@ export default function PracticeDetail({ data = site.practiceDetailPage, item, a
               <BlockTitle>{faqLabel}</BlockTitle>
               <div className="mt-6 space-y-3">
                 {item.faqs.map((faq, i) => (
-                  <details key={faq.question} name="faq" open={i === 0} data-reveal="up" className="group rounded-[3px] border border-line bg-white open:border-wine/30 open:bg-mist">
+                  <details key={faq.question} name="faq" open={i === 0} data-reveal="up" className="accordion group rounded-[3px] border border-line bg-white open:border-wine/30 open:bg-mist">
                     <summary className="flex list-none items-center justify-between gap-6 px-5 py-5 sm:px-6 [&::-webkit-details-marker]:hidden">
                       <span className="font-display text-[21px] font-semibold leading-snug text-ink transition-colors group-hover:text-wine sm:text-[23px]">{faq.question}</span>
                       <span className="grid size-10 shrink-0 place-items-center rounded-full bg-gold-pale text-wine transition-colors duration-300 group-open:bg-wine group-open:text-white">

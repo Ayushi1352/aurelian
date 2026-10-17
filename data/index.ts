@@ -60,7 +60,8 @@ export type AurelianAppointmentData =
   AurelianSections["Appointment"]["variants"]["AurelianAppointment1"];
 
 // ── Item-level types inferred from site.json ──
-export type AurelianImage = AurelianHeroData["image"];
+export type AurelianImage = AurelianHeroData["slides"][number]["image"];
+export type AurelianHeroSlide = AurelianHeroData["slides"][number];
 export type AurelianLink = AurelianHeaderData["appointmentButton"];
 export type AurelianContactDetails = AurelianFooterData["contact"];
 export type AurelianSocial = AurelianFooterData["socials"][number];

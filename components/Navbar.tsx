@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { AurelianContactDetails, AurelianHeaderData, AurelianSocial, SectionProps } from "@/data";
-import { ArrowRight, CloseIcon, MenuIcon, Phone, SocialIcon } from "@/components/Icons";
+import { ArrowRight, CloseIcon, MenuIcon, SocialIcon } from "@/components/Icons";
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -46,7 +46,7 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
   }, []);
 
   if (!data) return null;
-  const { brand, navigation, appointmentButton, callLabel } = data;
+  const { brand, navigation, appointmentButton } = data;
 
   return (
     <header className={`sticky top-0 z-50 border-b bg-white transition-[box-shadow,border-color] duration-300 ${scrolled ? "border-transparent shadow-[0_12px_40px_rgba(37,10,16,0.10)]" : "border-line"}`}>
@@ -66,7 +66,7 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
         </Link>
 
         <nav aria-label="Main navigation" className="hidden lg:block">
-          <ul className="flex items-center gap-6 xl:gap-8">
+          <ul className="flex items-center gap-5 xl:gap-7 2xl:gap-9">
             {navigation.map((item) => {
               const active = isActive(pathname, item.href);
               return (
@@ -74,7 +74,7 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`group relative flex flex-col items-center py-2 text-[13px] font-semibold uppercase tracking-[0.12em] transition-colors ${active ? "text-wine" : "text-ink hover:text-wine"}`}
+                    className={`group relative flex flex-col items-center whitespace-nowrap py-2 text-[12px] font-semibold uppercase tracking-[0.1em] xl:text-[13px] xl:tracking-[0.12em] transition-colors ${active ? "text-wine" : "text-ink hover:text-wine"}`}
                   >
                     {item.label}
                     <span
@@ -88,17 +88,8 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3 xl:gap-6">
-          <a href={`tel:${contact.phone.replace(/s/g, "")}`} className="group hidden items-center gap-3 2xl:flex">
-            <span className="grid size-11 place-items-center rounded-full border border-gold/40 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
-              <Phone className="size-[18px]" />
-            </span>
-            <span className="leading-tight">
-              <span className="block text-[12px] text-muted">{callLabel}</span>
-              <span className="block font-display text-[19px] font-semibold text-wine">{contact.phone}</span>
-            </span>
-          </a>
-          <Link href={appointmentButton.href} className="btn hidden min-h-[50px]! bg-wine px-6! text-white hover:bg-gold sm:inline-flex lg:hidden xl:inline-flex">
+        <div className="flex shrink-0 items-center gap-3">
+          <Link href={appointmentButton.href} className="btn hidden min-h-[50px]! whitespace-nowrap bg-wine px-6! text-white hover:bg-gold sm:inline-flex lg:hidden xl:inline-flex">
             {appointmentButton.label}
             <ArrowRight className="size-4" />
           </Link>

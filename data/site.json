@@ -277,8 +277,7 @@
             },
             "topBar": {
               "note": "Free first consultation for new clients"
-            },
-            "callLabel": "Call for advice"
+            }
           }
         }
       },
@@ -371,48 +370,38 @@
       "Hero": {
         "variants": {
           "AurelianHero1": {
-            "label": "Legal Advocates & Consultants",
-            "titleLine1": "Steadfast counsel,",
-            "titleLine2": "decisive results.",
-            "text": "For 25 years Aurelian Legal has protected the rights of individuals, families and businesses. We listen first, prepare harder than the other side and stay with you until the matter is resolved.",
-            "button": {
-              "label": "Book Appointment",
-              "href": "/book-appointment"
-            },
-            "secondaryButton": {
-              "label": "Our Practice Areas",
-              "href": "/practice-areas"
-            },
-            "image": {
-              "src": "/images/home/hero-library.webp",
-              "alt": "Marble busts of legal scholars lining a historic law library",
-              "width": 2560,
-              "height": 1440
-            },
-            "portrait": {
-              "src": "/images/home/hero-justice.webp",
-              "alt": "Bronze statue of Lady Justice holding the scales",
-              "width": 1360,
-              "height": 1700
-            },
-            "highlights": [
+            "slides": [
               {
-                "value": "25+",
-                "label": "Years of practice"
+                "label": "Aurelian Legal",
+                "title": "Justice With Integrity",
+                "image": {
+                  "src": "/images/home/hero-library.webp",
+                  "alt": "Marble busts of legal scholars lining a historic law library",
+                  "width": 2560,
+                  "height": 1440
+                }
               },
               {
-                "value": "1,200+",
-                "label": "Cases won"
+                "label": "Trusted Advocates",
+                "title": "We Stand By You",
+                "image": {
+                  "src": "/images/home/hero-justice.webp",
+                  "alt": "Bronze statue of Lady Justice holding the scales",
+                  "width": 2560,
+                  "height": 1440
+                }
               },
               {
-                "value": "98%",
-                "label": "Client satisfaction"
+                "label": "Clear Legal Counsel",
+                "title": "Your Rights, Protected",
+                "image": {
+                  "src": "/images/home/hero-shelves.webp",
+                  "alt": "Leather-bound law books on warmly lit library shelves",
+                  "width": 2560,
+                  "height": 1440
+                }
               }
-            ],
-            "badge": {
-              "title": "Free consultation",
-              "text": "Speak to a senior lawyer within 24 hours"
-            }
+            ]
           }
         }
       },
