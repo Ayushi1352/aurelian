@@ -8,7 +8,7 @@ export default function PracticeAreas({ data = site.practicePage }: SectionProps
   return (
     <section id="practice-list" className="scroll-mt-24 section-space">
       <div className="container-site">
-        <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} align="center" />
+        <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} />
         <PracticeGrid items={items} perPage={perPage} buttonLabel={cardButton} scrollTargetId="practice-list" />
       </div>
     </section>

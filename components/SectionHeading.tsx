@@ -10,8 +10,9 @@ type SectionHeadingProps = {
   text?: string;
   /** White text, for sections on a dark background. */
   dark?: boolean;
-  align?: "left" | "center";
-  /** Shown on the right of the title on large screens (e.g. a "view all" button). */
+  /** Label above a smaller title instead of beside it, for narrow columns (split panels, form panels). */
+  stacked?: boolean;
+  /** Shown beside the intro text on large screens (e.g. a "view all" link). */
   action?: ReactNode;
   as?: "h1" | "h2";
   className?: string;
@@ -30,28 +31,52 @@ export function Eyebrow({ label, dark = false, centered = false, className = "" 
   );
 }
 
-/** Section title: tracked label, serif headline whose words rise in one by one, ending in a gold full stop. */
-export default function SectionHeading({ label, line1, line2, text, dark = false, align = "left", action, as: Tag = "h2", className = "" }: SectionHeadingProps) {
-  const centered = align === "center";
+/*
+ * Section title in the home About section's editorial style: a hairline across the top, the label on
+ * the left, a large serif headline (words rise in one by one, gold full stop) on the right, then the
+ * intro line with the action beside it.
+ */
+export default function SectionHeading({ label, line1, line2, text, dark = false, stacked = false, action, as: Tag = "h2", className = "" }: SectionHeadingProps) {
+  const rule = dark ? "border-white/15" : "border-line";
 
-  return (
-    <div className={`flex flex-col gap-8 ${centered ? "items-center text-center" : "lg:flex-row lg:items-end lg:justify-between"} ${className}`}>
-      <div className={`min-w-0 ${centered ? "max-w-[760px]" : "max-w-[680px]"}`}>
-        <Eyebrow label={label} dark={dark} centered={centered} />
-        <Tag data-reveal="words" className={`display-2 mt-5 text-balance ${dark ? "text-white" : "text-ink"}`}>
-          <Headline line1={line1} line2={line2} />
-        </Tag>
-        {text && (
-          <p data-reveal="up" data-delay="3" className={`mt-5 text-[16px] leading-[1.8] lg:text-[17px] ${dark ? "text-white/70" : "text-body"} ${centered ? "mx-auto max-w-[620px]" : ""}`}>
-            {text}
-          </p>
-        )}
-      </div>
+  const title = (
+    <Tag data-reveal="words" className={`text-balance ${stacked ? "display-2 mt-5" : "display-1"} ${dark ? "text-white" : "text-ink"}`}>
+      <Headline line1={line1} line2={line2} />
+    </Tag>
+  );
+
+  const intro = (text || action) && (
+    <div className={`mt-8 flex flex-col gap-8 ${stacked ? "" : "lg:flex-row lg:items-end lg:justify-between"}`}>
+      {text && (
+        <p data-reveal="up" data-delay="3" className={`max-w-[560px] leading-[1.8] ${stacked ? "text-[16px] lg:text-[17px]" : "text-[17px] lg:text-[19px]"} ${dark ? "text-white/70" : "text-body"}`}>
+          {text}
+        </p>
+      )}
       {action && (
-        <div data-reveal="up" data-delay="3" className="shrink-0">
+        <div data-reveal="up" data-delay="4" className="shrink-0">
           {action}
         </div>
       )}
+    </div>
+  );
+
+  if (stacked) {
+    return (
+      <div className={`border-t pt-8 ${rule} ${className}`}>
+        <Eyebrow label={label} dark={dark} />
+        {title}
+        {intro}
+      </div>
+    );
+  }
+
+  return (
+    <div className={`grid gap-8 border-t pt-8 lg:grid-cols-[0.3fr_0.7fr] lg:gap-12 ${rule} ${className}`}>
+      <Eyebrow label={label} dark={dark} className="self-start lg:pt-5" />
+      <div className="min-w-0">
+        {title}
+        {intro}
+      </div>
     </div>
   );
 }

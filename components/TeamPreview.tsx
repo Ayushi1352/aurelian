@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { site, type AurelianTeamMember, type AurelianTeamPreviewData, type SectionProps } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
-import { ArrowRight, ArrowUpRight } from "@/components/Icons";
+import { ArrowUpRight } from "@/components/Icons";
 
 type TeamPreviewProps = SectionProps<AurelianTeamPreviewData> & {
   /** All team members (from the TeamListing section); the first `count` are shown. */
@@ -22,9 +22,8 @@ export default function TeamPreview({ data = site.teamPreviewSection, items = si
           line2={titleLine2}
           text={text}
           action={
-            <Link href={button.href} className="btn btn-outline">
+            <Link href={button.href} className="link-arrow text-wine">
               {button.label}
-              <ArrowRight className="size-4" />
             </Link>
           }
         />
@@ -43,12 +42,12 @@ export default function TeamPreview({ data = site.teamPreviewSection, items = si
                   />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="label inline-block rounded-full bg-mist px-3 py-1.5 text-[9px]! text-muted transition-colors duration-500 group-hover:bg-gold-pale group-hover:text-wine">{m.role}</span>
+                  <span className="label block text-[10px]! text-muted transition-colors duration-500 group-hover:text-gold">{m.role}</span>
                   <span className="mt-3 block font-display text-[34px] font-semibold leading-none text-ink transition-[color,translate] duration-500 group-hover:translate-x-3 group-hover:text-wine sm:text-[56px] lg:text-[76px]">
                     {m.name}
                   </span>
                 </span>
-                <span aria-hidden="true" className="hidden size-14 shrink-0 place-items-center rounded-full border border-line text-wine transition-[background-color,color,border-color,rotate] duration-500 group-hover:rotate-45 group-hover:border-wine group-hover:bg-wine group-hover:text-white sm:grid">
+                <span aria-hidden="true" className="hidden size-14 shrink-0 place-items-center border border-line text-wine transition-[background-color,color,border-color,rotate] duration-500 group-hover:rotate-45 group-hover:border-wine group-hover:bg-wine group-hover:text-white sm:grid">
                   <ArrowUpRight className="size-5" />
                 </span>
               </Link>

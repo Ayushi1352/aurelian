@@ -13,7 +13,7 @@ type PracticeCardProps = {
 
 /*
  * Wix-style tall photo tile with the title set large over the bottom of the image. On hover the
- * photo zooms, the excerpt rises into view and a round arrow appears (excerpt always shown on touch).
+ * photo zooms, the excerpt rises into view and a square arrow appears (excerpt always shown on touch).
  */
 export default function PracticeCard({ item, index, buttonLabel, delay = 0 }: PracticeCardProps) {
   return (
@@ -30,7 +30,7 @@ export default function PracticeCard({ item, index, buttonLabel, delay = 0 }: Pr
         <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-black/10 transition-colors duration-700" />
         <span aria-hidden="true" className="absolute inset-x-7 top-7 flex items-center justify-between sm:inset-x-8 sm:top-8">
           <span className="label text-[10px]! text-white/80">{String(index + 1).padStart(2, "0")}</span>
-          <span className="grid size-11 scale-75 place-items-center rounded-full bg-white text-wine opacity-0 transition-[opacity,scale] duration-500 group-hover:scale-100 group-hover:opacity-100">
+          <span className="grid size-11 scale-75 place-items-center bg-white text-wine opacity-0 transition-[opacity,scale] duration-500 group-hover:scale-100 group-hover:opacity-100">
             <ArrowUpRight className="size-4" />
           </span>
         </span>

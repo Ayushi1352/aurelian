@@ -1,30 +1,35 @@
 import Image from "next/image";
-import Link from "next/link";
+import type { ReactNode } from "react";
 import { site, type AurelianPracticeArea, type AurelianPracticeDetailData, type SectionProps } from "@/data";
-import SectionHeading, { Eyebrow } from "@/components/SectionHeading";
-import { Headline } from "@/components/SplitWords";
+import SectionHeading from "@/components/SectionHeading";
 import PracticeCard from "@/components/PracticeCard";
-import HelpCard from "@/components/HelpCard";
-import { ArrowRight, Check, FeatureIcon, Plus } from "@/components/Icons";
+import HelpBand from "@/components/HelpBand";
+import { FeatureIcon, Plus } from "@/components/Icons";
 
 type PracticeDetailProps = SectionProps<AurelianPracticeDetailData> & {
   item: AurelianPracticeArea;
-  /** All practice areas, for the sidebar list and the "Other Practice Areas" cards. */
+  /** All practice areas, for the "Other Practice Areas" cards. */
   allItems?: AurelianPracticeArea[];
 };
 
-function BlockTitle({ children }: { children: string }) {
+/** Content lined up under the title column of a SectionHeading (the right 70% on large screens). */
+function UnderTitle({ children }: { children: ReactNode }) {
   return (
-    <h2 data-reveal="up" className="display-3 flex items-center gap-4 text-ink">
-      <span aria-hidden="true" className="h-px w-8 bg-gold" />
-      {children}
-    </h2>
+    <div className="mt-12 lg:mt-16 lg:grid lg:grid-cols-[0.3fr_0.7fr] lg:gap-12">
+      <span aria-hidden="true" className="hidden lg:block" />
+      <div className="min-w-0">{children}</div>
+    </div>
   );
 }
 
-/** Article column (overview, services, process, FAQ) with a sticky sidebar of all areas and a help card. */
+const pad = (n: number) => String(n).padStart(2, "0");
+
+/*
+ * Wix-style detail page in full-width bands: overview with a wide photo, the services as a numbered
+ * list, the process on a dark band with large gold numbers, the FAQ, other areas, then a help band.
+ */
 export default function PracticeDetail({ data = site.practiceDetailPage, item, allItems = site.practicePage.items }: PracticeDetailProps) {
-  const { overviewLabel, servicesLabel, processLabel, process, faqLabel, moreEyebrow, moreLabel, moreText, moreCount, cardButton, sidebarTitle, helpCard, button } = data;
+  const { overviewLabel, servicesLabel, processLabel, process, faqLabel, moreEyebrow, moreLabel, moreText, moreCount, cardButton, helpCard, button } = data;
   const [lead, ...rest] = item.overview;
   const index = allItems.findIndex((p) => p.slug === item.slug);
   // The next areas after this one, wrapping round to the start of the list.
@@ -36,115 +41,108 @@ export default function PracticeDetail({ data = site.practiceDetailPage, item, a
   return (
     <>
       <section className="section-space">
-        <div className="container-site grid gap-14 lg:grid-cols-[1fr_360px] lg:gap-14 xl:gap-20">
-          <div className="min-w-0">
-            <div data-reveal="wipe" className="relative aspect-[2/1] overflow-hidden rounded-[32px] bg-bone">
-              <span className="parallax absolute inset-0 block">
-                <Image src={item.image.src} alt={item.image.alt} fill quality={85} sizes="(min-width: 1024px) 60vw, 92vw" className="object-cover" />
-              </span>
-              <span className="absolute bottom-5 left-5 grid size-[76px] place-items-center rounded-full border-[5px] border-white/80 bg-wine-deep text-gold-light">
-                <FeatureIcon name={item.icon} className="size-9" />
-              </span>
-            </div>
-
-            <div className="mt-10">
-              <Eyebrow label={overviewLabel} />
-              <h2 data-reveal="words" className="display-2 mt-4 text-ink">
-                <Headline line1={item.title} />
-              </h2>
-              <p data-reveal="up" className="mt-2 font-display text-[22px] font-medium italic text-gold lg:text-[26px]">
-                {item.subtitle}
-              </p>
-              <p data-reveal="up" className="statement mt-6 text-wine">
-                {lead}
-              </p>
-              {rest.map((p, i) => (
-                <p key={i} data-reveal="up" className="lead mt-5 text-body">
-                  {p}
-                </p>
-              ))}
-            </div>
-
-            <div className="mt-14">
-              <BlockTitle>{servicesLabel}</BlockTitle>
-              <ul className="mt-4 grid gap-x-8 sm:grid-cols-2">
-                {item.services.map((s, i) => (
-                  <li key={s} data-reveal="up" data-delay={(i % 2) + 1} className="flex items-start gap-4 border-b border-line py-4 font-medium text-ink">
-                    <Check className="mt-1 size-4 shrink-0 text-gold" />
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-14">
-              <BlockTitle>{processLabel}</BlockTitle>
-              <ol className="relative mt-8 grid gap-8 sm:grid-cols-2 xl:grid-cols-4 xl:gap-5">
-                <span aria-hidden="true" data-reveal="line" className="absolute inset-x-[12%] top-9 hidden h-px border-t border-dashed border-gold/60 xl:block" />
-                {process.map((step, i) => (
-                  <li key={step.title} data-reveal="up" data-delay={i + 2} className="group relative text-center">
-                    <span className="relative mx-auto grid size-[72px] place-items-center rounded-full border border-gold bg-white font-display text-[26px] font-semibold text-wine transition-colors duration-500 group-hover:bg-wine group-hover:text-gold-light">{String(i + 1).padStart(2, "0")}</span>
-                    <h3 className="mt-4 font-display text-[22px] font-semibold text-ink">{step.title}</h3>
-                    <p className="mt-1 text-[14px] leading-[1.6] text-body">{step.text}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            <div className="mt-14">
-              <BlockTitle>{faqLabel}</BlockTitle>
-              <div className="mt-6 border-t border-line">
-                {item.faqs.map((faq, i) => (
-                  <details key={faq.question} name="faq" open={i === 0} data-reveal="up" className="accordion group border-b border-line">
-                    <summary className="flex list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
-                      <span className="font-display text-[21px] font-semibold leading-snug text-ink transition-colors group-hover:text-wine sm:text-[23px]">{faq.question}</span>
-                      <span className="grid size-10 shrink-0 place-items-center border border-line text-wine transition-colors duration-300 group-open:border-wine group-open:bg-wine group-open:text-white">
-                        <Plus className="size-4 transition-transform duration-300 group-open:rotate-45" />
-                      </span>
-                    </summary>
-                    <p className="pb-6 pr-14 text-[16px] leading-[1.75] text-body">{faq.answer}</p>
-                  </details>
+        <div className="container-site">
+          <SectionHeading label={overviewLabel} line1={item.subtitle} text={lead} />
+          {rest.length > 0 && (
+            <UnderTitle>
+              <div className="grid gap-6 md:grid-cols-2 md:gap-12">
+                {rest.map((p, i) => (
+                  <p key={i} data-reveal="up" data-delay={i + 1} className="text-[16px] leading-[1.85] text-body">
+                    {p}
+                  </p>
                 ))}
               </div>
-            </div>
-          </div>
+            </UnderTitle>
+          )}
 
-          <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
-            <nav aria-label={sidebarTitle} className="rounded-[28px] bg-mist p-6 sm:p-7">
-              <h2 className="label text-gold">{sidebarTitle}</h2>
-              <ul className="mt-4">
-                {allItems.map((p) => {
-                  const active = p.slug === item.slug;
-                  return (
-                    <li key={p.slug}>
-                      <Link
-                        href={`/practice-areas/${p.slug}`}
-                        aria-current={active ? "page" : undefined}
-                        className={`group flex items-center justify-between gap-3 border-b border-line py-3.5 text-[15px] font-medium transition-[color,padding] duration-300 ${active ? "pl-3 text-wine" : "text-ink hover:pl-3 hover:text-wine"}`}
-                      >
-                        {p.title}
-                        <ArrowRight className={`size-4 shrink-0 text-gold transition-[opacity,translate] duration-300 ${active ? "opacity-100" : "-translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"}`} />
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-            <HelpCard data={helpCard} button={button} />
-          </aside>
+          <div data-reveal="wipe" className="relative mt-14 aspect-[4/3] overflow-hidden bg-wine-deep sm:aspect-[2/1] lg:mt-20">
+            <span className="parallax absolute inset-0 block">
+              <Image src={item.image.src} alt={item.image.alt} fill quality={85} sizes="(min-width: 1400px) 1320px, 100vw" className="object-cover" />
+            </span>
+            <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-wine-deep/70 via-transparent to-transparent" />
+            <span className="absolute bottom-6 left-6 flex items-center gap-4 text-white sm:bottom-10 sm:left-10">
+              <span className="grid size-14 place-items-center border border-white/40 text-gold-light sm:size-16">
+                <FeatureIcon name={item.icon} className="size-7" />
+              </span>
+              <span className="label text-white/85">{item.title}</span>
+            </span>
+          </div>
         </div>
       </section>
 
       <section className="bg-mist section-space">
         <div className="container-site">
-          <SectionHeading label={moreEyebrow} line1={moreLabel} text={moreText} align="center" />
-          <div className="mt-14 grid gap-2 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+          <SectionHeading label={item.title} line1={servicesLabel} />
+          <UnderTitle>
+            <ul className="grid border-t border-line sm:grid-cols-2 sm:gap-x-12">
+              {item.services.map((s, i) => (
+                <li key={s} data-reveal="up" data-delay={(i % 2) + 1} className="group flex items-baseline gap-5 border-b border-line py-6">
+                  <span className="label shrink-0 text-[10px]! text-gold">{pad(i + 1)}</span>
+                  <span className="font-display text-[22px] font-semibold leading-snug text-ink transition-[color,translate] duration-500 group-hover:translate-x-2 group-hover:text-wine lg:text-[26px]">{s}</span>
+                </li>
+              ))}
+            </ul>
+          </UnderTitle>
+        </div>
+      </section>
+
+      <section className="bg-wine-deep text-white section-space">
+        <div className="container-site">
+          <SectionHeading label={item.title} line1={processLabel} dark />
+          <ol className="mt-14 grid border-t border-white/15 sm:grid-cols-2 lg:mt-20 xl:grid-cols-4">
+            {process.map((step, i) => (
+              <li
+                key={step.title}
+                data-reveal="up"
+                data-delay={i + 1}
+                className={`group relative border-b border-white/15 py-10 sm:px-8 xl:border-b-0 xl:py-12 ${i % 2 === 1 ? "sm:border-l" : ""} ${i > 0 ? "xl:border-l" : ""}`}
+              >
+                <span aria-hidden="true" className="absolute inset-x-0 -top-px h-px origin-left scale-x-0 bg-gold transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
+                <span className="block font-display text-[72px] font-medium leading-none text-gold lg:text-[96px]">{pad(i + 1)}</span>
+                <h3 className="display-3 mt-8">
+                  {step.title}
+                  <span className="text-gold">.</span>
+                </h3>
+                <p className="mt-3 text-[15px] leading-[1.7] text-white/65">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section-space">
+        <div className="container-site">
+          <SectionHeading label={item.title} line1={faqLabel} />
+          <UnderTitle>
+            <div className="border-t border-line">
+              {item.faqs.map((faq, i) => (
+                <details key={faq.question} name="faq" open={i === 0} data-reveal="up" className="accordion group border-b border-line">
+                  <summary className="flex list-none items-center justify-between gap-6 py-6 lg:py-7 [&::-webkit-details-marker]:hidden">
+                    <span className="font-display text-[22px] font-semibold leading-snug text-ink transition-colors group-hover:text-wine sm:text-[26px]">{faq.question}</span>
+                    <span className="grid size-11 shrink-0 place-items-center border border-line text-wine transition-colors duration-300 group-open:border-wine group-open:bg-wine group-open:text-white">
+                      <Plus className="size-4 transition-transform duration-300 group-open:rotate-45" />
+                    </span>
+                  </summary>
+                  <p className="max-w-[720px] pb-7 pr-14 text-[16px] leading-[1.8] text-body">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </UnderTitle>
+        </div>
+      </section>
+
+      <section className="bg-mist section-space">
+        <div className="container-site">
+          <SectionHeading label={moreEyebrow} line1={moreLabel} text={moreText} />
+          <div className="mt-14 grid gap-2 md:grid-cols-2 lg:mt-20 lg:grid-cols-3">
             {others.map(({ item: p, at }, i) => (
               <PracticeCard key={p.slug} item={p} index={at} buttonLabel={cardButton} delay={i + 1} />
             ))}
           </div>
         </div>
       </section>
+
+      <HelpBand data={helpCard} button={button} label={item.title} />
     </>
   );
 }

@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site, type AurelianAboutIntroData, type SectionProps } from "@/data";
-import { Eyebrow } from "@/components/SectionHeading";
-import { Headline } from "@/components/SplitWords";
+import SectionHeading from "@/components/SectionHeading";
 
 /** Wix-style statement: label on the left, large title and one line of copy on the right, then a wide drifting photo with the years figure on it. */
 export default function AboutIntro({ data = site.aboutIntroSection }: SectionProps<AurelianAboutIntroData>) {
@@ -11,22 +10,17 @@ export default function AboutIntro({ data = site.aboutIntroSection }: SectionPro
   return (
     <section className="section-space">
       <div className="container-site">
-        <div className="grid gap-8 border-t border-line pt-8 lg:grid-cols-[0.3fr_0.7fr] lg:gap-12">
-          <Eyebrow label={label} className="self-start lg:pt-5" />
-          <div>
-            <h2 data-reveal="words" className="display-1 text-ink">
-              <Headline line1={titleLine1} line2={titleLine2} />
-            </h2>
-            <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-              <p data-reveal="up" data-delay="3" className="max-w-[560px] text-[17px] leading-[1.8] text-body lg:text-[19px]">
-                {text}
-              </p>
-              <Link data-reveal="up" data-delay="4" href={button.href} className="link-arrow shrink-0 text-wine">
-                {button.label}
-              </Link>
-            </div>
-          </div>
-        </div>
+        <SectionHeading
+          label={label}
+          line1={titleLine1}
+          line2={titleLine2}
+          text={text}
+          action={
+            <Link href={button.href} className="link-arrow text-wine">
+              {button.label}
+            </Link>
+          }
+        />
 
         <div data-reveal="wipe" className="relative mt-14 aspect-[4/3] overflow-hidden bg-wine-deep sm:aspect-[2400/1100] lg:mt-20">
           <span className="parallax absolute inset-0 block">

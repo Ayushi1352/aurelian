@@ -2,7 +2,6 @@ import Link from "next/link";
 import { site, type AurelianPracticeArea, type AurelianPracticePreviewData, type SectionProps } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import PracticeShowcase from "@/components/PracticeShowcase";
-import { ArrowRight } from "@/components/Icons";
 
 type PracticePreviewProps = SectionProps<AurelianPracticePreviewData> & {
   /** All practice areas (from the PracticeListing section); the first `count` are shown. */
@@ -21,9 +20,8 @@ export default function PracticePreview({ data = site.practicePreviewSection, it
           line2={titleLine2}
           text={text}
           action={
-            <Link href={button.href} className="btn btn-outline">
+            <Link href={button.href} className="link-arrow text-wine">
               {button.label}
-              <ArrowRight className="size-4" />
             </Link>
           }
         />

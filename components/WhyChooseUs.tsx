@@ -20,7 +20,7 @@ export default function WhyChooseUs({ data = site.whyChooseUsSection }: SectionP
       </div>
 
       <div className="flex flex-col justify-center px-5 py-20 sm:px-10 lg:px-16 lg:py-24 xl:px-24">
-        <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} dark />
+        <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} dark stacked />
         <ul className="mt-12 border-t border-white/15">
           {points.map((p, i) => (
             <li key={p.title} data-reveal="up" data-delay={i + 2} className="group border-b border-white/15">

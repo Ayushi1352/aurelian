@@ -13,7 +13,7 @@ export default function Appointment({ data = site.appointmentPage }: SectionProp
   return (
     <section className="bg-mist section-space">
       <div className="container-site grid lg:grid-cols-[0.8fr_1.2fr]">
-        <aside className="relative isolate overflow-hidden rounded-[32px] bg-wine-deep text-white lg:rounded-r-none">
+        <aside className="relative isolate overflow-hidden bg-wine-deep text-white">
           <div data-reveal="wipe" className="relative aspect-[4/3] overflow-hidden">
             <Image src={image.src} alt={image.alt} fill quality={85} sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover object-top" />
             <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-wine-deep via-transparent to-transparent" />
@@ -35,7 +35,7 @@ export default function Appointment({ data = site.appointmentPage }: SectionProp
               ))}
             </ol>
             <a href={`tel:${phone.replace(/\s/g, "")}`} className="group mt-8 flex items-center gap-4">
-              <span className="grid size-12 shrink-0 place-items-center rounded-full border border-gold/50 text-gold-light transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-white">
+              <span className="grid size-12 shrink-0 place-items-center border border-gold/50 text-gold-light transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-white">
                 <Phone className="size-5" />
               </span>
               <span className="leading-tight">
@@ -46,8 +46,8 @@ export default function Appointment({ data = site.appointmentPage }: SectionProp
           </div>
         </aside>
 
-        <div className="mt-6 rounded-[32px] bg-white p-6 sm:p-10 lg:mt-0 lg:rounded-l-none lg:p-14">
-          <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} />
+        <div className="mt-6 bg-white p-6 sm:p-10 lg:mt-0 lg:p-14">
+          <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} stacked />
           <div data-reveal="up" data-delay="3" className="mt-10">
             <AppointmentForm
               fields={fields}

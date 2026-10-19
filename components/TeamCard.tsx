@@ -35,7 +35,7 @@ export default function TeamCard({ member, delay = 0 }: TeamCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${member.name} on ${s.label}`}
-                className="grid size-10 place-items-center rounded-full bg-white text-wine transition-colors hover:bg-gold hover:text-white"
+                className="grid size-10 place-items-center bg-white text-wine transition-colors hover:bg-gold hover:text-white"
               >
                 <SocialIcon name={s.name} className="size-4" />
               </a>
