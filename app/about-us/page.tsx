@@ -17,8 +17,8 @@ export default function AboutUsPage() {
       <PageBanner data={site.pageBanner} title={bannerTitle} image={bannerImage} />
       <AboutStory data={site.aboutStorySection} />
       <CoreValues data={site.valuesSection} />
-      <Stats data={site.statsSection} />
       <FounderMessage data={site.founderSection} />
+      <Stats data={site.statsSection} />
       <CallToAction data={site.ctaSection} />
     </>
   );

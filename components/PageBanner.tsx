@@ -24,7 +24,7 @@ export default function PageBanner({ data = site.pageBanner, title, image, paren
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-linear-to-r from-wine-deep/90 via-wine-deep/70 to-wine-deep/40" />
       <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-1/2 bg-linear-to-b from-black/40 to-transparent" />
 
-      <div className="container-site flex min-h-[240px] flex-col justify-center py-14 sm:min-h-[280px] lg:min-h-[340px]">
+      <div className="container-site flex min-h-[340px] flex-col justify-end pb-14 pt-20 sm:min-h-[420px] lg:min-h-[520px] lg:pb-20">
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/75 sm:text-[12px]">
             <li aria-hidden="true" className="h-px w-10 origin-left animate-[hero-rule_0.8s_var(--ease-out)_both] bg-gold" />

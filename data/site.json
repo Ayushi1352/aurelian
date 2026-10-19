@@ -90,12 +90,12 @@
                 "component": "AurelianValues1"
               },
               {
-                "key": "Stats",
-                "component": "AurelianStats1"
-              },
-              {
                 "key": "FounderMessage",
                 "component": "AurelianFounder1"
+              },
+              {
+                "key": "Stats",
+                "component": "AurelianStats1"
               },
               {
                 "key": "CallToAction",
@@ -418,31 +418,16 @@
             "label": "About Aurelian",
             "titleLine1": "A passion to excel,",
             "titleLine2": "a promise to protect.",
-            "paragraphs": [
-              "Founded in 2001, Aurelian Legal has grown from a two-lawyer practice into a firm of more than forty advocates and advisers - without losing the personal attention our clients value.",
-              "We take time to understand your situation, explain your options in plain language and build a strategy around the outcome you need."
-            ],
-            "points": [
-              "Senior lawyers lead every matter",
-              "Clear fees agreed before work begins",
-              "Regular updates at every stage"
-            ],
+            "text": "Since 2001 we have grown from a two-lawyer practice into a firm of forty advocates - without losing the personal attention our clients value.",
             "button": {
               "label": "More About Us",
               "href": "/about-us"
             },
-            "callLabel": "Need urgent advice?",
             "image": {
-              "src": "/images/home/about-meeting-tall.webp",
-              "alt": "Lawyers taking notes during a case meeting",
-              "width": 880,
+              "src": "/images/home/about-office-wide.webp",
+              "alt": "Bright, modern conference room with floor-to-ceiling windows",
+              "width": 2400,
               "height": 1100
-            },
-            "imageSmall": {
-              "src": "/images/home/about-hands.webp",
-              "alt": "Colleagues joining hands as a team",
-              "width": 1000,
-              "height": 1000
             },
             "highlight": {
               "value": "25+",
@@ -517,26 +502,22 @@
               {
                 "value": 1200,
                 "suffix": "+",
-                "label": "Cases won",
-                "icon": "award"
+                "label": "Cases won"
               },
               {
                 "value": 98,
                 "suffix": "%",
-                "label": "Client satisfaction",
-                "icon": "handshake"
+                "label": "Client satisfaction"
               },
               {
                 "value": 25,
                 "suffix": "+",
-                "label": "Years of experience",
-                "icon": "clock"
+                "label": "Years of experience"
               },
               {
                 "value": 40,
                 "suffix": "+",
-                "label": "Legal experts",
-                "icon": "users"
+                "label": "Legal experts"
               }
             ]
           }
@@ -576,7 +557,6 @@
             "label": "Client Voices",
             "titleLine1": "What our clients",
             "titleLine2": "say about us",
-            "text": "Our reputation is built one client at a time. Here is what a few of them have to say.",
             "rating": {
               "value": "4.9",
               "label": "Average rating from 600+ client reviews"
@@ -628,8 +608,7 @@
               "label": "All Blogs",
               "href": "/blogs"
             },
-            "text": "Practical guides, legal updates and insights from our attorneys.",
-            "cardButton": "Read More"
+            "text": "Practical guides, legal updates and insights from our attorneys."
           }
         }
       },
@@ -653,8 +632,7 @@
               "width": 2400,
               "height": 1100
             },
-            "text": "Tell us what happened. A senior lawyer will review your matter and call you back within one business day - in confidence and without obligation.",
-            "callLabel": "Call us anytime"
+            "text": "Tell us what happened. A senior lawyer will review your matter and call you back within one business day - in confidence and without obligation."
           }
         }
       },

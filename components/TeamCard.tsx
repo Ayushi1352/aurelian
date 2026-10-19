@@ -8,15 +8,14 @@ type TeamCardProps = {
   delay?: number;
 };
 
-/** Arch-topped black-and-white portrait that warms to colour on hover; social links slide up; name and role centred underneath. */
+/** Tall black-and-white portrait that warms to colour on hover; social links slide up; name and role underneath (Wix-style, no frame). */
 export default function TeamCard({ member, delay = 0 }: TeamCardProps) {
   const href = `/our-team/${member.slug}`;
 
   return (
-    <article data-reveal="up" data-delay={delay} className="group text-center">
-      <div className="relative p-2.5">
-        <span aria-hidden="true" className="absolute inset-0 rounded-t-full border border-gold/40 transition-colors duration-500 group-hover:border-gold" />
-        <Link href={href} aria-label={member.name} className="relative block aspect-[4/5] overflow-hidden rounded-t-full bg-bone">
+    <article data-reveal="up" data-delay={delay} className="group">
+      <div className="relative overflow-hidden">
+        <Link href={href} aria-label={member.name} className="relative block aspect-[3/4] overflow-hidden bg-bone">
           <Image
             src={member.image.src}
             alt={member.image.alt}
@@ -44,12 +43,14 @@ export default function TeamCard({ member, delay = 0 }: TeamCardProps) {
           ))}
         </ul>
       </div>
-      <div className="mt-5">
+      <div className="mt-5 flex items-start justify-between gap-4 border-t border-line pt-4">
+        <div>
         <Link href={href} className="block font-display text-[24px] font-semibold leading-tight text-ink transition-colors hover:text-wine lg:text-[26px]">
           {member.name}
         </Link>
-        <p className="label mt-2 text-[10px]! text-gold">{member.role}</p>
-        <span aria-hidden="true" className="mx-auto mt-4 block h-px w-8 bg-gold transition-[width] duration-500 group-hover:w-20" />
+        <p className="label mt-2 text-[10px]! text-muted">{member.role}</p>
+        </div>
+        <span aria-hidden="true" className="mt-1 h-px w-6 shrink-0 bg-gold transition-[width] duration-500 group-hover:w-12" />
       </div>
     </article>
   );

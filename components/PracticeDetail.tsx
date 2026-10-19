@@ -138,7 +138,7 @@ export default function PracticeDetail({ data = site.practiceDetailPage, item, a
       <section className="bg-mist section-space">
         <div className="container-site">
           <SectionHeading label={moreEyebrow} line1={moreLabel} text={moreText} align="center" />
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
+          <div className="mt-14 grid gap-2 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
             {others.map(({ item: p, at }, i) => (
               <PracticeCard key={p.slug} item={p} index={at} buttonLabel={cardButton} delay={i + 1} />
             ))}

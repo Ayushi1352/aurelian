@@ -1,34 +1,47 @@
 import Image from "next/image";
 import { site, type AurelianTestimonialsData, type SectionProps } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
-import TestimonialSlider from "@/components/TestimonialSlider";
-import { Star } from "@/components/Icons";
+import { QuoteMark, Star } from "@/components/Icons";
 
-/** Dark section over a drifting library photo: centred title and rating, then one large quote at a time. */
+const SHOWN = 3;
+
+/** Wix-style: three white quote cards floating at staggered heights over a full-width drifting photo. */
 export default function Testimonials({ data = site.testimonialsSection }: SectionProps<AurelianTestimonialsData>) {
-  const { label, titleLine1, titleLine2, text, rating, image, items } = data;
+  const { label, titleLine1, titleLine2, rating, image, items } = data;
 
   return (
-    <section className="relative isolate overflow-hidden bg-wine-deep text-white section-space">
+    <section className="relative isolate overflow-hidden text-white section-space">
       <span aria-hidden="true" className="parallax absolute inset-0 -z-20 block">
-        <Image src={image.src} alt="" fill quality={70} sizes="100vw" className="object-cover opacity-25" />
+        <Image src={image.src} alt="" fill quality={75} sizes="100vw" className="object-cover" />
       </span>
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-b from-wine-deep via-wine-deep/70 to-wine-deep" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/60" />
 
       <div className="container-site">
-        <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} align="center" dark />
-        <div data-reveal="up" data-delay="3" className="mt-8 flex items-center justify-center gap-4">
-          <span className="font-display text-[40px] font-semibold leading-none text-gold-light">{rating.value}</span>
-          <span className="text-left">
-            <span className="flex gap-1 text-gold" aria-label={`${rating.value} out of 5`}>
-              {Array.from({ length: 5 }, (_, i) => (
-                <Star key={i} className="size-4" />
-              ))}
-            </span>
-            <span className="mt-1 block text-[13px] text-white/60">{rating.label}</span>
+        <SectionHeading label={label} line1={titleLine1} line2={titleLine2} align="center" dark />
+        <div data-reveal="up" data-delay="3" className="mt-6 flex items-center justify-center gap-3 text-[13px] text-white/75">
+          <span className="flex gap-0.5 text-gold" aria-label={`${rating.value} out of 5`}>
+            {Array.from({ length: 5 }, (_, i) => (
+              <Star key={i} className="size-3.5" />
+            ))}
           </span>
+          <span className="font-display text-[18px] font-semibold text-white">{rating.value}</span>
+          <span>{rating.label}</span>
         </div>
-        <TestimonialSlider items={items} />
+
+        <ul className="mt-14 grid gap-5 md:grid-cols-3 lg:mt-20 lg:gap-6">
+          {items.slice(0, SHOWN).map((t, i) => (
+            <li key={t.name} data-reveal="up" data-delay={i * 2 + 2} className={i === 1 ? "md:mt-16" : i === 2 ? "md:mt-6" : ""}>
+              <figure className="flex h-full flex-col bg-white p-7 text-ink shadow-[0_30px_70px_rgba(0,0,0,0.3)] transition-transform duration-500 hover:-translate-y-2 sm:p-9">
+                <QuoteMark className="h-6 w-8 text-gold" />
+                <blockquote className="mt-5 flex-1 font-display text-[22px] font-medium leading-[1.35] lg:text-[24px]">&ldquo;{t.quote}&rdquo;</blockquote>
+                <figcaption className="mt-8 border-t border-line pt-5 text-right">
+                  <span className="block font-display text-[19px] font-semibold text-wine">{t.name}</span>
+                  <span className="label mt-1 block text-[9px]! text-muted">{t.role}</span>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

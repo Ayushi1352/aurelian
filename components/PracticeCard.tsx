@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { AurelianPracticeArea } from "@/data";
-import { FeatureIcon } from "@/components/Icons";
+import { ArrowUpRight } from "@/components/Icons";
 
 type PracticeCardProps = {
   item: AurelianPracticeArea;
@@ -12,43 +12,37 @@ type PracticeCardProps = {
 };
 
 /*
- * Soft-cornered photo with a round icon badge riding its lower edge, then the text on the card.
- * On hover the photo zooms, the badge turns gold and spins, and the card lifts.
+ * Wix-style tall photo tile with the title set large over the bottom of the image. On hover the
+ * photo zooms, the excerpt rises into view and a round arrow appears (excerpt always shown on touch).
  */
 export default function PracticeCard({ item, index, buttonLabel, delay = 0 }: PracticeCardProps) {
   return (
     <article data-reveal="up" data-delay={delay} className="h-full">
-      <Link
-        href={`/practice-areas/${item.slug}`}
-        className="group flex h-full flex-col rounded-[28px] border border-line bg-white p-3 transition-[translate,box-shadow,border-color] duration-500 hover:-translate-y-2 hover:border-transparent hover:shadow-[0_30px_60px_rgba(37,10,16,0.12)]"
-      >
-        <span className="relative block">
-          <span className="relative block aspect-[4/3] overflow-hidden rounded-[22px] bg-bone">
-            <Image
-              src={item.tileImage.src}
-              alt=""
-              fill
-              quality={80}
-              sizes="(min-width: 1024px) 30vw, (min-width: 768px) 46vw, 92vw"
-              className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08]"
-            />
-            <span aria-hidden="true" className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 font-display text-[15px] font-semibold text-wine backdrop-blur-sm">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-          </span>
-          <span
-            aria-hidden="true"
-            className="absolute -bottom-8 right-6 grid size-16 place-items-center rounded-full border-[5px] border-white bg-wine text-gold-light transition-[background-color,color,rotate] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:rotate-[360deg] group-hover:bg-gold group-hover:text-white"
-          >
-            <FeatureIcon name={item.icon} className="size-6" />
+      <Link href={`/practice-areas/${item.slug}`} aria-label={buttonLabel ? `${item.title} - ${buttonLabel}` : undefined} className="group relative flex aspect-[3/4] flex-col justify-end overflow-hidden bg-wine-deep p-7 text-white sm:p-8">
+        <Image
+          src={item.tileImage.src}
+          alt=""
+          fill
+          quality={80}
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.07]"
+        />
+        <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-black/10 transition-colors duration-700" />
+        <span aria-hidden="true" className="absolute inset-x-7 top-7 flex items-center justify-between sm:inset-x-8 sm:top-8">
+          <span className="label text-[10px]! text-white/80">{String(index + 1).padStart(2, "0")}</span>
+          <span className="grid size-11 scale-75 place-items-center rounded-full bg-white text-wine opacity-0 transition-[opacity,scale] duration-500 group-hover:scale-100 group-hover:opacity-100">
+            <ArrowUpRight className="size-4" />
           </span>
         </span>
 
-        <span className="flex flex-1 flex-col px-4 pb-5 pt-8 sm:px-5">
-          <span className="label text-[10px]! text-gold">{item.subtitle}</span>
-          <h3 className="display-3 mt-2 text-ink transition-colors duration-300 group-hover:text-wine">{item.title}</h3>
-          <span className="mt-3 block flex-1 text-[15px] leading-[1.7] text-body">{item.excerpt}</span>
-          {buttonLabel && <span className="link-arrow mt-6 text-wine">{buttonLabel}</span>}
+        <span className="relative">
+          <h3 className="font-display text-[30px] font-semibold leading-[1.1] lg:text-[34px]">{item.title}</h3>
+          <span className="grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:group-hover:grid-rows-[1fr]">
+            <span className="overflow-hidden">
+              <span className="block pt-3 text-[15px] leading-[1.7] text-white/80">{item.excerpt}</span>
+            </span>
+          </span>
+          <span aria-hidden="true" className="mt-5 block h-px w-full origin-left scale-x-[0.15] bg-white/60 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
         </span>
       </Link>
     </article>
