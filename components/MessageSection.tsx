@@ -2,11 +2,11 @@ import { site, type AurelianContactFormData, type SectionProps } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
 
-/** Message form in a white panel beside the map, which uncovers like a curtain, on an ivory band. */
 export default function MessageSection({ data = site.contactFormSection }: SectionProps<AurelianContactFormData>) {
   const { label, titleLine1, titleLine2, text, mapTitle, ...form } = data;
-  const { mapQuery } = site.footer.contact;
-  const mapEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=16&output=embed`;
+  // The map shows the same address that is printed in the footer and on the contact cards.
+  const address = site.footer.contact.address.join(" ");
+  const mapEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&z=16&output=embed`;
 
   return (
     <section className="bg-mist section-space">

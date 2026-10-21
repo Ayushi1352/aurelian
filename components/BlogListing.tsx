@@ -1,15 +1,13 @@
 import { site, type AurelianBlogPageData, type SectionProps } from "@/data";
-import SectionHeading from "@/components/SectionHeading";
 import BlogGrid from "@/components/BlogGrid";
 
 export default function BlogListing({ data = site.blogPage }: SectionProps<AurelianBlogPageData>) {
-  const { label, titleLine1, titleLine2, text, perPage, cardButton, items } = data;
+  const { perPage, cardButton, byLabel, paginationLabels, items } = data;
 
   return (
-    <section id="blog-list" className="scroll-mt-24 bg-mist section-space">
+    <section id="blog-list" className="scroll-mt-28 section-space">
       <div className="container-site">
-        <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} />
-        <BlogGrid items={items} perPage={perPage} buttonLabel={cardButton} scrollTargetId="blog-list" />
+        <BlogGrid items={items} perPage={perPage} buttonLabel={cardButton} byLabel={byLabel} paginationLabels={paginationLabels} scrollTargetId="blog-list" />
       </div>
     </section>
   );

@@ -6,36 +6,30 @@ type SectionHeadingProps = {
   line1: string;
   /** Second part of the title, set in italics. */
   line2?: string;
-  /** Short intro paragraph under the title. */
+  /** One short line under the title. */
   text?: string;
   /** White text, for sections on a dark background. */
   dark?: boolean;
   /** Label above a smaller title instead of beside it, for narrow columns (split panels, form panels). */
   stacked?: boolean;
-  /** Shown beside the intro text on large screens (e.g. a "view all" link). */
+  /** Shown beside the intro line on large screens (e.g. a "view all" link). */
   action?: ReactNode;
   as?: "h1" | "h2";
   className?: string;
 };
 
-/** Small tracked label led by a thin gold rule (the hero banner's label style), used above every section title. */
-export function Eyebrow({ label, dark = false, centered = false, className = "" }: { label: string; dark?: boolean; centered?: boolean; className?: string }) {
+/** Small tracked label led by a thin gold rule. */
+export function Eyebrow({ label, dark = false, className = "" }: { label: string; dark?: boolean; className?: string }) {
   return (
-    <p className={`label flex items-center gap-4 ${centered ? "justify-center" : ""} ${dark ? "text-white/80" : "text-gold"} ${className}`}>
+    <p className={`label flex items-center gap-4 ${dark ? "text-white/80" : "text-gold"} ${className}`}>
       <span aria-hidden="true" data-reveal="line" className="h-px w-10 shrink-0 bg-gold" />
       <span data-reveal="fade" data-delay="2">
         {label}
       </span>
-      {centered && <span aria-hidden="true" data-reveal="line" className="h-px w-10 shrink-0 bg-gold" />}
     </p>
   );
 }
 
-/*
- * Section title in the home About section's editorial style: a hairline across the top, the label on
- * the left, a large serif headline (words rise in one by one, gold full stop) on the right, then the
- * intro line with the action beside it.
- */
 export default function SectionHeading({ label, line1, line2, text, dark = false, stacked = false, action, as: Tag = "h2", className = "" }: SectionHeadingProps) {
   const rule = dark ? "border-white/15" : "border-line";
 

@@ -1,5 +1,5 @@
 import type { AurelianContactDetails, AurelianHeaderData, AurelianSocial } from "@/data";
-import { ClockIcon, Mail, Phone, SocialIcon } from "@/components/Icons";
+import { Mail, Phone, SocialIcon } from "@/components/Icons";
 
 type TopBarProps = {
   data: AurelianHeaderData["topBar"];
@@ -7,12 +7,12 @@ type TopBarProps = {
   socials: AurelianSocial[];
 };
 
-/** Thin see-through strip above the navbar with contact details and social links (folds away on scroll). */
+/** Scrolls away while the navbar below it sticks. */
 export default function TopBar({ data, contact, socials }: TopBarProps) {
   return (
-    <div className="hidden border-b border-white/15 text-[12px] tracking-[0.04em] text-white/75 md:block">
+    <div className="hidden bg-navy-deep text-[13px] tracking-[0.02em] text-white/75 md:block">
       <div className="container-site flex h-11 items-center justify-between gap-6">
-        <ul className="flex items-center gap-6 xl:gap-8">
+        <ul className="flex items-center gap-6 lg:gap-8">
           <li>
             <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="flex items-center gap-2 transition-colors hover:text-gold-light">
               <Phone className="size-4 text-gold" />
@@ -25,13 +25,9 @@ export default function TopBar({ data, contact, socials }: TopBarProps) {
               {contact.email}
             </a>
           </li>
-          <li className="hidden items-center gap-2 lg:flex">
-            <ClockIcon className="size-4 text-gold" />
-            {contact.hours}
-          </li>
         </ul>
         <div className="flex items-center gap-5">
-          <p className="hidden items-center gap-3 text-gold-light xl:flex">
+          <p className="hidden items-center gap-3 text-gold-light lg:flex">
             <span aria-hidden="true" className="h-px w-6 bg-gold" />
             {data.note}
           </p>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { AurelianPaginationLabels } from "@/data";
 import { ArrowLeft, ArrowRight } from "@/components/Icons";
 
 /** Splits a list into pages. `page` is 1-based and clamped to the valid range. */
@@ -13,6 +14,8 @@ export function usePagination<T>(items: T[], perPage: number) {
 }
 
 type PaginationProps = {
+  /** Screen-reader text; `{n}` in `page` is the page number. */
+  labels: AurelianPaginationLabels;
   page: number;
   totalPages: number;
   onChange: (page: number) => void;
@@ -21,7 +24,7 @@ type PaginationProps = {
   dark?: boolean;
 };
 
-export default function Pagination({ page, totalPages, onChange, scrollTargetId, dark = false }: PaginationProps) {
+export default function Pagination({ labels, page, totalPages, onChange, scrollTargetId, dark = false }: PaginationProps) {
   if (totalPages <= 1) return null;
 
   function go(next: number) {
@@ -31,12 +34,12 @@ export default function Pagination({ page, totalPages, onChange, scrollTargetId,
   }
 
   const arrow = `grid size-12 place-items-center border transition-colors disabled:opacity-30 ${
-    dark ? "border-white/25 text-white enabled:hover:border-gold enabled:hover:bg-gold" : "border-line text-wine enabled:hover:border-wine enabled:hover:bg-wine enabled:hover:text-white"
+    dark ? "border-white/25 text-white enabled:hover:border-gold enabled:hover:bg-gold" : "border-line text-navy enabled:hover:border-navy enabled:hover:bg-navy enabled:hover:text-white"
   }`;
 
   return (
-    <nav aria-label="Pagination" className="mt-14 flex items-center justify-center gap-3 lg:mt-16">
-      <button type="button" onClick={() => go(page - 1)} disabled={page === 1} aria-label="Previous page" className={arrow}>
+    <nav aria-label={labels.nav} className="mt-14 flex items-center justify-center gap-3 lg:mt-16">
+      <button type="button" onClick={() => go(page - 1)} disabled={page === 1} aria-label={labels.previous} className={arrow}>
         <ArrowLeft className="size-5" />
       </button>
 
@@ -46,10 +49,10 @@ export default function Pagination({ page, totalPages, onChange, scrollTargetId,
             <button
               type="button"
               onClick={() => go(n)}
-              aria-label={`Page ${n}`}
+              aria-label={labels.page.replace("{n}", String(n))}
               aria-current={n === page ? "page" : undefined}
               className={`grid size-12 place-items-center font-display text-[22px] font-semibold leading-none transition-colors ${
-                n === page ? "bg-wine text-gold-light" : dark ? "text-white/60 hover:text-white" : "text-ink hover:text-gold"
+                n === page ? "bg-navy text-gold-light" : dark ? "text-white/60 hover:text-white" : "text-ink hover:text-gold"
               }`}
             >
               {String(n).padStart(2, "0")}
@@ -58,7 +61,7 @@ export default function Pagination({ page, totalPages, onChange, scrollTargetId,
         ))}
       </ul>
 
-      <button type="button" onClick={() => go(page + 1)} disabled={page === totalPages} aria-label="Next page" className={arrow}>
+      <button type="button" onClick={() => go(page + 1)} disabled={page === totalPages} aria-label={labels.next} className={arrow}>
         <ArrowRight className="size-5" />
       </button>
     </nav>

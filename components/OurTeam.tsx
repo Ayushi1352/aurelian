@@ -3,13 +3,13 @@ import SectionHeading from "@/components/SectionHeading";
 import TeamGrid from "@/components/TeamGrid";
 
 export default function OurTeam({ data = site.teamPage }: SectionProps<AurelianTeamPageData>) {
-  const { label, titleLine1, titleLine2, text, perPage, items } = data;
+  const { label, titleLine1, titleLine2, text, perPage, socialLabel, paginationLabels, items } = data;
 
   return (
-    <section id="team-list" className="scroll-mt-24 section-space">
+    <section id="team-list" className="scroll-mt-28 section-space">
       <div className="container-site">
         <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} />
-        <TeamGrid items={items} perPage={perPage} scrollTargetId="team-list" />
+        <TeamGrid items={items} perPage={perPage} socialLabel={socialLabel} paginationLabels={paginationLabels} scrollTargetId="team-list" />
       </div>
     </section>
   );

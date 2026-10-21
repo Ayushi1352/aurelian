@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site, type AurelianFooterData, type SectionProps } from "@/data";
-import { Headline } from "@/components/SplitWords";
-import { ArrowRight, ArrowUpRight, Mail, MapPin, Phone, SocialIcon } from "@/components/Icons";
+import { Mail, MapPin, Phone, SocialIcon } from "@/components/Icons";
 
 /** Fills `{year}` in the copyright line; cached so the footer can still be prerendered. */
 async function currentYear() {
@@ -16,38 +15,14 @@ function ColumnTitle({ children }: { children: string }) {
   return <h2 className="label text-gold-light">{children}</h2>;
 }
 
-/** Big "let's talk" line with the booking button, then brand, link and contact columns, then the legal line. */
 export default async function Footer({ data: footer = site.footer }: SectionProps<AurelianFooterData>) {
   const { contact } = footer;
   const { brand } = site.navbar;
-  const practiceLinks = site.practicePage.items.slice(0, footer.practiceCount);
   const copyright = footer.copyright.replace("{year}", String(await currentYear()));
 
   return (
-    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-wine-deep text-white">
-      <div className="container-site flex flex-col gap-8 border-b border-white/10 py-16 lg:flex-row lg:items-end lg:justify-between lg:py-20">
-        <div>
-          <p className="label flex items-center gap-4 text-white/60">
-            <span aria-hidden="true" data-reveal="line" className="h-px w-10 bg-gold" />
-            {footer.ctaLabel}
-          </p>
-          <h2 data-reveal="words" className="mt-5 font-display text-[36px] font-semibold leading-[1.08] sm:text-[48px] lg:text-[60px]">
-            <Headline line1={footer.ctaTitle} />
-          </h2>
-        </div>
-        <div data-reveal="up" data-delay="3" className="flex flex-col gap-5 sm:flex-row sm:items-center lg:flex-col lg:items-end">
-          <Link href={footer.ctaButton.href} className="btn btn-gold self-start lg:self-end">
-            {footer.ctaButton.label}
-            <ArrowRight className="size-4" />
-          </Link>
-          <a href={`mailto:${contact.email}`} className="group flex items-center gap-2 font-display text-[22px] font-semibold text-white/80 transition-colors hover:text-gold-light">
-            {contact.email}
-            <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
-        </div>
-      </div>
-
-      <div className="container-site grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.1fr_1.3fr] lg:gap-10 lg:py-20">
+    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-navy-deep text-white">
+      <div className="container-site grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_var(--cta-width)] lg:gap-16 lg:py-20">
         <div className="sm:col-span-2 lg:col-span-1">
           <Link href="/" aria-label={brand.name} className="inline-block">
             <Image src={brand.logoLight.src} alt={brand.logoLight.alt} width={brand.logoLight.width} height={brand.logoLight.height} quality={90} sizes="220px" className="h-auto w-[200px] sm:w-[220px]" />
@@ -77,19 +52,6 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
               <li key={l.href}>
                 <Link href={l.href} className={linkClass}>
                   {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <ColumnTitle>{footer.practiceTitle}</ColumnTitle>
-          <ul className="mt-7 space-y-3">
-            {practiceLinks.map((p) => (
-              <li key={p.slug}>
-                <Link href={`/practice-areas/${p.slug}`} className={linkClass}>
-                  {p.title}
                 </Link>
               </li>
             ))}
@@ -127,15 +89,20 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-site flex flex-col gap-4 py-6 text-[13px] text-white/45 lg:flex-row lg:items-center lg:justify-between">
+        <div className="container-site flex flex-col gap-4 py-6 text-[13px] text-white/45 md:flex-row md:items-center md:justify-between">
           <p>{copyright}</p>
-          <p className="max-w-[560px]">{footer.disclaimer}</p>
-          <a href="#" className="label inline-flex items-center gap-3 text-[10px]! text-white/60 transition-colors hover:text-gold-light">
-            {footer.backToTop}
-            <span className="grid size-9 place-items-center border border-white/20">
-              <ArrowRight className="size-3.5 -rotate-90" />
-            </span>
-          </a>
+          <nav aria-label={footer.legalLinksLabel}>
+            <ul className="flex flex-wrap items-center gap-y-2">
+              {footer.legalLinks.map((l, i) => (
+                <li key={l.href} className="flex items-center">
+                  {i > 0 && <span aria-hidden="true" className="mx-4 h-3.5 w-px bg-white/20" />}
+                  <Link href={l.href} className="link-line text-[14px] text-white/65 transition-colors hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>

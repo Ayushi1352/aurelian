@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageBanner from "@/components/PageBanner";
 import BlogDetail from "@/components/BlogDetail";
+import CallToAction from "@/components/CallToAction";
 import { site } from "@/data";
 
 function getPost(slug: string) {
@@ -26,8 +27,9 @@ export default async function BlogDetailPage({ params }: PageProps<"/blogs/[slug
 
   return (
     <>
-      <PageBanner data={site.pageBanner} title={post.title} image={post.image} parent={site.blogDetailPage.parent} />
-      <BlogDetail data={site.blogDetailPage} post={post} allPosts={site.blogPage.items} />
+      <PageBanner data={site.pageBanner} title={post.title} image={site.blogPage.bannerImage} parent={site.blogDetailPage.parent} />
+      <BlogDetail data={site.blogDetailPage} post={post} />
+      <CallToAction data={site.ctaSection} />
     </>
   );
 }

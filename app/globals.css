@@ -1,63 +1,72 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand palette, sampled from the Aurelian logo (wine arch + champagne-gold scales). */
-  --color-wine: #5c1a27;
-  --color-wine-dark: #3e111a;
-  --color-wine-deep: #250a10;
-  --color-wine-soft: #7a2a38;
-  --color-gold: #b48a4f;
-  --color-gold-bright: #c9a063;
-  --color-gold-light: #e0c491;
-  --color-gold-pale: #f3e8d6;
+  /* Brand palette, sampled from the Aurelian logo (navy arch + brass-gold scales). */
+  --color-navy: #14213d;
+  --color-navy-dark: #0f1a31;
+  --color-navy-deep: #0a1222;
+  --color-navy-soft: #22345a;
+  --color-gold: #b8955a;
+  --color-gold-bright: #c9a76b;
+  --color-gold-light: #dcc394;
+  --color-gold-pale: #f1e9d8;
 
-  --color-ink: #1f1517;
-  --color-body: #5d5355;
-  --color-muted: #8b8183;
-  --color-line: #e7ddd2;
+  --color-ink: #121a2b;
+  --color-body: #4f5566;
+  --color-muted: #868b97;
+  --color-line: #e3e0d9;
 
-  --color-mist: #f8f3ee;
-  --color-ivory: #fbf8f3;
-  --color-bone: #f4ede3;
+  --color-mist: #f5f3ee;
+  --color-ivory: #faf9f6;
+  --color-bone: #efece4;
 
-  /* Font files are loaded from Google Fonts by the <link> in app/layout.tsx. */
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "DM Sans", Arial, sans-serif;
+  /* Fonts from site.json (theme.fonts) via app/fonts.generated.ts; the second part is the fallback. */
+  --font-display: var(--font-display-face, Georgia, serif);
+  --font-sans: var(--font-sans-face, Arial, sans-serif);
 
   --breakpoint-xs: 480px;
   --breakpoint-3xl: 1800px;
 }
 
-/* Space above and below every section - the same on every page, scaled per screen size. */
-/* --header-h: height of the fixed header (top bar + navbar), so banners can sit underneath it. */
+/* 1024-1440px screens are zoomed by --site-zoom (set in app/layout.tsx); use --vw / --svh instead of vw / svh. */
 :root {
-  --section-space: 72px;
-  --header-h: 77px;
+  --site-zoom: 1;
+  --vw: calc(1vw / var(--site-zoom));
+  --svh: calc(1svh / var(--site-zoom));
+}
+
+html {
+  zoom: var(--site-zoom);
+}
+
+/* Space above and below every section - the same on every page, scaled per screen size. */
+:root {
+  --section-space: 56px;
+  /* Width of the navbar's Book Appointment button; the footer's contact column uses it too, so the two line up. */
+  --cta-width: 260px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.18, 1);
 }
 
 @media (width >= 768px) {
   :root {
-    --section-space: 96px;
-    --header-h: 122px;
+    --section-space: 72px;
   }
 }
 
 @media (width >= 1024px) {
   :root {
-    --header-h: 138px;
-  }
-}
-
-@media (width >= 1280px) {
-  :root {
-    --section-space: 144px;
+    --section-space: 96px;
   }
 }
 
 @utility section-space {
   padding-block: var(--section-space);
+}
+
+/* Two plain (white) sections in a row share one gap instead of stacking two. */
+section.section-space:not([class*="bg-"]) + section.section-space:not([class*="bg-"]) {
+  padding-top: 0;
 }
 
 @utility container-site {
@@ -79,7 +88,7 @@
 @utility display-1 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(36px, 4.4vw, 72px);
+  font-size: clamp(36px, calc(4.4 * var(--vw)), 72px);
   line-height: 1.04;
   letter-spacing: -0.005em;
 }
@@ -87,7 +96,7 @@
 @utility display-2 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(32px, 3.4vw, 54px);
+  font-size: clamp(32px, calc(3.4 * var(--vw)), 54px);
   line-height: 1.08;
   letter-spacing: -0.005em;
 }
@@ -95,14 +104,14 @@
 @utility display-3 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(23px, 1.8vw, 28px);
+  font-size: clamp(22px, calc(1.7 * var(--vw)), 26px);
   line-height: 1.2;
 }
 
 @utility statement {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(21px, 1.8vw, 28px);
+  font-size: clamp(21px, calc(1.8 * var(--vw)), 28px);
   line-height: 1.35;
 }
 
@@ -115,7 +124,7 @@
   }
 }
 
-/* Small, widely tracked uppercase label above titles (same style as the hero banner). */
+/* Small uppercase label above titles. */
 @utility label {
   font-family: var(--font-sans);
   font-size: 11px;
@@ -128,10 +137,7 @@
   }
 }
 
-/*
- * Square-cornered uppercase buttons. On hover a fill (--btn-fill) sweeps in from the left; each
- * variant below sets its colours, plain `btn` can still be coloured per use.
- */
+/* Square buttons; on hover a fill (--btn-fill) sweeps in from the left. */
 @utility btn {
   --btn-fill: var(--color-gold);
   display: inline-flex;
@@ -176,10 +182,10 @@
   }
 }
 
-/* Wine button, gold sweep. */
+/* Navy button, gold sweep. */
 @utility btn-primary {
-  background-color: var(--color-wine);
-  border-color: var(--color-wine);
+  background-color: var(--color-navy);
+  border-color: var(--color-navy);
   color: #fff;
 
   &:hover {
@@ -196,15 +202,15 @@
 
   &:hover {
     border-color: #fff;
-    color: var(--color-wine-deep);
+    color: var(--color-navy-deep);
   }
 }
 
-/* Outlined wine button, wine sweep. */
+/* Outlined navy button, navy sweep. */
 @utility btn-outline {
-  --btn-fill: var(--color-wine);
-  border-color: var(--color-wine);
-  color: var(--color-wine);
+  --btn-fill: var(--color-navy);
+  border-color: var(--color-navy);
+  color: var(--color-navy);
 
   &:hover {
     color: #fff;
@@ -219,7 +225,7 @@
 
   &:hover {
     border-color: #fff;
-    color: var(--color-wine-deep);
+    color: var(--color-navy-deep);
   }
 }
 
@@ -307,11 +313,8 @@
 }
 
 /*
- * Motion.
- *   data-reveal="up|left|right|zoom|fade|mask" plays when the element scrolls into view;
- *   RevealOnScroll adds `data-revealed`. data-delay="1".."8" staggers it in 90ms steps.
- * Elements stay visible without JS: they are only hidden while <html> has the `motion` class,
- * which the inline script in the root layout sets.
+ * data-reveal="up|left|right|zoom|fade|mask" animates on scroll (RevealOnScroll adds `data-revealed`);
+ * data-delay="1".."8" staggers it. Hidden only while <html> has the `motion` class, so no-JS stays visible.
  */
 @keyframes rise {
   from {
@@ -423,12 +426,6 @@
   }
 }
 
-@keyframes marquee {
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
 @keyframes parallax {
   from {
     transform: translate3d(0, -7%, 0) scale(1.16);
@@ -444,24 +441,6 @@
   }
   to {
     transform: scaleX(1);
-  }
-}
-
-@keyframes scroll-line {
-  0% {
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-  50% {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
-  51% {
-    transform-origin: bottom;
-  }
-  100% {
-    transform: scaleY(0);
-    transform-origin: bottom;
   }
 }
 
@@ -518,10 +497,7 @@
   transform-origin: left;
 }
 
-/*
- * Headline whose words slide up out of a mask, one after another (SplitWords renders the
- * `.word > span` markup and sets --i per word). The heading itself stays visible; only the words move.
- */
+/* Word-by-word headline (markup from SplitWords, which sets --i per word). */
 .word {
   display: inline-block;
   overflow: hidden;
@@ -571,10 +547,7 @@
 [data-delay="7"] { --reveal-delay: 630ms; }
 [data-delay="8"] { --reveal-delay: 720ms; }
 
-/*
- * Accordion: the answer slides open/closed instead of jumping, so content below it (and a sticky
- * sidebar beside it) moves smoothly. Browsers without ::details-content support just open instantly.
- */
+/* Answer slides open/closed instead of jumping. */
 @utility accordion {
   interpolate-size: allow-keywords;
   transition: background-color 0.4s, border-color 0.4s;
@@ -603,19 +576,7 @@
   animation: hero-zoom 2.4s var(--ease-out) both;
 }
 
-@utility animate-scroll-line {
-  animation: scroll-line 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-}
-
-/* Endless horizontal scroll; the content is rendered twice so the loop is seamless. */
-@utility animate-marquee {
-  animation: marquee 40s linear infinite;
-}
-
-/*
- * Photo drifts slower than the page while it crosses the screen. Put it on a wrapper around the
- * image (not on an element that already animates). Browsers without scroll timelines show it still.
- */
+/* Put on a wrapper around the image, not on an element that already animates. */
 @utility parallax {
   transform: scale(1.16);
 
@@ -646,7 +607,6 @@
     transition-duration: 0.01ms !important;
   }
 
-  .animate-marquee,
   .parallax {
     animation: none !important;
   }

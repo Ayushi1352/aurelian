@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageBanner from "@/components/PageBanner";
 import PracticeDetail from "@/components/PracticeDetail";
+import CallToAction from "@/components/CallToAction";
 import { site } from "@/data";
 
 function getPracticeArea(slug: string) {
@@ -26,8 +27,9 @@ export default async function PracticeAreaDetailPage({ params }: PageProps<"/pra
 
   return (
     <>
-      <PageBanner data={site.pageBanner} title={item.title} image={item.image} parent={site.practiceDetailPage.parent} />
+      <PageBanner data={site.pageBanner} title={item.title} image={site.practicePage.bannerImage} parent={site.practiceDetailPage.parent} />
       <PracticeDetail data={site.practiceDetailPage} item={item} allItems={site.practicePage.items} />
+      <CallToAction data={site.ctaSection} />
     </>
   );
 }

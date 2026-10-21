@@ -22,14 +22,11 @@ function Line({ d, strokeWidth, ...props }: IconProps & { d: string }) {
 export const ArrowRight = (p: IconProps) => <Line d="M4 12h15M13 6l6 6-6 6" strokeWidth={2} {...p} />;
 export const ArrowLeft = (p: IconProps) => <Line d="M20 12H5M11 6l-6 6 6 6" strokeWidth={2} {...p} />;
 export const ArrowUpRight = (p: IconProps) => <Line d="M7 17 17 7M8 7h9v9" strokeWidth={2} {...p} />;
-export const ChevronLeft = (p: IconProps) => <Line d="m15 5-7 7 7 7" strokeWidth={2} {...p} />;
-export const ChevronRight = (p: IconProps) => <Line d="m9 5 7 7-7 7" strokeWidth={2} {...p} />;
 export const ChevronDown = (p: IconProps) => <Line d="m5 9 7 7 7-7" strokeWidth={2} {...p} />;
 export const MenuIcon = (p: IconProps) => <Line d="M3 6h18M3 12h18M3 18h12" strokeWidth={1.8} {...p} />;
 export const CloseIcon = (p: IconProps) => <Line d="M5 5l14 14M19 5 5 19" strokeWidth={1.8} {...p} />;
 export const Check = (p: IconProps) => <Line d="m5 12.5 4.5 4.5L19 7" strokeWidth={2.2} {...p} />;
 export const CheckCircle = (p: IconProps) => <Line d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM8 12.5l2.7 2.7L16.5 9.5" {...p} />;
-export const Plus = (p: IconProps) => <Line d="M12 5v14M5 12h14" strokeWidth={2} {...p} />;
 export const Calendar = (p: IconProps) => <Line d="M4 6.5h16v13.5H4zM4 10.5h16M8.5 3.5v5M15.5 3.5v5" {...p} />;
 export const UserIcon = (p: IconProps) => <Line d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c.8-3.8 3.9-6 7.5-6s6.7 2.2 7.5 6" {...p} />;
 export const ClockIcon = (p: IconProps) => <Line d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM12 7v5l3.5 2" {...p} />;
@@ -41,14 +38,6 @@ export const MapPin = (p: IconProps) => <Line d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 
 export const Globe = (p: IconProps) => (
   <Line d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3Z" {...p} />
 );
-
-export function Star(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" {...props}>
-      <path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.9L12 17.6l-6.1 3.3L7.1 14l-5-4.8 6.9-.9z" />
-    </svg>
-  );
-}
 
 export function QuoteMark(props: IconProps) {
   return (
@@ -73,10 +62,6 @@ const featureIcons = {
   target: "M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM17 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0ZM13 12a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z",
   handshake: "M2.5 8.5 6 6l3.5 1L12 6l4 1.5 5.5 1M2.5 8.5 5 15l2 1.5M21.5 8.5 19 14.5l-5.5 4-2-1.5M9.5 7 7 10.5c.8.8 2 .9 2.8.2L12 9l4 4.5M8 17.5l1.5 1.2M10 15.5l2 1.8M12 13.5l2.3 2",
   award: "M12 14.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11ZM8.5 13.3 7 21l5-2.8 5 2.8-1.5-7.7M12 6.5l.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3z",
-  map: "M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21ZM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
-  phone: "M5 3.5h3.5l1.8 4.6-2.3 1.4a11 11 0 0 0 6.5 6.5l1.4-2.3 4.6 1.8V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5.5a2 2 0 0 1 2-2Z",
-  mail: "M3.5 5.5h17v13h-17zM4 6l8 6.5L20 6",
-  clock: "M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM12 7v5l3.5 2",
 } as const;
 
 export function FeatureIcon({ name, ...props }: IconProps & { name: string }) {

@@ -8,7 +8,6 @@ type BlogCardProps = {
   delay?: number;
 };
 
-/** Wix-style editorial post: frameless photo, then category and date on a hairline, a large serif title and a short excerpt; the photo zooms on hover. */
 export default function BlogCard({ post, buttonLabel, delay = 0 }: BlogCardProps) {
   return (
     <article data-reveal="up" data-delay={delay} className="h-full">
@@ -18,8 +17,8 @@ export default function BlogCard({ post, buttonLabel, delay = 0 }: BlogCardProps
             src={post.image.src}
             alt={post.image.alt}
             fill
-            quality={85}
-            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            quality={75}
+            sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
           />
         </span>
@@ -28,9 +27,8 @@ export default function BlogCard({ post, buttonLabel, delay = 0 }: BlogCardProps
           <span className="label text-[10px]! text-gold">{post.category}</span>
           <span className="text-[13px] text-muted">{post.date}</span>
         </span>
-        <span className="mt-4 block font-display text-[26px] font-semibold leading-[1.2] text-ink transition-colors duration-300 group-hover:text-wine lg:text-[28px]">{post.title}</span>
-        <span className="mt-3 line-clamp-2 flex-1 text-[15px] leading-[1.7] text-body">{post.excerpt}</span>
-        {buttonLabel && <span className="link-arrow mt-6 text-wine">{buttonLabel}</span>}
+        <span className="mt-4 block flex-1 font-display text-[28px] font-semibold leading-[1.2] text-ink transition-colors duration-300 group-hover:text-navy lg:text-[32px]">{post.title}</span>
+        {buttonLabel && <span className="link-arrow mt-6 text-navy">{buttonLabel}</span>}
       </Link>
     </article>
   );

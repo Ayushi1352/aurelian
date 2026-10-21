@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps<"/our-team/[slug]">
   const { slug } = await params;
   const member = getMember(slug);
   if (!member) return {};
-  return { title: member.name, description: `${member.name} - ${member.role}, ${member.practice}.` };
+  return { title: member.name, description: member.bio };
 }
 
 export default async function TeamMemberPage({ params }: PageProps<"/our-team/[slug]">) {

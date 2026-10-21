@@ -8,12 +8,12 @@ import { ArrowRight } from "@/components/Icons";
 
 type ContactFormProps = Pick<AurelianContactFormData, "fields" | "submitLabel" | "sendingLabel" | "thankYou">;
 
-/** Dummy contact form: nothing is sent anywhere; a thank-you message shows and then hides itself. */
+/** Dummy form: nothing is sent; a thank-you message shows and then hides itself. */
 export default function ContactForm({ fields, submitLabel, sendingLabel, thankYou }: ContactFormProps) {
   const { status, name, onSubmit, dismiss, showThanks, hiding } = useDummySubmit();
 
   if (showThanks) {
-    return <FormThankYou title={thankYou.title} message={thankYou.message} name={name} hiding={hiding} onClose={dismiss} className="min-h-[440px]" />;
+    return <FormThankYou title={thankYou.title} message={thankYou.message} closeLabel={thankYou.closeLabel} name={name} hiding={hiding} onClose={dismiss} className="min-h-[440px]" />;
   }
 
   const sending = status === "sending";
@@ -28,7 +28,7 @@ export default function ContactForm({ fields, submitLabel, sendingLabel, thankYo
         <TextareaField id="message" label={fields.message.label} placeholder={fields.message.placeholder} required />
       </div>
       <div className="sm:col-span-2">
-        <button type="submit" disabled={sending} className="btn btn-primary w-full disabled:opacity-70 sm:w-auto">
+        <button type="submit" disabled={sending} className="btn btn-primary w-full disabled:cursor-wait disabled:opacity-70 sm:w-auto">
           {sending ? sendingLabel : submitLabel}
           {!sending && <ArrowRight className="size-4" />}
         </button>

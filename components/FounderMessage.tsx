@@ -3,46 +3,37 @@ import Link from "next/link";
 import { site, type AurelianFounderData, type SectionProps } from "@/data";
 import { Eyebrow } from "@/components/SectionHeading";
 import { Headline } from "@/components/SplitWords";
-import { ArrowRight } from "@/components/Icons";
+import { ArrowRight, QuoteMark } from "@/components/Icons";
 
-/** Wix-style dark founder section: the name set huge across the top, a tall portrait and the quote side by side. */
 export default function FounderMessage({ data = site.founderSection }: SectionProps<AurelianFounderData>) {
-  const { label, quote, text, teamSlug, button } = data;
-  // Name, role and photo come from the founder's Our Team profile, so they are edited in one place.
+  const { label, quote, teamSlug, button, image } = data;
+  // Name and role come from the founder's Our Team profile.
   const founder = site.teamPage.items.find((m) => m.slug === teamSlug);
   if (!founder) return null;
 
   return (
-    <section className="overflow-hidden bg-wine-deep text-white section-space">
-      <div className="container-site">
+    <section className="grid bg-navy-deep text-white lg:min-h-[min(calc(100*var(--svh)-89px),960px)] lg:grid-cols-2">
+      <div className="order-2 flex flex-col justify-center section-space px-5 sm:px-10 lg:order-1 lg:px-24">
         <Eyebrow label={label} dark />
-        <p data-reveal="words" className="mt-6 font-display text-[48px] font-semibold leading-[0.95] sm:text-[80px] lg:text-[120px] xl:text-[140px]">
-          <Headline line1={founder.name} dot={false} />
-        </p>
+        <QuoteMark data-reveal="fade" data-delay="1" className="mt-8 h-9 w-12 text-gold/70 lg:mt-10 lg:h-11 lg:w-[60px]" />
+        <blockquote data-reveal="words" className="display-2 mt-6 max-w-[560px] italic text-gold-light">
+          <Headline line1={quote} />
+        </blockquote>
 
-        <div className="mt-12 grid items-end gap-12 md:grid-cols-[0.8fr_1.2fr] lg:mt-16 lg:gap-20">
-          <div data-reveal="wipe" className="relative aspect-[4/5] overflow-hidden bg-wine">
-            <span className="parallax absolute inset-0 block">
-              <Image src={founder.image.src} alt={founder.image.alt} fill quality={85} sizes="(min-width: 768px) 38vw, 92vw" className="object-cover object-top" />
-            </span>
-          </div>
-
-          <div className="pb-2">
-            <blockquote data-reveal="words" className="display-2 italic text-gold-light">
-              <Headline line1={quote} />
-            </blockquote>
-            <p data-reveal="up" data-delay="3" className="mt-6 max-w-[560px] text-[16px] leading-[1.8] text-white/70 lg:text-[17px]">
-              {text}
-            </p>
-            <div data-reveal="up" data-delay="4" className="mt-10 flex flex-col gap-6 border-t border-white/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
-              <p className="label text-white/60">{founder.role}</p>
-              <Link href={`/our-team/${founder.slug}`} className="btn btn-light shrink-0 self-start sm:self-auto">
-                {button.label}
-                <ArrowRight className="size-4" />
-              </Link>
-            </div>
-          </div>
+        <div data-reveal="up" data-delay="3" className="mt-10 border-t border-white/15 pt-7 lg:mt-12">
+          <p className="font-display text-[32px] font-semibold leading-none lg:text-[38px]">{founder.name}</p>
+          <p className="label mt-3 text-white/60">{founder.role}</p>
+          <Link href={`/our-team/${founder.slug}`} className="btn btn-light mt-8">
+            {button.label}
+            <ArrowRight className="size-4" />
+          </Link>
         </div>
+      </div>
+
+      <div data-reveal="wipe" className="relative order-1 h-[50svh] min-h-[340px] overflow-hidden sm:h-[60svh] lg:order-2 lg:h-auto lg:min-h-0">
+        <Image src={image.src} alt={image.alt} fill quality={75} sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-top" />
+        <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-navy-deep/40 via-transparent to-transparent" />
+        <span aria-hidden="true" className="absolute inset-5 border border-gold/50 sm:inset-8" />
       </div>
     </section>
   );

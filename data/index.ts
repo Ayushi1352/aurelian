@@ -29,15 +29,13 @@ export type AurelianWhyChooseUsData =
 export type AurelianStatsData = AurelianSections["Stats"]["variants"]["AurelianStats1"];
 export type AurelianFounderData =
   AurelianSections["FounderMessage"]["variants"]["AurelianFounder1"];
-export type AurelianTeamPreviewData =
-  AurelianSections["TeamPreview"]["variants"]["AurelianTeamPreview1"];
-export type AurelianTestimonialsData =
-  AurelianSections["Testimonials"]["variants"]["AurelianTestimonials1"];
 export type AurelianBlogPreviewData =
   AurelianSections["BlogPreview"]["variants"]["AurelianBlogPreview1"];
 export type AurelianCtaData = AurelianSections["CallToAction"]["variants"]["AurelianCta1"];
 export type AurelianAboutStoryData =
   AurelianSections["AboutStory"]["variants"]["AurelianAboutStory1"];
+export type AurelianMissionVisionData =
+  AurelianSections["MissionVision"]["variants"]["AurelianMissionVision1"];
 export type AurelianValuesData = AurelianSections["CoreValues"]["variants"]["AurelianValues1"];
 export type AurelianPracticePageData =
   AurelianSections["PracticeListing"]["variants"]["AurelianPracticePage1"];
@@ -58,6 +56,11 @@ export type AurelianContactFormData =
 export type AurelianNotFoundData = AurelianSections["NotFound"]["variants"]["AurelianNotFound1"];
 export type AurelianAppointmentData =
   AurelianSections["Appointment"]["variants"]["AurelianAppointment1"];
+export type AurelianPrivacyData = AurelianSections["PrivacyPolicy"]["variants"]["AurelianPrivacy1"];
+export type AurelianTermsData = AurelianSections["TermsConditions"]["variants"]["AurelianTerms1"];
+/** Shared shape of the Privacy Policy and Terms & Conditions pages. */
+export type AurelianLegalPageData = AurelianPrivacyData | AurelianTermsData;
+export type AurelianSitemapData = AurelianSections["Sitemap"]["variants"]["AurelianSitemap1"];
 
 // ── Item-level types inferred from site.json ──
 export type AurelianImage = AurelianHeroData["slides"][number]["image"];
@@ -68,7 +71,7 @@ export type AurelianSocial = AurelianFooterData["socials"][number];
 export type AurelianPracticeArea = AurelianPracticePageData["items"][number];
 export type AurelianTeamMember = AurelianTeamPageData["items"][number];
 export type AurelianBlogPost = AurelianBlogPageData["items"][number];
-export type AurelianTestimonial = AurelianTestimonialsData["items"][number];
+export type AurelianPaginationLabels = AurelianPracticePageData["paginationLabels"];
 
 // ── Legacy Site Map for Standalone Aurelian Site ──
 const sec = siteData.Aurelian.sections;
@@ -84,11 +87,10 @@ const site = {
   whyChooseUsSection: sec.WhyChooseUs.variants.AurelianWhyChooseUs1,
   statsSection: sec.Stats.variants.AurelianStats1,
   founderSection: sec.FounderMessage.variants.AurelianFounder1,
-  teamPreviewSection: sec.TeamPreview.variants.AurelianTeamPreview1,
-  testimonialsSection: sec.Testimonials.variants.AurelianTestimonials1,
   blogPreviewSection: sec.BlogPreview.variants.AurelianBlogPreview1,
   ctaSection: sec.CallToAction.variants.AurelianCta1,
   aboutStorySection: sec.AboutStory.variants.AurelianAboutStory1,
+  missionVisionSection: sec.MissionVision.variants.AurelianMissionVision1,
   valuesSection: sec.CoreValues.variants.AurelianValues1,
   practicePage: sec.PracticeListing.variants.AurelianPracticePage1,
   practiceDetailPage: sec.PracticeDetail.variants.AurelianPracticeDetail1,
@@ -100,6 +102,9 @@ const site = {
   contactFormSection: sec.ContactForm.variants.AurelianContactForm1,
   appointmentPage: sec.Appointment.variants.AurelianAppointment1,
   notFoundPage: sec.NotFound.variants.AurelianNotFound1,
+  privacyPage: sec.PrivacyPolicy.variants.AurelianPrivacy1,
+  termsPage: sec.TermsConditions.variants.AurelianTerms1,
+  sitemapPage: sec.Sitemap.variants.AurelianSitemap1,
 };
 
 export { site };

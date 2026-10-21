@@ -1,7 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 import { ChevronDown } from "@/components/Icons";
 
-/** Open fields with only a bottom line (Wix-style); the line turns gold on focus. */
 export const fieldClass =
   "mt-1 block w-full min-w-0 border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-[16px] text-ink outline-none transition-[border-color,box-shadow] placeholder:text-muted/60 focus:border-gold focus:shadow-[0_1px_0_0_var(--color-gold)]";
 

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import PageBanner from "@/components/PageBanner";
+import AboutIntro from "@/components/AboutIntro";
 import AboutStory from "@/components/AboutStory";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import MissionVision from "@/components/MissionVision";
 import Stats from "@/components/Stats";
 import CoreValues from "@/components/CoreValues";
-import FounderMessage from "@/components/FounderMessage";
 import CallToAction from "@/components/CallToAction";
 import { site } from "@/data";
 
@@ -15,10 +17,12 @@ export default function AboutUsPage() {
   return (
     <>
       <PageBanner data={site.pageBanner} title={bannerTitle} image={bannerImage} />
+      <AboutIntro data={site.aboutIntroSection} hideButton />
       <AboutStory data={site.aboutStorySection} />
-      <CoreValues data={site.valuesSection} />
-      <FounderMessage data={site.founderSection} />
+      <WhyChooseUs data={site.whyChooseUsSection} />
+      <MissionVision data={site.missionVisionSection} />
       <Stats data={site.statsSection} />
+      <CoreValues data={site.valuesSection} />
       <CallToAction data={site.ctaSection} />
     </>
   );

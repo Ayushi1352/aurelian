@@ -18,12 +18,14 @@ export default function SplitWords({ text, start = 0, className = "" }: SplitWor
     .split(" ")
     .filter(Boolean)
     .map((word, i) => (
+      // Space only between words, so a trailing gold dot stays glued to the last word.
       <Fragment key={i}>
+        {i > 0 && " "}
         <span className="word">
           <span className={className} style={order(start + i)}>
             {word}
           </span>
-        </span>{" "}
+        </span>
       </Fragment>
     ));
 }
@@ -54,7 +56,12 @@ export function Headline({ line1, line2, dot = true }: HeadlineProps) {
   return (
     <>
       <SplitWords text={first.body} />
-      {second && <SplitWords text={second.body} start={firstCount} className="italic" />}
+      {second && (
+        <>
+          {" "}
+          <SplitWords text={second.body} start={firstCount} className="italic" />
+        </>
+      )}
       {showDot && (
         <span aria-hidden="true" className="gold-dot inline-block text-gold" style={order(total)}>
           .

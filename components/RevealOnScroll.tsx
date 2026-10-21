@@ -12,18 +12,10 @@ const PENDING = "[data-reveal]:not([data-revealed])";
 // Give up waiting for hydration after this long and reveal anyway, so nothing stays hidden.
 const HYDRATION_WAIT_MS = 5000;
 
-/**
- * React tags each DOM node it has hydrated with a `__reactFiber$…` key. This component lives in the
- * root layout, which can hydrate before the page segment; touching a not-yet-hydrated node's
- * attributes would trigger a hydration mismatch.
- */
+// Touching a node React hasn't hydrated yet would cause a hydration mismatch.
 const isHydrated = (el: Element) => Object.keys(el).some((key) => key.startsWith("__reactFiber$"));
 
-/**
- * Marks every `[data-reveal]` element with `data-revealed` once it scrolls into view, which starts
- * its CSS animation (see "Motion" in globals.css). Elements added later (route changes, tabs,
- * pagination) are picked up by a MutationObserver.
- */
+/** Adds `data-revealed` to `[data-reveal]` elements as they scroll into view (also ones added later). */
 export default function RevealOnScroll() {
   useEffect(() => {
     window.__revealReady = true;

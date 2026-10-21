@@ -3,14 +3,13 @@ import { site, type AurelianNotFoundData, type SectionProps } from "@/data";
 import { Headline } from "@/components/SplitWords";
 import { ArrowRight } from "@/components/Icons";
 
-/** Full-screen dark page under the transparent header: oversized outlined code, title and a way home. */
 export default function NotFoundMessage({ data = site.notFoundPage }: SectionProps<AurelianNotFoundData>) {
   return (
-    <section className="flex min-h-svh items-center bg-wine-deep pb-20 pt-[calc(var(--header-h)+48px)] text-white">
+    <section className="flex min-h-[calc(70*var(--svh))] items-center bg-navy-deep py-24 text-white">
       <div className="container-site flex flex-col items-center text-center">
         <p
           aria-hidden="true"
-          className="animate-[zoom-in_1.2s_var(--ease-out)_both] font-display text-[clamp(120px,22vw,260px)] font-semibold italic leading-none text-transparent [-webkit-text-stroke:1px_var(--color-gold)]"
+          className="animate-[zoom-in_1.2s_var(--ease-out)_both] font-display text-[clamp(120px,calc(22*var(--vw)),260px)] font-semibold italic leading-none text-transparent [-webkit-text-stroke:1px_var(--color-gold)]"
         >
           {data.code}
         </p>

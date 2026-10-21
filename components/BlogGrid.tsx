@@ -1,28 +1,36 @@
 "use client";
 
-import type { AurelianBlogPost } from "@/data";
-import BlogCard from "@/components/BlogCard";
+import type { AurelianBlogPost, AurelianPaginationLabels } from "@/data";
+import BlogFeatured from "@/components/BlogFeatured";
+import BlogRow from "@/components/BlogRow";
 import Pagination, { usePagination } from "@/components/Pagination";
 
 type BlogGridProps = {
   items: AurelianBlogPost[];
-  /** Cards per page: 2 rows of the 3-column desktop grid. */
+  /** Rows per page, not counting the featured post. */
   perPage: number;
   buttonLabel: string;
+  /** Word before the author name, e.g. "By". */
+  byLabel: string;
+  paginationLabels: AurelianPaginationLabels;
   scrollTargetId: string;
 };
 
-export default function BlogGrid({ items, perPage, buttonLabel, scrollTargetId }: BlogGridProps) {
-  const { page, setPage, totalPages, pageItems } = usePagination(items, perPage);
+/** The first post is featured on page 1; the rest are paginated rows. */
+export default function BlogGrid({ items, perPage, buttonLabel, byLabel, paginationLabels, scrollTargetId }: BlogGridProps) {
+  const [featured, ...rest] = items;
+  const { page, setPage, totalPages, pageItems } = usePagination(rest, perPage);
+  const offset = (page - 1) * perPage;
 
   return (
     <>
-      <div className="mt-14 grid gap-x-6 gap-y-10 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+      {page === 1 && featured && <BlogFeatured post={featured} buttonLabel={buttonLabel} byLabel={byLabel} />}
+      <div>
         {pageItems.map((post, i) => (
-          <BlogCard key={post.slug} post={post} buttonLabel={buttonLabel} delay={(i % 3) + 1} />
+          <BlogRow key={post.slug} post={post} buttonLabel={buttonLabel} byLabel={byLabel} number={offset + i + 2} reverse={i % 2 === 1} delay={(i % 2) + 1} />
         ))}
       </div>
-      <Pagination page={page} totalPages={totalPages} onChange={setPage} scrollTargetId={scrollTargetId} />
+      <Pagination labels={paginationLabels} page={page} totalPages={totalPages} onChange={setPage} scrollTargetId={scrollTargetId} />
     </>
   );
 }
