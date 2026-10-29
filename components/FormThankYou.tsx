@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { CheckCircle, CloseIcon } from "@/components/Icons";
+import { ui } from "@/components/ui";
+import { introHidden } from "@/components/motion";
 
 type FormThankYouProps = {
   title: string;
@@ -31,9 +33,10 @@ export default function FormThankYou({ title, message, closeLabel, name, hiding 
     <div
       ref={ref}
       role="status"
+      data-intro="toast"
       aria-live="polite"
       className={`relative flex flex-col items-start justify-center bg-navy-deep px-8 py-12 text-white transition-[opacity,translate] duration-400 sm:px-12 ${
-        hiding ? "translate-y-2 opacity-0" : "animate-toast opacity-100"
+        hiding ? "translate-y-2 opacity-0" : `opacity-100 ${introHidden}`
       } ${className}`}
     >
       <button
@@ -45,8 +48,8 @@ export default function FormThankYou({ title, message, closeLabel, name, hiding 
         <CloseIcon className="size-5" />
       </button>
       <CheckCircle className="size-14 text-gold-light" />
-      <h3 className="display-2 mt-8">{heading}</h3>
-      <p className="mt-5 max-w-[440px] text-[17px] leading-[1.7] text-white/75">{message}</p>
+      <h3 className={`${ui.display2} mt-8`}>{heading}</h3>
+      <p className="mt-5 max-w-[27.5rem] text-[1.0625rem] leading-[1.7] text-white/75">{message}</p>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { AurelianContactDetails, AurelianHeaderData, AurelianSocial } from "@/data";
 import { Mail, Phone, SocialIcon } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 type TopBarProps = {
   data: AurelianHeaderData["topBar"];
@@ -10,8 +11,8 @@ type TopBarProps = {
 /** Scrolls away while the navbar below it sticks. */
 export default function TopBar({ data, contact, socials }: TopBarProps) {
   return (
-    <div className="hidden bg-navy-deep text-[13px] tracking-[0.02em] text-white/75 md:block">
-      <div className="container-site flex h-11 items-center justify-between gap-6">
+    <div className="hidden bg-navy-deep text-[0.8125rem] tracking-[0.02em] text-white/75 md:block">
+      <div className={`${ui.container} flex h-11 items-center justify-between gap-6`}>
         <ul className="flex items-center gap-6 lg:gap-8">
           <li>
             <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="flex items-center gap-2 transition-colors hover:text-gold-light">
@@ -41,7 +42,7 @@ export default function TopBar({ data, contact, socials }: TopBarProps) {
                   aria-label={s.label}
                   className="grid size-8 place-items-center transition-colors hover:text-gold-light"
                 >
-                  <SocialIcon name={s.name} className="size-[15px]" />
+                  <SocialIcon name={s.name} className="size-[0.9375rem]" />
                 </a>
               </li>
             ))}

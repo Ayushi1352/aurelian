@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { site, type AurelianFooterData, type SectionProps } from "@/data";
 import { Mail, MapPin, Phone, SocialIcon } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 /** Fills `{year}` in the copyright line; cached so the footer can still be prerendered. */
 async function currentYear() {
@@ -9,10 +10,10 @@ async function currentYear() {
   return new Date().getFullYear();
 }
 
-const linkClass = "link-line text-[15px] text-white/65 transition-colors hover:text-white";
+const linkClass = `${ui.linkLine} text-[0.9375rem] text-white/65 hover:text-white`;
 
 function ColumnTitle({ children }: { children: string }) {
-  return <h2 className="label text-gold-light">{children}</h2>;
+  return <h2 className={`${ui.label} text-gold-light`}>{children}</h2>;
 }
 
 export default async function Footer({ data: footer = site.footer }: SectionProps<AurelianFooterData>) {
@@ -22,12 +23,12 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
 
   return (
     <footer className="relative isolate overflow-hidden border-t border-white/10 bg-navy-deep text-white">
-      <div className="container-site grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_var(--cta-width)] lg:gap-16 lg:py-20">
+      <div className={`${ui.container} grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_16.25rem] lg:gap-16 lg:py-20`}>
         <div className="sm:col-span-2 lg:col-span-1">
           <Link href="/" aria-label={brand.name} className="inline-block">
-            <Image src={brand.logoLight.src} alt={brand.logoLight.alt} width={brand.logoLight.width} height={brand.logoLight.height} quality={90} sizes="220px" className="h-auto w-[200px] sm:w-[220px]" />
+            <Image src={brand.logoLight.src} alt={brand.logoLight.alt} width={brand.logoLight.width} height={brand.logoLight.height} quality={90} sizes="220px" className="h-auto w-[12.5rem] sm:w-[13.75rem]" />
           </Link>
-          <p className="mt-7 max-w-[340px] text-[15px] leading-[1.75] text-white/60">{footer.statement}</p>
+          <p className="mt-7 max-w-[21.25rem] text-[0.9375rem] leading-[1.75] text-white/60">{footer.statement}</p>
           <ul className="mt-7 flex flex-wrap gap-2" aria-label={footer.socialsTitle}>
             {footer.socials.map((s) => (
               <li key={s.name}>
@@ -60,7 +61,7 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
 
         <div>
           <ColumnTitle>{footer.contactTitle}</ColumnTitle>
-          <address className="mt-7 space-y-4 text-[15px] not-italic leading-[1.6] text-white/65">
+          <address className="mt-7 space-y-4 text-[0.9375rem] not-italic leading-[1.6] text-white/65">
             <p className="flex gap-3">
               <MapPin className="mt-0.5 size-5 shrink-0 text-gold" />
               <span>
@@ -89,14 +90,14 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-site flex flex-col gap-4 py-6 text-[13px] text-white/45 md:flex-row md:items-center md:justify-between">
+        <div className={`${ui.container} flex flex-col gap-4 py-6 text-[0.8125rem] text-white/45 md:flex-row md:items-center md:justify-between`}>
           <p>{copyright}</p>
           <nav aria-label={footer.legalLinksLabel}>
             <ul className="flex flex-wrap items-center gap-y-2">
               {footer.legalLinks.map((l, i) => (
                 <li key={l.href} className="flex items-center">
                   {i > 0 && <span aria-hidden="true" className="mx-4 h-3.5 w-px bg-white/20" />}
-                  <Link href={l.href} className="link-line text-[14px] text-white/65 transition-colors hover:text-white">
+                  <Link href={l.href} className={`${ui.linkLine} text-[0.875rem] text-white/65 hover:text-white`}>
                     {l.label}
                   </Link>
                 </li>

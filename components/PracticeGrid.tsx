@@ -21,7 +21,7 @@ export default function PracticeGrid({ items, perPage, buttonLabel, paginationLa
     <>
       <div className="mt-14 grid gap-2 md:grid-cols-2 lg:mt-20 lg:grid-cols-3">
         {pageItems.map((item, i) => (
-          <PracticeCard key={item.slug} item={item} index={offset + i} buttonLabel={buttonLabel} delay={(i % 3) + 1} />
+          <PracticeCard key={item.title} item={item} index={offset + i} buttonLabel={buttonLabel} delay={(i % 3) + 1} />
         ))}
       </div>
       <Pagination labels={paginationLabels} page={page} totalPages={totalPages} onChange={setPage} scrollTargetId={scrollTargetId} />

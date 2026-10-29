@@ -51,7 +51,7 @@ export default function Pagination({ labels, page, totalPages, onChange, scrollT
               onClick={() => go(n)}
               aria-label={labels.page.replace("{n}", String(n))}
               aria-current={n === page ? "page" : undefined}
-              className={`grid size-12 place-items-center font-display text-[22px] font-semibold leading-none transition-colors ${
+              className={`grid size-12 place-items-center font-display text-[1.375rem] font-semibold leading-none transition-colors ${
                 n === page ? "bg-navy text-gold-light" : dark ? "text-white/60 hover:text-white" : "text-ink hover:text-gold"
               }`}
             >

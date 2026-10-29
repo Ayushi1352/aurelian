@@ -20,7 +20,7 @@ export default function TeamGrid({ items, perPage, socialLabel, paginationLabels
     <>
       <div className="mt-14 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
         {pageItems.map((member, i) => (
-          <TeamCard key={member.slug} member={member} socialLabel={socialLabel} delay={(i % 3) + 1} />
+          <TeamCard key={member.name} member={member} socialLabel={socialLabel} delay={(i % 3) + 1} />
         ))}
       </div>
       <Pagination labels={paginationLabels} page={page} totalPages={totalPages} onChange={setPage} scrollTargetId={scrollTargetId} />

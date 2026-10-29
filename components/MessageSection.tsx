@@ -1,6 +1,7 @@
 import { site, type AurelianContactFormData, type SectionProps } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
+import { ui } from "@/components/ui";
 
 export default function MessageSection({ data = site.contactFormSection }: SectionProps<AurelianContactFormData>) {
   const { label, titleLine1, titleLine2, text, mapTitle, ...form } = data;
@@ -9,8 +10,8 @@ export default function MessageSection({ data = site.contactFormSection }: Secti
   const mapEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&z=16&output=embed`;
 
   return (
-    <section className="bg-mist section-space">
-      <div className="container-site grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+    <section className={`bg-mist ${ui.sectionSpace}`}>
+      <div className={`${ui.container} grid gap-6 lg:grid-cols-[1.15fr_0.85fr]`}>
         <div className="bg-white p-6 sm:p-10 lg:p-14">
           <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} stacked />
           <div data-reveal="up" data-delay="3" className="mt-10">
@@ -18,7 +19,7 @@ export default function MessageSection({ data = site.contactFormSection }: Secti
           </div>
         </div>
 
-        <div data-reveal="wipe" data-delay="2" className="relative min-h-[420px] overflow-hidden lg:min-h-full">
+        <div data-reveal="wipe" data-delay="2" className="relative min-h-[26.25rem] overflow-hidden lg:min-h-full">
           <iframe src={mapEmbed} title={mapTitle} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="absolute inset-0 block size-full border-0 grayscale-[0.6]" />
         </div>
       </div>

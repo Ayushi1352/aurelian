@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 import { site, type AurelianImage, type AurelianPageBannerData, type SectionProps } from "@/data";
 import { Headline } from "@/components/SplitWords";
+import { ui } from "@/components/ui";
+import { introHidden, introLine, kenburnsStart } from "@/components/motion";
 
 type PageBannerProps = SectionProps<AurelianPageBannerData> & {
   /** The page's `bannerTitle` (same as its navbar label), or the item title on a detail page. */
@@ -19,40 +20,40 @@ export default function PageBanner({ data = site.pageBanner, title, image, paren
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-deep text-white">
-      <Image src={image.src} alt="" fill priority quality={75} sizes="100vw" className="animate-hero-zoom -z-30 object-cover" />
+      <Image src={image.src} alt="" fill priority quality={75} sizes="100vw" data-intro="kenburns" className={`${kenburnsStart} -z-30 object-cover`} />
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-linear-to-r from-navy-deep/90 via-navy-deep/60 to-navy-deep/25" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-navy-deep/80 via-transparent to-transparent" />
 
-      <div className="container-site flex min-h-[380px] flex-col justify-end pb-10 pt-24 sm:min-h-[460px] lg:min-h-[560px] lg:pb-14">
+      <div className={`${ui.container} flex min-h-[23.75rem] flex-col justify-end pb-10 pt-24 sm:min-h-[28.75rem] lg:min-h-[35rem] lg:pb-14`}>
         <h1
           data-words-now
-          style={{ "--words-delay": "300ms" } as CSSProperties}
-          className="max-w-[1100px] text-balance font-display text-[clamp(38px,calc(6*var(--vw)),92px)] font-semibold leading-[1.02] tracking-[-0.01em]"
+          data-words-delay="300"
+          className="max-w-[68.75rem] text-balance font-display text-[clamp(2.375rem,6vw,5.75rem)] font-semibold leading-[1.02] tracking-[-0.01em]"
         >
           <Headline line1={title} />
         </h1>
 
         <div className="mt-10 border-t border-white/20 pt-6 lg:mt-14">
           <nav aria-label={breadcrumbLabel}>
-            <ol className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/75 sm:text-[12px]">
-              <li aria-hidden="true" className="h-px w-10 origin-left animate-[hero-rule_0.8s_var(--ease-out)_both] bg-gold" />
-              <li className="animate-[fade-in_0.8s_var(--ease-out)_0.2s_both]">
-                <Link href={homeHref} className="link-line transition-colors hover:text-white">
+            <ol className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.6875rem] font-semibold uppercase tracking-[0.3em] text-white/75 sm:text-[0.75rem]">
+              <li aria-hidden="true" data-intro="line" className={`h-px w-10 bg-gold ${introLine}`} />
+              <li data-intro="fade" data-intro-delay="200" className={introHidden}>
+                <Link href={homeHref} className={`${ui.linkLine} hover:text-white`}>
                   {homeLabel}
                 </Link>
               </li>
               {parent && (
                 <>
                   {separator}
-                  <li className="animate-[fade-in_0.8s_var(--ease-out)_0.3s_both]">
-                    <Link href={parent.href} className="link-line transition-colors hover:text-white">
+                  <li data-intro="fade" data-intro-delay="300" className={introHidden}>
+                    <Link href={parent.href} className={`${ui.linkLine} hover:text-white`}>
                       {parent.label}
                     </Link>
                   </li>
                 </>
               )}
               {separator}
-              <li aria-current="page" className="line-clamp-1 animate-[fade-in_0.8s_var(--ease-out)_0.4s_both] text-gold-light">
+              <li aria-current="page" data-intro="fade" data-intro-delay="400" className={`line-clamp-1 text-gold-light ${introHidden}`}>
                 {title}
               </li>
             </ol>

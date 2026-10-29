@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { AurelianContactDetails, AurelianHeaderData, AurelianSocial, SectionProps } from "@/data";
 import { ArrowRight, CloseIcon, MenuIcon, SocialIcon } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -58,10 +59,10 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
     <header
       ref={headerRef}
       className={`sticky top-0 z-50 border-b bg-white transition-[box-shadow,border-color] duration-500 ${
-        scrolled ? "border-transparent shadow-[0_10px_40px_color-mix(in_srgb,var(--color-navy-deep)_8%,transparent)]" : "border-line"
+        scrolled ? "border-transparent shadow-[0_0.625rem_2.5rem_color-mix(in_srgb,var(--color-navy-deep)_8%,transparent)]" : "border-line"
       }`}
     >
-      <div className="container-site flex h-[76px] items-center justify-between gap-6 lg:h-[88px]">
+      <div className={`${ui.container} flex h-[4.75rem] items-center justify-between gap-6 lg:h-[5.5rem]`}>
         <Link href="/" aria-label={brand.name} className="shrink-0" onClick={() => setOpen(false)}>
           <Image
             src={brand.logo.src}
@@ -72,7 +73,7 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
             fetchPriority="high"
             quality={90}
             sizes="(min-width: 1024px) 190px, 160px"
-            className="h-auto w-[150px] sm:w-[160px] lg:w-[190px]"
+            className="h-auto w-[9.375rem] sm:w-[10rem] lg:w-[11.875rem]"
           />
         </Link>
 
@@ -85,7 +86,7 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`group relative block whitespace-nowrap py-2 text-[13px] font-bold uppercase tracking-[0.12em] transition-colors duration-300 lg:text-[14px] ${
+                    className={`group relative block whitespace-nowrap py-2 text-[0.8125rem] font-bold uppercase tracking-[0.12em] transition-colors duration-300 lg:text-[0.875rem] ${
                       active ? "text-navy" : "text-ink hover:text-navy"
                     }`}
                   >
@@ -102,7 +103,7 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3">
-          <Link href={appointmentButton.href} className="btn btn-primary hidden min-h-[48px]! whitespace-nowrap px-6! sm:inline-flex lg:w-(--cta-width)">
+          <Link href={appointmentButton.href} className={`${ui.btnPrimarySmall} hidden whitespace-nowrap sm:inline-flex lg:w-[16.25rem]`}>
             {appointmentButton.label}
           </Link>
           <button
@@ -119,7 +120,7 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
       </div>
 
       {/* Scroll progress bar */}
-      <span aria-hidden="true" className={`scroll-progress absolute inset-x-0 bottom-0 h-[2px] bg-gold transition-opacity duration-500 ${scrolled && !open ? "opacity-100" : "opacity-0"}`} />
+      <span data-scroll-progress aria-hidden="true" className={`origin-left scale-x-0 absolute inset-x-0 bottom-0 h-[0.125rem] bg-gold transition-opacity duration-500 ${scrolled && !open ? "opacity-100" : "opacity-0"}`} />
 
       {/* Mobile menu has its own close button, so closing never depends on where the header sits. */}
       <div
@@ -131,9 +132,9 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
           open ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
-        <div className="container-site flex h-[76px] shrink-0 items-center justify-between gap-6 border-b border-white/10">
+        <div className={`${ui.container} flex h-[4.75rem] shrink-0 items-center justify-between gap-6 border-b border-white/10`}>
           <Link href="/" aria-label={brand.name} onClick={() => setOpen(false)}>
-            <Image src={brand.logoLight.src} alt={brand.logoLight.alt} width={brand.logoLight.width} height={brand.logoLight.height} quality={90} sizes="160px" className="h-auto w-[150px] sm:w-[160px]" />
+            <Image src={brand.logoLight.src} alt={brand.logoLight.alt} width={brand.logoLight.width} height={brand.logoLight.height} quality={90} sizes="160px" className="h-auto w-[9.375rem] sm:w-[10rem]" />
           </Link>
           <button
             type="button"
@@ -145,7 +146,7 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
           </button>
         </div>
 
-        <nav aria-label={ariaLabels.mobileNav} className="container-site flex flex-1 flex-col pb-6 pt-4">
+        <nav aria-label={ariaLabels.mobileNav} className={`${ui.container} flex flex-1 flex-col pb-6 pt-4`}>
           <ul className="flex flex-col">
             {navigation.map((item, i) => {
               const active = isActive(pathname, item.href);
@@ -159,7 +160,7 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
-                    className={`flex items-center justify-between py-[clamp(10px,2svh,16px)] text-[13px] font-bold uppercase tracking-[0.14em] transition-colors hover:text-gold-light sm:text-[14px] ${active ? "text-gold-light" : "text-white"}`}
+                    className={`flex items-center justify-between py-[clamp(0.625rem,2svh,1rem)] text-[0.8125rem] font-bold uppercase tracking-[0.14em] transition-colors hover:text-gold-light sm:text-[0.875rem] ${active ? "text-gold-light" : "text-white"}`}
                   >
                     {item.label}
                     <span aria-hidden="true" className={`h-px w-6 bg-gold transition-opacity ${active ? "opacity-100" : "opacity-0"}`} />
@@ -168,11 +169,11 @@ export default function Navbar({ data, contact, socials }: NavbarProps) {
               );
             })}
           </ul>
-          <Link href={appointmentButton.href} onClick={() => setOpen(false)} className="btn btn-gold mt-6 w-full sm:w-auto sm:self-start">
+          <Link href={appointmentButton.href} onClick={() => setOpen(false)} className={`${ui.btnGold} mt-6 w-full sm:w-auto sm:self-start`}>
             {appointmentButton.label}
             <ArrowRight className="size-4" />
           </Link>
-          <div className="mt-auto flex flex-wrap items-end justify-between gap-x-6 gap-y-4 pt-6 text-[14px] text-white/70">
+          <div className="mt-auto flex flex-wrap items-end justify-between gap-x-6 gap-y-4 pt-6 text-[0.875rem] text-white/70">
             <div className="space-y-1">
               <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="block transition-colors hover:text-gold-light">
                 {contact.phone}

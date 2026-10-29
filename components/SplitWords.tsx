@@ -1,19 +1,17 @@
-import { Fragment, type CSSProperties } from "react";
+import { Fragment } from "react";
+import { dotHidden, wordHidden } from "@/components/motion";
 
 type SplitWordsProps = {
   text: string;
-  /** Index of the first word, so a second line continues the stagger of the first. */
-  start?: number;
   className?: string;
 };
 
-const order = (i: number) => ({ "--i": i }) as CSSProperties;
-
 /**
- * Wraps every word in a mask for the word-by-word headline animation (".word" in globals.css).
- * Plays on scroll inside `data-reveal="words"`, or straight away inside `data-words-now`.
+ * Wraps every word in a mask for the word-by-word headline animation (played by ScrollReveal).
+ * Plays on scroll inside `data-reveal="words"`, or straight away inside `data-words-now`;
+ * words are staggered in the order they appear, so a second part continues after the first.
  */
-export default function SplitWords({ text, start = 0, className = "" }: SplitWordsProps) {
+export default function SplitWords({ text, className = "" }: SplitWordsProps) {
   return text
     .split(" ")
     .filter(Boolean)
@@ -21,8 +19,8 @@ export default function SplitWords({ text, start = 0, className = "" }: SplitWor
       // Space only between words, so a trailing gold dot stays glued to the last word.
       <Fragment key={i}>
         {i > 0 && " "}
-        <span className="word">
-          <span className={className} style={order(start + i)}>
+        <span className="-mb-[0.08em] inline-block overflow-hidden pb-[0.08em] align-bottom">
+          <span data-word className={`inline-block origin-bottom-left ${wordHidden} ${className}`}>
             {word}
           </span>
         </span>
@@ -49,8 +47,6 @@ type HeadlineProps = {
 export function Headline({ line1, line2, dot = true }: HeadlineProps) {
   const first = line2 ? { body: line1.trim(), dot: false } : splitEnding(line1);
   const second = line2 ? splitEnding(line2) : null;
-  const firstCount = first.body.split(" ").filter(Boolean).length;
-  const total = firstCount + (second ? second.body.split(" ").filter(Boolean).length : 0);
   const showDot = dot && (second ? second.dot : first.dot);
 
   return (
@@ -59,11 +55,11 @@ export function Headline({ line1, line2, dot = true }: HeadlineProps) {
       {second && (
         <>
           {" "}
-          <SplitWords text={second.body} start={firstCount} className="italic" />
+          <SplitWords text={second.body} className="italic" />
         </>
       )}
       {showDot && (
-        <span aria-hidden="true" className="gold-dot inline-block text-gold" style={order(total)}>
+        <span aria-hidden="true" data-dot className={`inline-block text-gold ${dotHidden}`}>
           .
         </span>
       )}

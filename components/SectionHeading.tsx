@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Headline } from "@/components/SplitWords";
+import { ui } from "@/components/ui";
 
 type SectionHeadingProps = {
   label: string;
@@ -21,8 +22,8 @@ type SectionHeadingProps = {
 /** Small tracked label led by a thin gold rule. */
 export function Eyebrow({ label, dark = false, className = "" }: { label: string; dark?: boolean; className?: string }) {
   return (
-    <p className={`label flex items-center gap-4 ${dark ? "text-white/80" : "text-gold"} ${className}`}>
-      <span aria-hidden="true" data-reveal="line" className="h-px w-10 shrink-0 bg-gold" />
+    <p className={`${ui.label} flex items-center gap-4 ${dark ? "text-white/80" : "text-gold"} ${className}`}>
+      <span aria-hidden="true" data-reveal="line" className="h-px w-10 shrink-0 origin-left bg-gold" />
       <span data-reveal="fade" data-delay="2">
         {label}
       </span>
@@ -34,7 +35,7 @@ export default function SectionHeading({ label, line1, line2, text, dark = false
   const rule = dark ? "border-white/15" : "border-line";
 
   const title = (
-    <Tag data-reveal="words" className={`text-balance ${stacked ? "display-2 mt-5" : "display-1"} ${dark ? "text-white" : "text-ink"}`}>
+    <Tag data-reveal="words" className={`text-balance ${stacked ? `${ui.display2} mt-5` : ui.display1} ${dark ? "text-white" : "text-ink"}`}>
       <Headline line1={line1} line2={line2} />
     </Tag>
   );
@@ -42,7 +43,7 @@ export default function SectionHeading({ label, line1, line2, text, dark = false
   const intro = (text || action) && (
     <div className={`mt-8 flex flex-col gap-8 ${stacked ? "" : "lg:flex-row lg:items-end lg:justify-between"}`}>
       {text && (
-        <p data-reveal="up" data-delay="3" className={`max-w-[560px] leading-[1.8] ${stacked ? "text-[16px] lg:text-[17px]" : "text-[17px] lg:text-[19px]"} ${dark ? "text-white/70" : "text-body"}`}>
+        <p data-reveal="up" data-delay="3" className={`max-w-[35rem] leading-[1.8] ${stacked ? "text-[1rem] lg:text-[1.0625rem]" : "text-[1.0625rem] lg:text-[1.1875rem]"} ${dark ? "text-white/70" : "text-body"}`}>
           {text}
         </p>
       )}

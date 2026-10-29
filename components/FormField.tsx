@@ -1,13 +1,14 @@
 import type { ComponentProps, ReactNode } from "react";
 import { ChevronDown } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 export const fieldClass =
-  "mt-1 block w-full min-w-0 border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-[16px] text-ink outline-none transition-[border-color,box-shadow] placeholder:text-muted/60 focus:border-gold focus:shadow-[0_1px_0_0_var(--color-gold)]";
+  "mt-1 block w-full min-w-0 border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-[1rem] text-ink outline-none transition-[border-color,box-shadow] placeholder:text-muted/60 focus:border-gold focus:shadow-[0_0.0625rem_0_0_var(--color-gold)]";
 
 function Label({ htmlFor, label, required, children }: { htmlFor: string; label: string; required?: boolean; children: ReactNode }) {
   return (
     <div className="min-w-0">
-      <label htmlFor={htmlFor} className="label block text-[10px]! text-muted">
+      <label htmlFor={htmlFor} className={`${ui.labelSmall} block text-muted`}>
         {label}
         {required && <span className="ml-1 text-gold">*</span>}
       </label>

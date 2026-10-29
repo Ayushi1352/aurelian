@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { AurelianBlogPost } from "@/data";
 import { ArrowUpRight, Calendar, ClockIcon, UserIcon } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 type BlogFeaturedProps = {
   post: AurelianBlogPost;
@@ -19,7 +20,7 @@ export default function BlogFeatured({ post, buttonLabel, byLabel }: BlogFeature
 
   return (
     <article data-reveal="up" className="mb-14 lg:mb-20">
-      <Link href={`/blogs/${post.slug}`} className="group relative isolate flex min-h-[440px] items-end overflow-hidden bg-navy-deep text-white sm:min-h-[520px] lg:aspect-[21/9] lg:min-h-0">
+      <Link href={post.href} className="group relative isolate flex min-h-[27.5rem] items-end overflow-hidden bg-navy-deep text-white sm:min-h-[32.5rem] lg:aspect-[21/9] lg:min-h-0">
         <Image
           src={post.image.src}
           alt={post.image.alt}
@@ -33,15 +34,15 @@ export default function BlogFeatured({ post, buttonLabel, byLabel }: BlogFeature
         <span className="flex w-full items-end gap-8 p-6 sm:p-10 lg:p-14">
           <span className="min-w-0 flex-1">
             <span className="flex items-center gap-5">
-              <span className="font-display text-[56px] font-semibold leading-none text-gold lg:text-[72px]">01</span>
-              <span className="label text-[10px]! text-gold-light">{post.category}</span>
+              <span className="font-display text-[3.5rem] font-semibold leading-none text-gold lg:text-[4.5rem]">01</span>
+              <span className={`${ui.labelSmall} text-gold-light`}>{post.category}</span>
             </span>
-            <span className="mt-5 block max-w-[900px] font-display text-[32px] font-semibold leading-[1.1] sm:text-[44px] lg:text-[58px]">{post.title}</span>
-            <span className="mt-4 line-clamp-2 block max-w-[680px] text-[16px] leading-relaxed text-white/75 lg:text-[17px]">{post.excerpt}</span>
-            <span className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[14px] sm:gap-x-0 text-white/70">
+            <span className="mt-5 block max-w-[56.25rem] font-display text-[2rem] font-semibold leading-[1.1] sm:text-[2.75rem] lg:text-[3.625rem]">{post.title}</span>
+            <span className="mt-4 line-clamp-2 block max-w-[42.5rem] text-[1rem] leading-relaxed text-white/75 lg:text-[1.0625rem]">{post.excerpt}</span>
+            <span className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.875rem] sm:gap-x-0 text-white/70">
               {meta.map(({ icon: Icon, text }, i) => (
                 <span key={text} className={`flex items-center gap-2 ${i > 0 ? "sm:ml-4 sm:border-l sm:border-gold/50 sm:pl-4" : ""}`}>
-                  <Icon className="size-[18px] text-gold-light" />
+                  <Icon className="size-[1.125rem] text-gold-light" />
                   {text}
                 </span>
               ))}

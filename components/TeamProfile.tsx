@@ -3,6 +3,7 @@ import Link from "next/link";
 import { site, type AurelianTeamDetailData, type AurelianTeamMember, type SectionProps } from "@/data";
 import { Eyebrow } from "@/components/SectionHeading";
 import { ArrowRight, SocialIcon } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 type TeamProfileProps = SectionProps<AurelianTeamDetailData> & {
   member: AurelianTeamMember;
@@ -17,14 +18,14 @@ export default function TeamProfile({ data = site.teamDetailPage, member }: Team
   ];
 
   return (
-    <section className="section-space">
-      <div className="container-site grid gap-14 md:grid-cols-[5fr_7fr] lg:gap-24">
+    <section data-plain className={ui.sectionPlain}>
+      <div className={`${ui.container} grid gap-14 md:grid-cols-[5fr_7fr] lg:gap-24`}>
         <div className="md:sticky md:top-28 md:self-start">
           <div data-reveal="wipe" className="relative aspect-[4/5] overflow-hidden bg-bone">
             <Image src={member.image.src} alt={member.image.alt} fill priority quality={80} sizes="(min-width: 1400px) 520px, (min-width: 768px) 38vw, 100vw" className="object-cover object-top" />
           </div>
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-            <p className="label text-[10px]! text-gold">{member.role}</p>
+            <p className={`${ui.labelSmall} text-gold`}>{member.role}</p>
             <ul className="flex gap-2">
               {member.socials.map((s) => (
                 <li key={s.name}>
@@ -47,15 +48,16 @@ export default function TeamProfile({ data = site.teamDetailPage, member }: Team
           <div className="border-t border-line pt-8">
             <Eyebrow label={aboutLabel} />
           </div>
-          <p data-reveal="up" data-delay="1" className="mt-8 font-display text-[28px] font-medium leading-[1.35] text-ink lg:text-[38px]">
+          <h2 data-reveal="up" className={`${ui.display2} mt-8 text-ink`}>{member.name}</h2>
+          <p data-reveal="up" data-delay="1" className="mt-6 font-display text-[1.75rem] font-medium leading-[1.35] text-ink lg:text-[2.375rem]">
             {member.bio}
           </p>
 
           <dl className="mt-14 grid border-t border-line sm:grid-cols-3">
             {facts.map((f, i) => (
               <div key={f.label} data-reveal="up" data-delay={i + 1} className={`flex flex-col border-b border-line py-6 sm:py-8 ${i > 0 ? "sm:border-l sm:pl-6" : "sm:pr-6"}`}>
-                <dt className="label text-[10px]! text-muted">{f.label}</dt>
-                <dd className="mt-3 font-display text-[22px] font-semibold leading-snug text-ink">{f.value}</dd>
+                <dt className={`${ui.labelSmall} text-muted`}>{f.label}</dt>
+                <dd className="mt-3 font-display text-[1.375rem] font-semibold leading-snug text-ink">{f.value}</dd>
               </div>
             ))}
           </dl>
@@ -64,15 +66,15 @@ export default function TeamProfile({ data = site.teamDetailPage, member }: Team
             <Eyebrow label={expertiseLabel} />
             <ul className="mt-6 border-t border-line">
               {member.expertise.map((e, i) => (
-                <li key={e} className="flex items-baseline gap-5 border-b border-line py-4 font-display text-[22px] font-semibold text-ink">
-                  <span className="label shrink-0 text-[10px]! text-gold">{String(i + 1).padStart(2, "0")}</span>
+                <li key={e} className="flex items-baseline gap-5 border-b border-line py-4 font-display text-[1.375rem] font-semibold text-ink">
+                  <span className={`${ui.labelSmall} shrink-0 text-gold`}>{String(i + 1).padStart(2, "0")}</span>
                   {e}
                 </li>
               ))}
             </ul>
           </div>
 
-          <Link data-reveal="up" href={button.href} className="btn btn-primary mt-14">
+          <Link data-reveal="up" href={button.href} className={`${ui.btnPrimary} mt-14`}>
             {button.label}
             <ArrowRight className="size-4" />
           </Link>

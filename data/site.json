@@ -16,7 +16,8 @@
         "line": "#e3e0d9",
         "mist": "#f5f3ee",
         "ivory": "#faf9f6",
-        "bone": "#efece4"
+        "bone": "#efece4",
+        "page": "#f5f5f5"
       },
       "fonts": {
         "display": {
@@ -142,7 +143,6 @@
             ]
           },
           "practice-area-detail": {
-            "expand": "items",
             "components": [
               {
                 "key": "PageBanner",
@@ -175,7 +175,6 @@
             ]
           },
           "team-detail": {
-            "expand": "items",
             "components": [
               {
                 "key": "PageBanner",
@@ -204,7 +203,6 @@
             ]
           },
           "blog-detail": {
-            "expand": "items",
             "components": [
               {
                 "key": "PageBanner",
@@ -628,7 +626,6 @@
           "AurelianFounder1": {
             "label": "A Word From Our Founder",
             "quote": "We never stop until we win.",
-            "teamSlug": "rajesh-malhotra",
             "button": {
               "label": "View Profile"
             },
@@ -800,8 +797,8 @@
             "cardButton": "Explore",
             "items": [
               {
-                "slug": "dispute-resolution",
                 "title": "Dispute Resolution",
+                "href": "/practice-areas/practice-details",
                 "subtitle": "Litigation & Arbitration",
                 "icon": "gavel",
                 "excerpt": "Litigation, arbitration and mediation - from first advice to final appeal.",
@@ -826,8 +823,8 @@
                 }
               },
               {
-                "slug": "criminal-defence",
                 "title": "Criminal Defence",
+                "href": "/practice-areas/practice-details",
                 "subtitle": "Conventional & Economic Offences",
                 "icon": "shield",
                 "excerpt": "Robust defence from investigation to trial.",
@@ -852,8 +849,8 @@
                 }
               },
               {
-                "slug": "corporate-contracts",
                 "title": "Corporate & Contracts",
+                "href": "/practice-areas/practice-details",
                 "subtitle": "Contracting & Transaction Law",
                 "icon": "briefcase",
                 "excerpt": "Contracts and deals that protect your business.",
@@ -878,8 +875,8 @@
                 }
               },
               {
-                "slug": "insolvency-bankruptcy",
                 "title": "Insolvency & Bankruptcy",
+                "href": "/practice-areas/practice-details",
                 "subtitle": "Restructuring & Recovery",
                 "icon": "chart",
                 "excerpt": "Restructuring, recovery and insolvency advice.",
@@ -904,8 +901,8 @@
                 }
               },
               {
-                "slug": "employment-labour-law",
                 "title": "Employment & Labour Law",
+                "href": "/practice-areas/practice-details",
                 "subtitle": "Employers & Employees",
                 "icon": "users",
                 "excerpt": "Workplace advice for employers and employees.",
@@ -930,8 +927,8 @@
                 }
               },
               {
-                "slug": "intellectual-property",
                 "title": "Intellectual Property",
+                "href": "/practice-areas/practice-details",
                 "subtitle": "Trademark, Copyright & Data",
                 "icon": "bulb",
                 "excerpt": "Protect your brand, ideas and data.",
@@ -956,8 +953,8 @@
                 }
               },
               {
-                "slug": "immigration-law",
                 "title": "Immigration Law",
+                "href": "/practice-areas/practice-details",
                 "subtitle": "Visas & Business Establishment",
                 "icon": "globe",
                 "excerpt": "Visas, residency and business set-up.",
@@ -982,8 +979,8 @@
                 }
               },
               {
-                "slug": "family-private-client",
                 "title": "Family & Private Client",
+                "href": "/practice-areas/practice-details",
                 "subtitle": "Families, Wills & Estates",
                 "icon": "home",
                 "excerpt": "Divorce, custody, wills and estates.",
@@ -1008,8 +1005,8 @@
                 }
               },
               {
-                "slug": "startup-advisory",
                 "title": "Start-up Advisory",
+                "href": "/practice-areas/practice-details",
                 "subtitle": "Founders & Emerging Companies",
                 "icon": "rocket",
                 "excerpt": "Legal foundations for ambitious founders.",
@@ -1047,6 +1044,7 @@
       "PracticeDetail": {
         "variants": {
           "AurelianPracticeDetail1": {
+            "bannerTitle": "Practice Details",
             "parent": {
               "label": "Practice Areas",
               "href": "/practice-areas"
@@ -1075,8 +1073,8 @@
             "perPage": 6,
             "items": [
               {
-                "slug": "rajesh-malhotra",
                 "name": "Rajesh Malhotra",
+                "href": "/our-team/team-details",
                 "role": "Founder & Managing Partner",
                 "practice": "Arbitration & Economic Offences",
                 "image": {
@@ -1113,8 +1111,8 @@
                 ]
               },
               {
-                "slug": "anjali-mehta",
                 "name": "Anjali Mehta",
+                "href": "/our-team/team-details",
                 "role": "Co-Founder & Senior Partner",
                 "practice": "Corporate, M&A & Start-ups",
                 "image": {
@@ -1146,8 +1144,8 @@
                 ]
               },
               {
-                "slug": "vikram-singh",
                 "name": "Vikram Singh",
+                "href": "/our-team/team-details",
                 "role": "Senior Partner",
                 "practice": "Head of Criminal Law",
                 "image": {
@@ -1179,8 +1177,8 @@
                 ]
               },
               {
-                "slug": "priya-sharma",
                 "name": "Priya Sharma",
+                "href": "/our-team/team-details",
                 "role": "Senior Partner",
                 "practice": "Head of Dispute Resolution",
                 "image": {
@@ -1212,8 +1210,8 @@
                 ]
               },
               {
-                "slug": "arjun-verma",
                 "name": "Arjun Verma",
+                "href": "/our-team/team-details",
                 "role": "Partner",
                 "practice": "Employment & Labour Law",
                 "image": {
@@ -1240,8 +1238,8 @@
                 ]
               },
               {
-                "slug": "neha-iyer",
                 "name": "Neha Iyer",
+                "href": "/our-team/team-details",
                 "role": "Partner",
                 "practice": "Intellectual Property",
                 "image": {
@@ -1273,8 +1271,8 @@
                 ]
               },
               {
-                "slug": "rohan-gupta",
                 "name": "Rohan Gupta",
+                "href": "/our-team/team-details",
                 "role": "Senior Associate",
                 "practice": "Insolvency & Restructuring",
                 "image": {
@@ -1306,8 +1304,8 @@
                 ]
               },
               {
-                "slug": "kavya-reddy",
                 "name": "Kavya Reddy",
+                "href": "/our-team/team-details",
                 "role": "Senior Associate",
                 "practice": "Family & Private Client",
                 "image": {
@@ -1339,8 +1337,8 @@
                 ]
               },
               {
-                "slug": "aditya-joshi",
                 "name": "Aditya Joshi",
+                "href": "/our-team/team-details",
                 "role": "Associate",
                 "practice": "Immigration Law",
                 "image": {
@@ -1367,8 +1365,8 @@
                 ]
               },
               {
-                "slug": "sneha-nair",
                 "name": "Sneha Nair",
+                "href": "/our-team/team-details",
                 "role": "Associate",
                 "practice": "Contracts & Compliance",
                 "image": {
@@ -1414,6 +1412,7 @@
       "TeamDetail": {
         "variants": {
           "AurelianTeamDetail1": {
+            "bannerTitle": "Team Details",
             "parent": {
               "label": "Our Team",
               "href": "/our-team"
@@ -1448,8 +1447,8 @@
             "byLabel": "By",
             "items": [
               {
-                "slug": "know-your-rights-when-arrested",
                 "title": "Know Your Rights When You Are Arrested",
+                "href": "/blogs/blog-details",
                 "category": "Criminal Law",
                 "date": "October 08, 2026",
                 "readTime": "6 min read",
@@ -1506,8 +1505,8 @@
                 ]
               },
               {
-                "slug": "preparing-for-your-first-court-hearing",
                 "title": "Preparing for Your First Court Hearing",
+                "href": "/blogs/blog-details",
                 "category": "Litigation",
                 "date": "September 26, 2026",
                 "readTime": "5 min read",
@@ -1556,8 +1555,8 @@
                 ]
               },
               {
-                "slug": "five-clauses-every-business-contract-needs",
                 "title": "Five Clauses Every Business Contract Needs",
+                "href": "/blogs/blog-details",
                 "category": "Corporate",
                 "date": "September 14, 2026",
                 "readTime": "7 min read",
@@ -1614,8 +1613,8 @@
                 ]
               },
               {
-                "slug": "when-to-settle-a-legal-dispute",
                 "title": "When Should You Settle a Legal Dispute?",
+                "href": "/blogs/blog-details",
                 "category": "Dispute Resolution",
                 "date": "August 30, 2026",
                 "readTime": "5 min read",
@@ -1655,8 +1654,8 @@
                 ]
               },
               {
-                "slug": "how-legal-research-wins-cases",
                 "title": "How Thorough Legal Research Wins Cases",
+                "href": "/blogs/blog-details",
                 "category": "Litigation",
                 "date": "August 18, 2026",
                 "readTime": "4 min read",
@@ -1696,8 +1695,8 @@
                 ]
               },
               {
-                "slug": "employee-rights-in-the-workplace",
                 "title": "Understanding Employee Rights at Work",
+                "href": "/blogs/blog-details",
                 "category": "Employment Law",
                 "date": "August 02, 2026",
                 "readTime": "6 min read",
@@ -1743,8 +1742,8 @@
                 ]
               },
               {
-                "slug": "estate-planning-checklist",
                 "title": "An Estate Planning Checklist for Families",
+                "href": "/blogs/blog-details",
                 "category": "Private Client",
                 "date": "July 20, 2026",
                 "readTime": "5 min read",
@@ -1790,8 +1789,8 @@
                 ]
               },
               {
-                "slug": "trademark-basics-for-small-businesses",
                 "title": "Trademark Basics for Small Businesses",
+                "href": "/blogs/blog-details",
                 "category": "Intellectual Property",
                 "date": "July 06, 2026",
                 "readTime": "4 min read",
@@ -1843,6 +1842,7 @@
       "BlogDetail": {
         "variants": {
           "AurelianBlogDetail1": {
+            "bannerTitle": "Blog Details",
             "parent": {
               "label": "Blogs",
               "href": "/blogs"

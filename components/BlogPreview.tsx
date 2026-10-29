@@ -3,6 +3,7 @@ import Link from "next/link";
 import { site, type AurelianBlogPost, type AurelianBlogPreviewData, type SectionProps } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import BlogCard from "@/components/BlogCard";
+import { ui } from "@/components/ui";
 
 type BlogPreviewProps = SectionProps<AurelianBlogPreviewData> & {
   /** All posts (from the BlogListing section); the first `count` are shown. */
@@ -14,22 +15,22 @@ export default function BlogPreview({ data = site.blogPreviewSection, items = si
   const [lead, ...rest] = items.slice(0, count);
 
   return (
-    <section className="section-space">
-      <div className="container-site">
+    <section data-plain className={ui.sectionPlain}>
+      <div className={ui.container}>
         <SectionHeading
           label={label}
           line1={titleLine1}
           line2={titleLine2}
           text={text}
           action={
-            <Link href={button.href} className="link-arrow text-navy">
+            <Link href={button.href} className={`${ui.linkArrow} text-navy`}>
               {button.label}
             </Link>
           }
         />
 
         {lead && (
-          <Link href={`/blogs/${lead.slug}`} className="group relative mt-14 flex aspect-[4/3] items-end overflow-hidden bg-navy-deep text-white sm:aspect-[2/1] lg:mt-20">
+          <Link href={lead.href} className="group relative mt-14 flex aspect-[4/3] items-end overflow-hidden bg-navy-deep text-white sm:aspect-[2/1] lg:mt-20">
             <span data-reveal="wipe" className="absolute inset-0 block">
               <Image
                 src={lead.image.src}
@@ -42,10 +43,10 @@ export default function BlogPreview({ data = site.blogPreviewSection, items = si
             </span>
             <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-navy-deep/80 via-navy-deep/20 to-transparent" />
             <span className="relative p-6 sm:p-10">
-              <span className="label text-[10px]! text-gold-light">
+              <span className={`${ui.labelSmall} text-gold-light`}>
                 {lead.category} &nbsp;/&nbsp; {lead.date}
               </span>
-              <span className="mt-4 block max-w-[760px] font-display text-[30px] font-semibold leading-[1.12] sm:text-[44px] lg:text-[56px]">{lead.title}</span>
+              <span className="mt-4 block max-w-[47.5rem] font-display text-[1.875rem] font-semibold leading-[1.12] sm:text-[2.75rem] lg:text-[3.5rem]">{lead.title}</span>
             </span>
           </Link>
         )}
@@ -53,7 +54,7 @@ export default function BlogPreview({ data = site.blogPreviewSection, items = si
         {rest.length > 0 && (
           <div className="mt-14 grid gap-x-6 gap-y-12 md:grid-cols-2 lg:mt-16">
             {rest.map((post, i) => (
-              <BlogCard key={post.slug} post={post} delay={i + 1} />
+              <BlogCard key={post.title} post={post} delay={i + 1} />
             ))}
           </div>
         )}

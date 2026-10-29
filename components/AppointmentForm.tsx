@@ -6,6 +6,7 @@ import useDummySubmit from "@/components/useDummySubmit";
 import FormThankYou from "@/components/FormThankYou";
 import { InputField, SelectField, TextareaField } from "@/components/FormField";
 import { ArrowRight } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 type AppointmentFormProps = Pick<AurelianAppointmentData, "fields" | "timeSlots" | "modes" | "submitLabel" | "sendingLabel" | "thankYou"> & {
   /** Practice area titles for the dropdown. */
@@ -29,7 +30,7 @@ export default function AppointmentForm({ fields, timeSlots, modes, submitLabel,
   }, [showThanks]);
 
   if (showThanks) {
-    return <FormThankYou title={thankYou.title} message={thankYou.message} closeLabel={thankYou.closeLabel} name={name} hiding={hiding} onClose={dismiss} className="min-h-[520px]" />;
+    return <FormThankYou title={thankYou.title} message={thankYou.message} closeLabel={thankYou.closeLabel} name={name} hiding={hiding} onClose={dismiss} className="min-h-[32.5rem]" />;
   }
 
   const sending = status === "sending";
@@ -44,7 +45,7 @@ export default function AppointmentForm({ fields, timeSlots, modes, submitLabel,
       <SelectField id="time" label={fields.time.label} placeholder={fields.time.placeholder} options={timeSlots} required />
 
       <fieldset className="min-w-0 sm:col-span-2">
-        <legend className="label mb-3 block text-[10px]! text-muted">
+        <legend className={`${ui.labelSmall} mb-3 block text-muted`}>
           {fields.mode.label}
           <span className="ml-1 text-gold">*</span>
         </legend>
@@ -52,7 +53,7 @@ export default function AppointmentForm({ fields, timeSlots, modes, submitLabel,
           {modes.map((mode, i) => (
             <label
               key={mode}
-              className="flex items-center gap-3 border border-line px-4 py-3.5 text-[15px] font-semibold text-ink transition-colors hover:border-gold has-checked:border-navy has-checked:bg-navy has-checked:text-white"
+              className="flex items-center gap-3 border border-line px-4 py-3.5 text-[0.9375rem] font-semibold text-ink transition-colors hover:border-gold has-checked:border-navy has-checked:bg-navy has-checked:text-white"
             >
               <input type="radio" name="mode" value={mode} defaultChecked={i === 0} required className="size-4 accent-gold" />
               {mode}
@@ -65,7 +66,7 @@ export default function AppointmentForm({ fields, timeSlots, modes, submitLabel,
         <TextareaField id="message" label={fields.message.label} placeholder={fields.message.placeholder} rows={3} />
       </div>
       <div className="sm:col-span-2">
-        <button type="submit" disabled={sending} className="btn btn-primary w-full disabled:cursor-wait disabled:opacity-70 sm:w-auto">
+        <button type="submit" disabled={sending} className={`${ui.btnPrimary} w-full disabled:cursor-wait disabled:opacity-70 sm:w-auto`}>
           {sending ? sendingLabel : submitLabel}
           {!sending && <ArrowRight className="size-4" />}
         </button>

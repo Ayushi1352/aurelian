@@ -27,7 +27,7 @@ export default function BlogGrid({ items, perPage, buttonLabel, byLabel, paginat
       {page === 1 && featured && <BlogFeatured post={featured} buttonLabel={buttonLabel} byLabel={byLabel} />}
       <div>
         {pageItems.map((post, i) => (
-          <BlogRow key={post.slug} post={post} buttonLabel={buttonLabel} byLabel={byLabel} number={offset + i + 2} reverse={i % 2 === 1} delay={(i % 2) + 1} />
+          <BlogRow key={post.title} post={post} buttonLabel={buttonLabel} byLabel={byLabel} number={offset + i + 2} reverse={i % 2 === 1} delay={(i % 2) + 1} />
         ))}
       </div>
       <Pagination labels={paginationLabels} page={page} totalPages={totalPages} onChange={setPage} scrollTargetId={scrollTargetId} />

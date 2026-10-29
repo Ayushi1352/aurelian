@@ -5,6 +5,7 @@ import useDummySubmit from "@/components/useDummySubmit";
 import FormThankYou from "@/components/FormThankYou";
 import { InputField, TextareaField } from "@/components/FormField";
 import { ArrowRight } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 type ContactFormProps = Pick<AurelianContactFormData, "fields" | "submitLabel" | "sendingLabel" | "thankYou">;
 
@@ -13,7 +14,7 @@ export default function ContactForm({ fields, submitLabel, sendingLabel, thankYo
   const { status, name, onSubmit, dismiss, showThanks, hiding } = useDummySubmit();
 
   if (showThanks) {
-    return <FormThankYou title={thankYou.title} message={thankYou.message} closeLabel={thankYou.closeLabel} name={name} hiding={hiding} onClose={dismiss} className="min-h-[440px]" />;
+    return <FormThankYou title={thankYou.title} message={thankYou.message} closeLabel={thankYou.closeLabel} name={name} hiding={hiding} onClose={dismiss} className="min-h-[27.5rem]" />;
   }
 
   const sending = status === "sending";
@@ -28,7 +29,7 @@ export default function ContactForm({ fields, submitLabel, sendingLabel, thankYo
         <TextareaField id="message" label={fields.message.label} placeholder={fields.message.placeholder} required />
       </div>
       <div className="sm:col-span-2">
-        <button type="submit" disabled={sending} className="btn btn-primary w-full disabled:cursor-wait disabled:opacity-70 sm:w-auto">
+        <button type="submit" disabled={sending} className={`${ui.btnPrimary} w-full disabled:cursor-wait disabled:opacity-70 sm:w-auto`}>
           {sending ? sendingLabel : submitLabel}
           {!sending && <ArrowRight className="size-4" />}
         </button>

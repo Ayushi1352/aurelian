@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { AurelianTeamMember } from "@/data";
 import { SocialIcon } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 type TeamCardProps = {
   member: AurelianTeamMember;
@@ -12,7 +13,7 @@ type TeamCardProps = {
 
 /** Portrait stays black-and-white on mouse devices until hovered; always in colour on touch screens. */
 export default function TeamCard({ member, socialLabel, delay = 0 }: TeamCardProps) {
-  const href = `/our-team/${member.slug}`;
+  const { href } = member;
 
   return (
     <article data-reveal="up" data-delay={delay} className="group">
@@ -47,10 +48,10 @@ export default function TeamCard({ member, socialLabel, delay = 0 }: TeamCardPro
       </div>
       <div className="mt-5 flex items-start justify-between gap-4 border-t border-line pt-4">
         <div>
-          <Link href={href} className="block font-display text-[28px] font-semibold leading-tight text-ink transition-colors hover:text-navy lg:text-[32px]">
+          <Link href={href} className="block font-display text-[1.75rem] font-semibold leading-tight text-ink transition-colors hover:text-navy lg:text-[2rem]">
             {member.name}
           </Link>
-          <p className="label mt-2 text-[10px]! text-muted">{member.role}</p>
+          <p className={`${ui.labelSmall} mt-2 text-muted`}>{member.role}</p>
         </div>
         <span aria-hidden="true" className="mt-3 h-px w-6 shrink-0 bg-gold transition-[width] duration-500 group-hover:w-12" />
       </div>

@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState, type CSSProperties, type TouchEvent } from "react";
+import { useEffect, useRef, useState, type TouchEvent } from "react";
 import Link from "next/link";
 import type { AurelianHeroData, AurelianHeroSlide, AurelianLink } from "@/data";
 import { ArrowLeft, ArrowRight } from "@/components/Icons";
 import { Headline } from "@/components/SplitWords";
+import { ui } from "@/components/ui";
+import { introHidden, introLine } from "@/components/motion";
 
 const AUTOPLAY_MS = 6500;
 /** Horizontal finger travel (px) that counts as a swipe on touch screens. */
@@ -33,6 +35,22 @@ export default function HeroSlider({ slides, button, secondaryButton, ariaLabels
     return () => window.clearTimeout(t);
   }, [index, paused, total]);
 
+  // Time-left bar: restarts per slide and pauses on hover, like the autoplay timer.
+  const bar = useRef<HTMLSpanElement>(null);
+  const barAnimation = useRef<Animation | null>(null);
+  const pausedRef = useRef(paused);
+  useEffect(() => {
+    const animation = bar.current?.animate([{ scale: "0 1" }, { scale: "1 1" }], { duration: AUTOPLAY_MS, fill: "both" });
+    if (animation && pausedRef.current) animation.pause();
+    barAnimation.current = animation ?? null;
+    return () => animation?.cancel();
+  }, [index]);
+  useEffect(() => {
+    pausedRef.current = paused;
+    if (paused) barAnimation.current?.pause();
+    else barAnimation.current?.play();
+  }, [paused]);
+
   const go = (step: number) => setIndex((i) => (i + step + total) % total);
   const slide = slides[index];
 
@@ -54,7 +72,7 @@ export default function HeroSlider({ slides, button, secondaryButton, ariaLabels
     <section
       aria-roledescription={ariaLabels.carousel}
       aria-label={slides[0].title}
-      className="relative isolate flex h-[calc(82*var(--svh))] max-h-[860px] min-h-[560px] items-center overflow-hidden bg-navy-deep text-white"
+      className="relative isolate flex h-[82svh] max-h-[53.75rem] min-h-[35rem] items-center overflow-hidden bg-navy-deep text-white"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={onTouchStart}
@@ -77,22 +95,24 @@ export default function HeroSlider({ slides, button, secondaryButton, ariaLabels
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-navy-deep/90 via-navy-deep/60 to-navy-deep/20" />
       <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-1/3 bg-linear-to-b from-navy-deep/45 to-transparent" />
 
-      <div className="container-site pt-4">
+      <div className={`${ui.container} pt-4`}>
         {/* Re-mounted per slide so the text animates in each time */}
-        <div key={index} data-words-now className="max-w-[760px]" style={{ "--words-delay": "450ms" } as CSSProperties}>
-          <p className="flex items-center gap-4 font-sans text-[11px] font-semibold uppercase tracking-[0.3em] text-white/90 sm:text-[12px] lg:text-[13px]">
-            <span aria-hidden="true" className="h-px w-10 origin-left animate-[hero-rule_0.8s_var(--ease-out)_both] bg-gold" />
-            <span className="animate-[hero-label_1.1s_var(--ease-out)_0.2s_both]">{slide.label}</span>
+        <div key={index} data-words-now data-words-delay="450" className="max-w-[47.5rem]">
+          <p className="flex items-center gap-4 font-sans text-[0.6875rem] font-semibold uppercase tracking-[0.3em] text-white/90 sm:text-[0.75rem] lg:text-[0.8125rem]">
+            <span aria-hidden="true" data-intro="line" className={`h-px w-10 bg-gold ${introLine}`} />
+            <span data-intro="label" data-intro-delay="200" className={introHidden}>
+              {slide.label}
+            </span>
           </p>
-          <h1 className="mt-4 font-display text-[40px] font-semibold leading-[1.08] sm:text-[56px] lg:text-[72px]">
+          <h1 className="mt-4 font-display text-[2.5rem] font-semibold leading-[1.08] sm:text-[3.5rem] lg:text-[4.5rem]">
             <Headline line1={slide.title} />
           </h1>
-          <div className="mt-9 flex animate-[rise_0.9s_var(--ease-out)_0.9s_both] flex-col gap-3 xs:flex-row [&>a]:whitespace-nowrap">
-            <Link href={button.href} className="btn btn-gold">
+          <div data-intro="up" data-intro-delay="900" className={`mt-9 flex flex-col gap-3 xs:flex-row [&>a]:whitespace-nowrap ${introHidden}`}>
+            <Link href={button.href} className={ui.btnGold}>
               {button.label}
               <ArrowRight className="size-4" />
             </Link>
-            <Link href={secondaryButton.href} className="btn btn-light">
+            <Link href={secondaryButton.href} className={ui.btnLight}>
               {secondaryButton.label}
             </Link>
           </div>
@@ -101,18 +121,14 @@ export default function HeroSlider({ slides, button, secondaryButton, ariaLabels
 
       {total > 1 && (
         <div className="absolute inset-x-0 bottom-0 border-t border-white/15">
-          <div className="container-site flex h-20 items-center justify-between gap-6">
+          <div className={`${ui.container} flex h-20 items-center justify-between gap-6`}>
             <div className="flex items-center gap-5" aria-hidden="true">
-              <span className="font-display text-[22px] font-semibold leading-none text-white">{pad(index + 1)}</span>
+              <span className="font-display text-[1.375rem] font-semibold leading-none text-white">{pad(index + 1)}</span>
               {/* Time left on this slide; restarts per slide and pauses on hover */}
               <span className="relative h-px w-24 bg-white/25 sm:w-40">
-                <span
-                  key={index}
-                  className="absolute inset-0 origin-left bg-gold"
-                  style={{ animation: `grow-x ${AUTOPLAY_MS}ms linear both`, animationPlayState: paused ? "paused" : "running" }}
-                />
+                <span ref={bar} className="absolute inset-0 origin-left scale-x-0 bg-gold" />
               </span>
-              <span className="font-display text-[22px] font-semibold leading-none text-white/50">{pad(total)}</span>
+              <span className="font-display text-[1.375rem] font-semibold leading-none text-white/50">{pad(total)}</span>
             </div>
 
             <div className="hidden items-center gap-2 lg:flex">

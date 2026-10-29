@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { AurelianBlogPost } from "@/data";
 import { ArrowUpRight, Calendar, ClockIcon, UserIcon } from "@/components/Icons";
+import { ui } from "@/components/ui";
 
 type BlogRowProps = {
   post: AurelianBlogPost;
@@ -25,7 +26,7 @@ export default function BlogRow({ post, buttonLabel, byLabel, number, reverse = 
   return (
     <article data-reveal="up" data-delay={delay} className="border-b border-line py-10 first:pt-0 lg:py-14">
       <Link
-        href={`/blogs/${post.slug}`}
+        href={post.href}
         className={`group grid items-center gap-8 lg:gap-14 ${
           reverse ? "md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]" : "md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]"
         }`}
@@ -44,21 +45,21 @@ export default function BlogRow({ post, buttonLabel, byLabel, number, reverse = 
         <span className="flex items-center gap-8">
           <span className="min-w-0 flex-1">
             <span className="flex items-center gap-5">
-              <span className="font-display text-[48px] font-semibold leading-none text-gold/80 lg:text-[64px]">{String(number).padStart(2, "0")}</span>
-              <span className="label text-[10px]! text-gold">{post.category}</span>
+              <span className="font-display text-[3rem] font-semibold leading-none text-gold/80 lg:text-[4rem]">{String(number).padStart(2, "0")}</span>
+              <span className={`${ui.labelSmall} text-gold`}>{post.category}</span>
             </span>
-            <span className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[14px] sm:gap-x-0 text-muted">
+            <span className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.875rem] sm:gap-x-0 text-muted">
               {meta.map(({ icon: Icon, text }, i) => (
                 <span key={text} className={`flex items-center gap-2 ${i > 0 ? "sm:ml-4 sm:border-l sm:border-gold/50 sm:pl-4" : ""}`}>
-                  <Icon className="size-[18px] text-navy/70" />
+                  <Icon className="size-[1.125rem] text-navy/70" />
                   {text}
                 </span>
               ))}
             </span>
-            <span className="mt-4 block font-display text-[28px] font-semibold leading-[1.15] text-navy transition-colors duration-300 group-hover:text-gold sm:text-[34px] lg:text-[40px]">
+            <span className="mt-4 block font-display text-[1.75rem] font-semibold leading-[1.15] text-navy transition-colors duration-300 group-hover:text-gold sm:text-[2.125rem] lg:text-[2.5rem]">
               {post.title}
             </span>
-            <span className="mt-4 line-clamp-2 block text-[16px] leading-relaxed text-muted lg:text-[17px]">{post.excerpt}</span>
+            <span className="mt-4 line-clamp-2 block text-[1rem] leading-relaxed text-muted lg:text-[1.0625rem]">{post.excerpt}</span>
           </span>
 
           <span

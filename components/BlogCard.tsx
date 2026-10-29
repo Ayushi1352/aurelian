@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { AurelianBlogPost } from "@/data";
+import { ui } from "@/components/ui";
 
 type BlogCardProps = {
   post: AurelianBlogPost;
@@ -11,7 +12,7 @@ type BlogCardProps = {
 export default function BlogCard({ post, buttonLabel, delay = 0 }: BlogCardProps) {
   return (
     <article data-reveal="up" data-delay={delay} className="h-full">
-      <Link href={`/blogs/${post.slug}`} className="group flex h-full flex-col">
+      <Link href={post.href} className="group flex h-full flex-col">
         <span className="relative block aspect-[4/3] overflow-hidden bg-bone">
           <Image
             src={post.image.src}
@@ -24,11 +25,11 @@ export default function BlogCard({ post, buttonLabel, delay = 0 }: BlogCardProps
         </span>
         <span className="relative mt-6 flex items-center justify-between gap-4 border-t border-line pt-5">
           <span aria-hidden="true" className="absolute inset-x-0 -top-px h-px origin-left scale-x-0 bg-gold transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
-          <span className="label text-[10px]! text-gold">{post.category}</span>
-          <span className="text-[13px] text-muted">{post.date}</span>
+          <span className={`${ui.labelSmall} text-gold`}>{post.category}</span>
+          <span className="text-[0.8125rem] text-muted">{post.date}</span>
         </span>
-        <span className="mt-4 block flex-1 font-display text-[28px] font-semibold leading-[1.2] text-ink transition-colors duration-300 group-hover:text-navy lg:text-[32px]">{post.title}</span>
-        {buttonLabel && <span className="link-arrow mt-6 text-navy">{buttonLabel}</span>}
+        <span className="mt-4 block flex-1 font-display text-[1.75rem] font-semibold leading-[1.2] text-ink transition-colors duration-300 group-hover:text-navy lg:text-[2rem]">{post.title}</span>
+        {buttonLabel && <span className={`${ui.linkArrow} mt-6 text-navy`}>{buttonLabel}</span>}
       </Link>
     </article>
   );
