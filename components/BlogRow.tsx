@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { AurelianBlogPost } from "@/data";
-import { ArrowUpRight, Calendar, ClockIcon, UserIcon } from "@/components/Icons";
+import { ArrowUpRight, Calendar, UserIcon } from "@/components/Icons";
 import { ui } from "@/components/ui";
 
 type BlogRowProps = {
@@ -9,17 +9,14 @@ type BlogRowProps = {
   buttonLabel: string;
   /** Word before the author name, e.g. "By". */
   byLabel: string;
-  /** Position in the whole list, shown as a large gold "02", "03"… */
-  number: number;
   /** Puts the photo on the right, so rows alternate sides. */
   reverse?: boolean;
   delay?: number;
 };
 
-export default function BlogRow({ post, buttonLabel, byLabel, number, reverse = false, delay = 0 }: BlogRowProps) {
+export default function BlogRow({ post, buttonLabel, byLabel, reverse = false, delay = 0 }: BlogRowProps) {
   const meta = [
     { icon: UserIcon, text: [byLabel, post.author].join(" ") },
-    { icon: ClockIcon, text: post.readTime },
     { icon: Calendar, text: post.date },
   ];
 
@@ -44,10 +41,7 @@ export default function BlogRow({ post, buttonLabel, byLabel, number, reverse = 
 
         <span className="flex items-center gap-8">
           <span className="min-w-0 flex-1">
-            <span className="flex items-center gap-5">
-              <span className="font-display text-[3rem] font-semibold leading-none text-gold/80 lg:text-[4rem]">{String(number).padStart(2, "0")}</span>
-              <span className={`${ui.labelSmall} text-gold`}>{post.category}</span>
-            </span>
+            <span className={`${ui.labelSmall} block text-gold`}>{post.category}</span>
             <span className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.875rem] sm:gap-x-0 text-muted">
               {meta.map(({ icon: Icon, text }, i) => (
                 <span key={text} className={`flex items-center gap-2 ${i > 0 ? "sm:ml-4 sm:border-l sm:border-gold/50 sm:pl-4" : ""}`}>

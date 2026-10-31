@@ -56,11 +56,6 @@ export type AurelianContactFormData =
 export type AurelianNotFoundData = AurelianSections["NotFound"]["variants"]["AurelianNotFound1"];
 export type AurelianAppointmentData =
   AurelianSections["Appointment"]["variants"]["AurelianAppointment1"];
-export type AurelianPrivacyData = AurelianSections["PrivacyPolicy"]["variants"]["AurelianPrivacy1"];
-export type AurelianTermsData = AurelianSections["TermsConditions"]["variants"]["AurelianTerms1"];
-/** Shared shape of the Privacy Policy and Terms & Conditions pages. */
-export type AurelianLegalPageData = AurelianPrivacyData | AurelianTermsData;
-export type AurelianSitemapData = AurelianSections["Sitemap"]["variants"]["AurelianSitemap1"];
 
 // ── Item-level types inferred from site.json ──
 export type AurelianImage = AurelianHeroData["slides"][number]["image"];
@@ -102,9 +97,6 @@ const site = {
   contactFormSection: sec.ContactForm.variants.AurelianContactForm1,
   appointmentPage: sec.Appointment.variants.AurelianAppointment1,
   notFoundPage: sec.NotFound.variants.AurelianNotFound1,
-  privacyPage: sec.PrivacyPolicy.variants.AurelianPrivacy1,
-  termsPage: sec.TermsConditions.variants.AurelianTerms1,
-  sitemapPage: sec.Sitemap.variants.AurelianSitemap1,
 };
 
 export { site };

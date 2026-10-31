@@ -28,7 +28,7 @@ export default function PracticePreview({ data = site.practicePreviewSection, it
         />
         <div className="mt-14 grid gap-2 md:grid-cols-2 lg:mt-20 lg:grid-cols-3">
           {items.slice(0, count).map((item, i) => (
-            <PracticeCard key={item.title} item={item} index={i} buttonLabel={cardButton} delay={(i % 3) + 1} />
+            <PracticeCard key={item.title} item={item} buttonLabel={cardButton} delay={(i % 3) + 1} />
           ))}
         </div>
       </div>

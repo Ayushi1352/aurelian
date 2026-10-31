@@ -8,7 +8,7 @@ import { InputField, SelectField, TextareaField } from "@/components/FormField";
 import { ArrowRight } from "@/components/Icons";
 import { ui } from "@/components/ui";
 
-type AppointmentFormProps = Pick<AurelianAppointmentData, "fields" | "timeSlots" | "modes" | "submitLabel" | "sendingLabel" | "thankYou"> & {
+type AppointmentFormProps = Pick<AurelianAppointmentData, "fields" | "timeSlots" | "submitLabel" | "sendingLabel" | "thankYou"> & {
   /** Practice area titles for the dropdown. */
   practiceAreas: string[];
 };
@@ -20,7 +20,7 @@ function today() {
 }
 
 /** Dummy booking form: nothing is sent anywhere; a thank-you message shows and then hides itself. */
-export default function AppointmentForm({ fields, timeSlots, modes, submitLabel, sendingLabel, thankYou, practiceAreas }: AppointmentFormProps) {
+export default function AppointmentForm({ fields, timeSlots, submitLabel, sendingLabel, thankYou, practiceAreas }: AppointmentFormProps) {
   const { status, name, onSubmit, dismiss, showThanks, hiding } = useDummySubmit();
   const dateRef = useRef<HTMLInputElement>(null);
 
@@ -44,23 +44,6 @@ export default function AppointmentForm({ fields, timeSlots, modes, submitLabel,
       <InputField ref={dateRef} id="date" type="date" label={fields.date.label} required />
       <SelectField id="time" label={fields.time.label} placeholder={fields.time.placeholder} options={timeSlots} required />
 
-      <fieldset className="min-w-0 sm:col-span-2">
-        <legend className={`${ui.labelSmall} mb-3 block text-muted`}>
-          {fields.mode.label}
-          <span className="ml-1 text-gold">*</span>
-        </legend>
-        <div className="grid gap-3 xs:grid-cols-3">
-          {modes.map((mode, i) => (
-            <label
-              key={mode}
-              className="flex items-center gap-3 border border-line px-4 py-3.5 text-[0.9375rem] font-semibold text-ink transition-colors hover:border-gold has-checked:border-navy has-checked:bg-navy has-checked:text-white"
-            >
-              <input type="radio" name="mode" value={mode} defaultChecked={i === 0} required className="size-4 accent-gold" />
-              {mode}
-            </label>
-          ))}
-        </div>
-      </fieldset>
 
       <div className="sm:col-span-2">
         <TextareaField id="message" label={fields.message.label} placeholder={fields.message.placeholder} rows={3} />

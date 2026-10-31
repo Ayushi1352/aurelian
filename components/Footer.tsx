@@ -84,26 +84,13 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
                 {contact.email}
               </a>
             </p>
-            <p className="pl-8 text-white/50">{contact.hours}</p>
           </address>
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className={`${ui.container} flex flex-col gap-4 py-6 text-[0.8125rem] text-white/45 md:flex-row md:items-center md:justify-between`}>
+        <div className={`${ui.container} py-6 text-center text-[0.8125rem] text-white/45`}>
           <p>{copyright}</p>
-          <nav aria-label={footer.legalLinksLabel}>
-            <ul className="flex flex-wrap items-center gap-y-2">
-              {footer.legalLinks.map((l, i) => (
-                <li key={l.href} className="flex items-center">
-                  {i > 0 && <span aria-hidden="true" className="mx-4 h-3.5 w-px bg-white/20" />}
-                  <Link href={l.href} className={`${ui.linkLine} text-[0.875rem] text-white/65 hover:text-white`}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </div>
       </div>
     </footer>

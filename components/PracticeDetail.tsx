@@ -18,8 +18,7 @@ export default function PracticeDetail({ data = site.practiceDetailPage, item, a
   const index = allItems.findIndex((p) => p.title === item.title);
   // The next areas after this one, wrapping round to the start of the list.
   const others = Array.from({ length: Math.min(moreCount, allItems.length - 1) }, (_, i) => {
-    const at = (index + 1 + i) % allItems.length;
-    return { item: allItems[at], at };
+    return allItems[(index + 1 + i) % allItems.length];
   });
 
   return (
@@ -60,8 +59,8 @@ export default function PracticeDetail({ data = site.practiceDetailPage, item, a
         <div className={ui.container}>
           <SectionHeading label={parent.label} line1={moreLabel} />
           <div className="mt-14 grid gap-2 md:grid-cols-2 lg:mt-20 lg:grid-cols-3">
-            {others.map(({ item: p, at }, i) => (
-              <PracticeCard key={p.title} item={p} index={at} buttonLabel={cardButton} delay={i + 1} />
+            {others.map((p, i) => (
+              <PracticeCard key={p.title} item={p} buttonLabel={cardButton} delay={i + 1} />
             ))}
           </div>
         </div>

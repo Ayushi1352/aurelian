@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { site, type AurelianBlogDetailData, type AurelianBlogPost, type SectionProps } from "@/data";
 import { Eyebrow } from "@/components/SectionHeading";
-import { Calendar, Check, ClockIcon, UserIcon } from "@/components/Icons";
+import { Calendar, Check, UserIcon } from "@/components/Icons";
 import { ui } from "@/components/ui";
 
 type BlogDetailProps = SectionProps<AurelianBlogDetailData> & {
@@ -44,7 +44,6 @@ export default function BlogDetail({ data = site.blogDetailPage, post }: BlogDet
   const meta = [
     { Icon: UserIcon, text: [byLabel, post.author].join(" ") },
     { Icon: Calendar, text: post.date },
-    { Icon: ClockIcon, text: post.readTime },
   ];
 
   return (

@@ -5,7 +5,7 @@ import AppointmentForm from "@/components/AppointmentForm";
 import { ui } from "@/components/ui";
 
 export default function Appointment({ data = site.appointmentPage }: SectionProps<AurelianAppointmentData>) {
-  const { label, titleLine1, titleLine2, text, image, fields, timeSlots, modes, submitLabel, sendingLabel, thankYou } = data;
+  const { label, titleLine1, titleLine2, text, image, fields, timeSlots, submitLabel, sendingLabel, thankYou } = data;
   const practiceAreas = site.practicePage.items.map((p) => p.title);
 
   return (
@@ -22,7 +22,6 @@ export default function Appointment({ data = site.appointmentPage }: SectionProp
           <AppointmentForm
             fields={fields}
             timeSlots={timeSlots}
-            modes={modes}
             submitLabel={submitLabel}
             sendingLabel={sendingLabel}
             thankYou={thankYou}

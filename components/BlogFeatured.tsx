@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { AurelianBlogPost } from "@/data";
-import { ArrowUpRight, Calendar, ClockIcon, UserIcon } from "@/components/Icons";
+import { ArrowUpRight, Calendar, UserIcon } from "@/components/Icons";
 import { ui } from "@/components/ui";
 
 type BlogFeaturedProps = {
@@ -14,7 +14,6 @@ type BlogFeaturedProps = {
 export default function BlogFeatured({ post, buttonLabel, byLabel }: BlogFeaturedProps) {
   const meta = [
     { icon: UserIcon, text: [byLabel, post.author].join(" ") },
-    { icon: ClockIcon, text: post.readTime },
     { icon: Calendar, text: post.date },
   ];
 
@@ -33,10 +32,7 @@ export default function BlogFeatured({ post, buttonLabel, byLabel }: BlogFeature
 
         <span className="flex w-full items-end gap-8 p-6 sm:p-10 lg:p-14">
           <span className="min-w-0 flex-1">
-            <span className="flex items-center gap-5">
-              <span className="font-display text-[3.5rem] font-semibold leading-none text-gold lg:text-[4.5rem]">01</span>
-              <span className={`${ui.labelSmall} text-gold-light`}>{post.category}</span>
-            </span>
+            <span className={`${ui.labelSmall} block text-gold-light`}>{post.category}</span>
             <span className="mt-5 block max-w-[56.25rem] font-display text-[2rem] font-semibold leading-[1.1] sm:text-[2.75rem] lg:text-[3.625rem]">{post.title}</span>
             <span className="mt-4 line-clamp-2 block max-w-[42.5rem] text-[1rem] leading-relaxed text-white/75 lg:text-[1.0625rem]">{post.excerpt}</span>
             <span className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.875rem] sm:gap-x-0 text-white/70">

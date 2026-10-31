@@ -6,13 +6,11 @@ import { ui } from "@/components/ui";
 
 type PracticeCardProps = {
   item: AurelianPracticeArea;
-  /** Position in the full list, shown as 01, 02... */
-  index: number;
   buttonLabel: string;
   delay?: number;
 };
 
-export default function PracticeCard({ item, index, buttonLabel, delay = 0 }: PracticeCardProps) {
+export default function PracticeCard({ item, buttonLabel, delay = 0 }: PracticeCardProps) {
   return (
     <article data-reveal="up" data-delay={delay} className="h-full">
       <Link
@@ -29,8 +27,7 @@ export default function PracticeCard({ item, index, buttonLabel, delay = 0 }: Pr
           className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.07]"
         />
         <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-navy-deep/90 via-navy-deep/45 to-navy-deep/15" />
-        <span aria-hidden="true" className="absolute inset-x-7 top-7 flex items-center justify-between sm:inset-x-8 sm:top-8">
-          <span className={`${ui.labelSmall} text-white/80`}>{String(index + 1).padStart(2, "0")}</span>
+        <span aria-hidden="true" className="absolute inset-x-7 top-7 flex items-center justify-end sm:inset-x-8 sm:top-8">
           <span className="grid size-11 scale-75 place-items-center bg-white text-navy opacity-0 transition-[opacity,scale] duration-500 group-hover:scale-100 group-hover:opacity-100">
             <ArrowUpRight className="size-4" />
           </span>

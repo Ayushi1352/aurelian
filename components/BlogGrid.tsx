@@ -20,14 +20,13 @@ type BlogGridProps = {
 export default function BlogGrid({ items, perPage, buttonLabel, byLabel, paginationLabels, scrollTargetId }: BlogGridProps) {
   const [featured, ...rest] = items;
   const { page, setPage, totalPages, pageItems } = usePagination(rest, perPage);
-  const offset = (page - 1) * perPage;
 
   return (
     <>
       {page === 1 && featured && <BlogFeatured post={featured} buttonLabel={buttonLabel} byLabel={byLabel} />}
       <div>
         {pageItems.map((post, i) => (
-          <BlogRow key={post.title} post={post} buttonLabel={buttonLabel} byLabel={byLabel} number={offset + i + 2} reverse={i % 2 === 1} delay={(i % 2) + 1} />
+          <BlogRow key={post.title} post={post} buttonLabel={buttonLabel} byLabel={byLabel} reverse={i % 2 === 1} delay={(i % 2) + 1} />
         ))}
       </div>
       <Pagination labels={paginationLabels} page={page} totalPages={totalPages} onChange={setPage} scrollTargetId={scrollTargetId} />

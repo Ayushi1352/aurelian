@@ -19,10 +19,7 @@ export default function CoreValues({ data = site.valuesSection }: SectionProps<A
               className={`group relative border-b border-line px-1 py-10 sm:px-8 lg:border-b-0 lg:py-12 ${i % 2 === 1 ? "sm:border-l" : ""} ${i > 0 ? "lg:border-l" : ""}`}
             >
               <span aria-hidden="true" className="absolute inset-x-0 -top-px h-px origin-left scale-x-0 bg-gold transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
-              <span className="flex items-center justify-between">
-                <span className={`${ui.labelSmall} text-gold`}>{String(i + 1).padStart(2, "0")}</span>
-                <FeatureIcon name={v.icon} className="size-7 text-navy" />
-              </span>
+              <FeatureIcon name={v.icon} className="size-14 text-navy lg:size-16" />
               <h3 className="mt-10 font-display text-[2rem] font-semibold leading-tight text-ink lg:text-[2.375rem]">
                 {v.title}
                 <span className="text-gold">.</span>

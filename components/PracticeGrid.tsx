@@ -15,13 +15,12 @@ type PracticeGridProps = {
 
 export default function PracticeGrid({ items, perPage, buttonLabel, paginationLabels, scrollTargetId }: PracticeGridProps) {
   const { page, setPage, totalPages, pageItems } = usePagination(items, perPage);
-  const offset = (page - 1) * perPage;
 
   return (
     <>
       <div className="mt-14 grid gap-2 md:grid-cols-2 lg:mt-20 lg:grid-cols-3">
         {pageItems.map((item, i) => (
-          <PracticeCard key={item.title} item={item} index={offset + i} buttonLabel={buttonLabel} delay={(i % 3) + 1} />
+          <PracticeCard key={item.title} item={item} buttonLabel={buttonLabel} delay={(i % 3) + 1} />
         ))}
       </div>
       <Pagination labels={paginationLabels} page={page} totalPages={totalPages} onChange={setPage} scrollTargetId={scrollTargetId} />
