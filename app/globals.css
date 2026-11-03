@@ -1,7 +1,17 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  /* Brand colours. These are only defaults: site.json (theme.colors) overrides them in app/layout.tsx. */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --font-primary: sans-serif;
+  --font-heading: serif;
+
+  /* Aurelian theme */
+  --color-white: #ffffff;
   --color-navy: #14213d;
   --color-navy-dark: #0f1a31;
   --color-navy-deep: #0a1222;
@@ -11,25 +21,38 @@
   --color-gold-light: #dcc394;
   --color-gold-pale: #f1e9d8;
 
+  /* Text and hairlines */
   --color-ink: #121a2b;
   --color-body: #4f5566;
   --color-muted: #868b97;
   --color-line: #e3e0d9;
 
+  /* Light section backgrounds */
   --color-mist: #f5f3ee;
   --color-ivory: #faf9f6;
   --color-bone: #efece4;
   /* Shown on both sides of the page when the screen is wider than 1920px (or the browser is zoomed out). */
   --color-page: #f5f5f5;
+}
 
-  /* Fonts from site.json (theme.fonts) via app/fonts.generated.ts; the second part is the fallback. */
-  --font-display: var(--font-display-face, Georgia, serif);
-  --font-sans: var(--font-sans-face, Arial, sans-serif);
+body {
+  font-family: var(--font-primary);
+  color: var(--color-ink);
+  background-color: var(--color-page);
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
 
-  /* Easing for hovers and scroll animations (ease-smooth, ease-curtain). */
-  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-curtain: cubic-bezier(0.77, 0, 0.18, 1);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
 
-  --breakpoint-xs: 480px;
-  --breakpoint-3xl: 1800px;
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-white);
 }

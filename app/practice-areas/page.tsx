@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
-import PracticeAreas from "@/components/PracticeAreas";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import CallToAction from "@/components/CallToAction";
-import { site } from "@/data";
+import rawData from "@/data/templates.json";
+import type { LawTemplateData } from "@/types/templates.types";
+import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { PracticeAreas } from "@/components/sections/PracticeAreas";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { Cta } from "@/components/sections/Cta";
 
-export const metadata: Metadata = { title: site.practicePage.bannerTitle };
+const templateData: LawTemplateData = rawData;
+const sectionData = templateData.categories.Law.sections;
+const commonData = templateData.common;
+
+export const metadata: Metadata = { ...commonData.practiceAreasBreadcrumb?.seo };
 
 export default function PracticeAreasPage() {
-  const { bannerTitle, bannerImage } = site.practicePage;
-
   return (
-    <>
-      <PageBanner data={site.pageBanner} title={bannerTitle} image={bannerImage} />
-      <PracticeAreas data={site.practicePage} />
-      <WhyChooseUs data={site.whyChooseUsSection} />
-      <CallToAction data={site.ctaSection} />
-    </>
+    <main className="flex-1">
+      <Breadcrumb data={commonData.practiceAreasBreadcrumb} ui={commonData.globalUI} />
+      <PracticeAreas data={sectionData.PracticeAreas?.variants?.LawPracticeAreas1} ui={commonData.globalUI} />
+      <WhyChooseUs data={sectionData.WhyChooseUs?.variants?.LawWhyChooseUs1} />
+      <Cta data={sectionData.Cta?.variants?.LawCta1} />
+    </main>
   );
 }

@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
-import BlogListing from "@/components/BlogListing";
-import { site } from "@/data";
+import rawData from "@/data/templates.json";
+import type { LawTemplateData } from "@/types/templates.types";
+import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { Blogs } from "@/components/sections/Blogs";
 
-export const metadata: Metadata = { title: site.blogPage.bannerTitle };
+const templateData: LawTemplateData = rawData;
+const sectionData = templateData.categories.Law.sections;
+const commonData = templateData.common;
+
+export const metadata: Metadata = { ...commonData.blogsBreadcrumb?.seo };
 
 export default function BlogsPage() {
-  const { bannerTitle, bannerImage } = site.blogPage;
-
   return (
-    <>
-      <PageBanner data={site.pageBanner} title={bannerTitle} image={bannerImage} />
-      <BlogListing data={site.blogPage} />
-    </>
+    <main className="flex-1">
+      <Breadcrumb data={commonData.blogsBreadcrumb} ui={commonData.globalUI} />
+      <Blogs data={sectionData.Blogs?.variants?.LawBlogs1} ui={commonData.globalUI} />
+    </main>
   );
 }

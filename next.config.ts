@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   experimental: {
     agentFeedback: true,
+    agentUpgrade: "security",
   },
   cacheComponents: true,
   partialPrefetching: true,
@@ -13,14 +14,6 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1600, 1920, 2560],
     // Optimised images stay cached for 31 days.
     minimumCacheTTL: 2678400,
-  },
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
   },
 };
 

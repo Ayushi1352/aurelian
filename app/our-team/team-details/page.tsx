@@ -1,22 +1,25 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
-import TeamProfile from "@/components/TeamProfile";
-import CallToAction from "@/components/CallToAction";
-import { site } from "@/data";
+import rawData from "@/data/templates.json";
+import type { LawTemplateData } from "@/types/templates.types";
+import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { TeamProfile } from "@/components/sections/TeamProfile";
+import { Cta } from "@/components/sections/Cta";
 
+const templateData: LawTemplateData = rawData;
+const sectionData = templateData.categories.Law.sections;
+const commonData = templateData.common;
 // One common detail page for every team member: all team links point here and it shows the first member.
-// The banner and breadcrumb carry the common page title from site.json, not the member's name.
-const member = site.teamPage.items[0];
-const { bannerTitle, parent } = site.teamDetailPage;
+// The banner and breadcrumb carry the common page title from templates.json, not the member's name.
+const member = sectionData.Team?.variants?.LawTeam1?.items[0];
 
-export const metadata: Metadata = { title: bannerTitle };
+export const metadata: Metadata = { ...commonData.teamDetailBreadcrumb?.seo };
 
-export default function TeamDetailPage() {
+export default function TeamDetailsPage() {
   return (
-    <>
-      <PageBanner data={site.pageBanner} title={bannerTitle} image={site.teamPage.bannerImage} parent={parent} />
-      <TeamProfile data={site.teamDetailPage} member={member} />
-      <CallToAction data={site.ctaSection} />
-    </>
+    <main className="flex-1">
+      <Breadcrumb data={commonData.teamDetailBreadcrumb} ui={commonData.globalUI} />
+      <TeamProfile data={sectionData.TeamDetail?.variants?.LawTeamDetail1} member={member} ui={commonData.globalUI} />
+      <Cta data={sectionData.Cta?.variants?.LawCta1} />
+    </main>
   );
 }

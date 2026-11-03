@@ -1,0 +1,1983 @@
+{
+  "common": {
+    "theme": {
+      "fonts": {
+        "primary": "var(--font-nunito-sans), Arial, sans-serif",
+        "heading": "var(--font-cormorant-infant), Georgia, serif"
+      }
+    },
+    "metadata": {
+      "title": "Aurelian Legal | Legal Advocates & Consultants",
+      "siteName": "Aurelian Legal",
+      "description": "Aurelian Legal is a full-service law firm offering dispute resolution, criminal defence, corporate, employment, IP, immigration and family law advice to individuals and businesses.",
+      "icon": "/icon.png",
+      "lang": "en"
+    },
+    "company": {
+      "name": "Aurelian Legal",
+      "logo": "/images/logo/aurelian-logo.webp",
+      "logoLight": "/images/logo/aurelian-logo-light.webp",
+      "logoAlt": "Aurelian Legal Advocates",
+      "logoWidth": 1383,
+      "logoHeight": 312,
+      "phone": "+1 0000000000",
+      "email": "info@xyz.com",
+      "address": [
+        "245 Park Avenue, Suite 1200,",
+        "New York, NY 10167, USA"
+      ],
+      "socialLinks": [
+        {
+          "id": "facebook",
+          "label": "Facebook",
+          "icon": "FaFacebookF",
+          "url": "https://www.facebook.com/"
+        },
+        {
+          "id": "instagram",
+          "label": "Instagram",
+          "icon": "FaInstagram",
+          "url": "https://www.instagram.com/"
+        },
+        {
+          "id": "linkedin",
+          "label": "LinkedIn",
+          "icon": "FaLinkedinIn",
+          "url": "https://www.linkedin.com/"
+        },
+        {
+          "id": "x",
+          "label": "X (Twitter)",
+          "icon": "FaXTwitter",
+          "url": "https://x.com/"
+        },
+        {
+          "id": "youtube",
+          "label": "YouTube",
+          "icon": "FaYoutube",
+          "url": "https://www.youtube.com/"
+        }
+      ],
+      "mapEmbedUrl": "https://maps.google.com/maps?q={query}&z=16&output=embed",
+      "mapOpenUrl": "https://www.google.com/maps/search/?api=1&query={query}"
+    },
+    "globalUI": {
+      "mainNav": "Main navigation",
+      "mobileNav": "Mobile navigation",
+      "menu": "Menu",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "breadcrumb": "Breadcrumb",
+      "carousel": "carousel",
+      "previousSlide": "Previous slide",
+      "nextSlide": "Next slide",
+      "slide": "Slide {n}",
+      "pagination": "Pagination",
+      "previousPage": "Previous page",
+      "nextPage": "Next page",
+      "page": "Page {n}",
+      "socialProfile": "{name} on {platform}",
+      "closeMessage": "Close message"
+    },
+    "aboutBreadcrumb": {
+      "title": "About Us",
+      "image": "/images/banner/about-office-corridor.webp",
+      "imageAlt": "Bright modern corridor in the Aurelian office",
+      "seo": {
+        "title": "About Us",
+        "description": "Aurelian Legal has stood beside individuals, families and businesses since 2001 - forty advocates with one standard of care."
+      },
+      "paths": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "about-us",
+          "label": "About Us",
+          "url": ""
+        }
+      ]
+    },
+    "practiceAreasBreadcrumb": {
+      "title": "Practice Areas",
+      "image": "/images/banner/practice-library-hall.webp",
+      "imageAlt": "A long, arched library hall lined with law books",
+      "seo": {
+        "title": "Practice Areas",
+        "description": "Dispute resolution, criminal defence, corporate, family, property and more - specialist counsel across nine practice areas."
+      },
+      "paths": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "practice-areas",
+          "label": "Practice Areas",
+          "url": ""
+        }
+      ]
+    },
+    "practiceDetailBreadcrumb": {
+      "title": "Practice Details",
+      "image": "/images/banner/practice-library-hall.webp",
+      "imageAlt": "A long, arched library hall lined with law books",
+      "seo": {
+        "title": "Practice Details",
+        "description": "How our advocates help in this practice area, from first advice to final result."
+      },
+      "paths": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "practice-areas",
+          "label": "Practice Areas",
+          "url": "/practice-areas"
+        },
+        {
+          "id": "practice-details",
+          "label": "Practice Details",
+          "url": ""
+        }
+      ]
+    },
+    "teamBreadcrumb": {
+      "title": "Our Team",
+      "image": "/images/banner/team-meeting.webp",
+      "imageAlt": "Aurelian team in a meeting",
+      "seo": {
+        "title": "Our Team",
+        "description": "Meet the partners and associates of Aurelian Legal who will stand beside you."
+      },
+      "paths": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "our-team",
+          "label": "Our Team",
+          "url": ""
+        }
+      ]
+    },
+    "teamDetailBreadcrumb": {
+      "title": "Team Details",
+      "image": "/images/banner/team-meeting.webp",
+      "imageAlt": "Aurelian team in a meeting",
+      "seo": {
+        "title": "Team Details",
+        "description": "The experience, expertise and languages of an Aurelian Legal advocate."
+      },
+      "paths": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "our-team",
+          "label": "Our Team",
+          "url": "/our-team"
+        },
+        {
+          "id": "team-details",
+          "label": "Team Details",
+          "url": ""
+        }
+      ]
+    },
+    "blogsBreadcrumb": {
+      "title": "Blogs",
+      "image": "/images/banner/blogs-bookshelves.webp",
+      "imageAlt": "Rows of law books in a library",
+      "seo": {
+        "title": "Blogs",
+        "description": "Guides and legal updates from the advocates of Aurelian Legal."
+      },
+      "paths": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "blogs",
+          "label": "Blogs",
+          "url": ""
+        }
+      ]
+    },
+    "blogDetailBreadcrumb": {
+      "title": "Blog Details",
+      "image": "/images/banner/blogs-bookshelves.webp",
+      "imageAlt": "Rows of law books in a library",
+      "seo": {
+        "title": "Blog Details",
+        "description": "A guide from the legal desk of Aurelian Legal."
+      },
+      "paths": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "blogs",
+          "label": "Blogs",
+          "url": "/blogs"
+        },
+        {
+          "id": "blog-details",
+          "label": "Blog Details",
+          "url": ""
+        }
+      ]
+    },
+    "contactBreadcrumb": {
+      "title": "Contact Us",
+      "image": "/images/banner/contact-law-offices-banner.webp",
+      "imageAlt": "Bronze Law Offices lettering above an arched office entrance",
+      "seo": {
+        "title": "Contact Us",
+        "description": "Visit, call or write to Aurelian Legal - we respond within one business day."
+      },
+      "paths": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "contact-us",
+          "label": "Contact Us",
+          "url": ""
+        }
+      ]
+    },
+    "appointmentBreadcrumb": {
+      "title": "Book Appointment",
+      "image": "/images/banner/appointment-signing.webp",
+      "imageAlt": "A client signing a legal document",
+      "seo": {
+        "title": "Book Appointment",
+        "description": "Book a consultation with Aurelian Legal - a senior lawyer reviews your details before you meet."
+      },
+      "paths": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "book-appointment",
+          "label": "Book Appointment",
+          "url": ""
+        }
+      ]
+    },
+    "notFound": {
+      "seo": {
+        "title": "Page Not Found",
+        "description": "The page you are looking for may have been moved or no longer exists."
+      },
+      "code": "404",
+      "title": "Page Not Found",
+      "description": "The page you are looking for may have been moved or no longer exists.",
+      "buttonText": "Back to Home",
+      "buttonUrl": "/"
+    },
+    "Footer": {
+      "description": "A full-service law firm giving steadfast counsel to individuals, families and businesses since 2001.",
+      "socialsTitle": "Follow Us",
+      "socials": [
+        "facebook",
+        "instagram",
+        "linkedin",
+        "x",
+        "youtube"
+      ],
+      "quickLinksTitle": "Quick Links",
+      "quickLinks": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "id": "about-us",
+          "label": "About Us",
+          "url": "/about-us"
+        },
+        {
+          "id": "practice-areas",
+          "label": "Practice Areas",
+          "url": "/practice-areas"
+        },
+        {
+          "id": "our-team",
+          "label": "Our Team",
+          "url": "/our-team"
+        },
+        {
+          "id": "blogs",
+          "label": "Blogs",
+          "url": "/blogs"
+        },
+        {
+          "id": "contact-us",
+          "label": "Contact Us",
+          "url": "/contact-us"
+        }
+      ],
+      "contactTitle": "Contact",
+      "copyrightText": "© {year} Aurelian Legal. All Rights Reserved. Powered by Lestow."
+    }
+  },
+  "categories": {
+    "Law": {
+      "sections": {
+        "Header": {
+          "variants": {
+            "LawHeader1": {
+              "topbarNote": "Free first consultation for new clients",
+              "nav": [
+                {
+                  "id": "home",
+                  "label": "Home",
+                  "url": "/"
+                },
+                {
+                  "id": "about-us",
+                  "label": "About Us",
+                  "url": "/about-us"
+                },
+                {
+                  "id": "practice-areas",
+                  "label": "Practice Areas",
+                  "url": "/practice-areas"
+                },
+                {
+                  "id": "our-team",
+                  "label": "Our Team",
+                  "url": "/our-team"
+                },
+                {
+                  "id": "blogs",
+                  "label": "Blogs",
+                  "url": "/blogs"
+                },
+                {
+                  "id": "contact-us",
+                  "label": "Contact Us",
+                  "url": "/contact-us"
+                }
+              ],
+              "buttonText": "Book Appointment",
+              "buttonUrl": "/book-appointment"
+            }
+          }
+        },
+        "Hero": {
+          "variants": {
+            "LawHero1": {
+              "slides": [
+                {
+                  "id": "justice-with-integrity",
+                  "label": "Aurelian Legal",
+                  "title": "Justice With Integrity",
+                  "image": "/images/home/hero-lady-justice-bronze.webp",
+                  "imageAlt": "Bronze statue of Lady Justice holding the scales and a sword"
+                },
+                {
+                  "id": "we-stand-by-you",
+                  "label": "Trusted Advocates",
+                  "title": "We Stand By You",
+                  "image": "/images/home/hero-gavel.webp",
+                  "imageAlt": "A judge's wooden gavel on a dark desk"
+                },
+                {
+                  "id": "your-rights-protected",
+                  "label": "Clear Legal Counsel",
+                  "title": "Your Rights, Protected",
+                  "image": "/images/home/hero-courtroom.webp",
+                  "imageAlt": "A wood-panelled courtroom"
+                }
+              ],
+              "buttonText": "Book Appointment",
+              "buttonUrl": "/book-appointment",
+              "secondaryButtonText": "Practice Areas",
+              "secondaryButtonUrl": "/practice-areas"
+            }
+          }
+        },
+        "AboutIntro": {
+          "variants": {
+            "LawAboutIntro1": {
+              "label": "About Aurelian",
+              "titleLine1": "A passion to excel,",
+              "titleLine2": "a promise to protect.",
+              "text": "Forty advocates, one promise - personal attention on every matter.",
+              "buttonText": "More About Us",
+              "buttonUrl": "/about-us",
+              "image": "/images/home/about-team-meeting.webp",
+              "imageAlt": "Aurelian advocates working together at a conference table",
+              "highlight": {
+                "value": "25+",
+                "label": "Years of trusted practice"
+              }
+            }
+          }
+        },
+        "FounderMessage": {
+          "variants": {
+            "LawFounderMessage1": {
+              "label": "A Word From Our Founder",
+              "quote": "We never stop until we win.",
+              "buttonText": "View Profile",
+              "image": "/images/home/founder.webp",
+              "imageAlt": "Rajesh Malhotra, founder of Aurelian Legal, at his desk"
+            }
+          }
+        },
+        "PracticePreview": {
+          "variants": {
+            "LawPracticePreview1": {
+              "label": "Practice Areas",
+              "titleLine1": "Expertise built",
+              "titleLine2": "around you",
+              "text": "Specialist counsel for individuals, families and businesses.",
+              "count": 6,
+              "buttonText": "All Practice Areas",
+              "buttonUrl": "/practice-areas",
+              "cardButton": "Read More"
+            }
+          }
+        },
+        "PracticeAreas": {
+          "variants": {
+            "LawPracticeAreas1": {
+              "label": "What We Do",
+              "titleLine1": "Comprehensive",
+              "titleLine2": "legal services",
+              "text": "Nine practice areas, one standard of care.",
+              "perPage": 6,
+              "cardButton": "Explore",
+              "items": [
+                {
+                  "id": "dispute-resolution",
+                  "title": "Dispute Resolution",
+                  "subtitle": "Litigation & Arbitration",
+                  "url": "/practice-areas/practice-details",
+                  "icon": "LuGavel",
+                  "excerpt": "Litigation, arbitration and mediation - from first advice to final appeal.",
+                  "image": "/images/practice/dispute-resolution.webp",
+                  "imageAlt": "Wooden judge's gavel on a dark desk",
+                  "tileImage": "/images/practice/dispute-resolution-tile.webp",
+                  "overview": "Disputes are costly, stressful and distracting. Our dispute resolution team helps you choose the right forum - negotiation, mediation, arbitration or court - and builds a strategy around your commercial goals.",
+                  "services": [
+                    "Commercial and civil litigation",
+                    "Domestic and international arbitration",
+                    "Mediation and settlement negotiation",
+                    "Injunctions and urgent relief"
+                  ]
+                },
+                {
+                  "id": "criminal-defence",
+                  "title": "Criminal Defence",
+                  "subtitle": "Conventional & Economic Offences",
+                  "url": "/practice-areas/practice-details",
+                  "icon": "LuShieldCheck",
+                  "excerpt": "Robust defence from investigation to trial.",
+                  "image": "/images/practice/criminal-defence.webp",
+                  "imageAlt": "Hands held behind a man's back, in black and white",
+                  "tileImage": "/images/practice/criminal-defence-tile.webp",
+                  "overview": "A criminal allegation can threaten your liberty, career and reputation. Our defence lawyers act immediately - from the police station to trial - to protect your rights at every stage.",
+                  "services": [
+                    "Bail and anticipatory bail applications",
+                    "Representation during police interviews",
+                    "White-collar and economic offences",
+                    "Fraud and financial crime defence"
+                  ]
+                },
+                {
+                  "id": "corporate-and-contracts",
+                  "title": "Corporate & Contracts",
+                  "subtitle": "Contracting & Transaction Law",
+                  "url": "/practice-areas/practice-details",
+                  "icon": "LuBriefcase",
+                  "excerpt": "Contracts and deals that protect your business.",
+                  "image": "/images/practice/corporate-contracts.webp",
+                  "imageAlt": "Business person signing a contract",
+                  "tileImage": "/images/practice/corporate-contracts-tile.webp",
+                  "overview": "Well-drafted contracts prevent disputes before they start. We draft, review and negotiate agreements that reflect the deal you actually made and protect you if things go wrong.",
+                  "services": [
+                    "Commercial contract drafting and review",
+                    "Mergers and acquisitions",
+                    "Joint ventures and partnerships",
+                    "Shareholder and founder agreements"
+                  ]
+                },
+                {
+                  "id": "insolvency-and-bankruptcy",
+                  "title": "Insolvency & Bankruptcy",
+                  "subtitle": "Restructuring & Recovery",
+                  "url": "/practice-areas/practice-details",
+                  "icon": "LuTrendingUp",
+                  "excerpt": "Restructuring, recovery and insolvency advice.",
+                  "image": "/images/practice/insolvency.webp",
+                  "imageAlt": "Indian rupee banknotes",
+                  "tileImage": "/images/practice/insolvency-tile.webp",
+                  "overview": "Financial distress calls for fast, clear decisions. We advise companies and directors on restructuring options and help creditors recover what they are owed.",
+                  "services": [
+                    "Corporate restructuring and workouts",
+                    "Creditor debt recovery",
+                    "Insolvency proceedings representation",
+                    "Director duties and liability advice"
+                  ]
+                },
+                {
+                  "id": "employment-and-labour-law",
+                  "title": "Employment & Labour Law",
+                  "subtitle": "Employers & Employees",
+                  "url": "/practice-areas/practice-details",
+                  "icon": "LuUsers",
+                  "excerpt": "Workplace advice for employers and employees.",
+                  "image": "/images/practice/employment-law.webp",
+                  "imageAlt": "A lawyer reviewing an employment document with a client",
+                  "tileImage": "/images/practice/employment-law-tile.webp",
+                  "overview": "Employment relationships are governed by fast-changing laws. We help employers build compliant policies and help employees enforce their rights.",
+                  "services": [
+                    "Employment contracts and handbooks",
+                    "Wrongful termination claims",
+                    "Discrimination and harassment matters",
+                    "Executive severance negotiations"
+                  ]
+                },
+                {
+                  "id": "intellectual-property",
+                  "title": "Intellectual Property",
+                  "subtitle": "Trademark, Copyright & Data",
+                  "url": "/practice-areas/practice-details",
+                  "icon": "LuLightbulb",
+                  "excerpt": "Protect your brand, ideas and data.",
+                  "image": "/images/practice/intellectual-property.webp",
+                  "imageAlt": "Hands typing on a laptop keyboard",
+                  "tileImage": "/images/practice/intellectual-property-tile.webp",
+                  "overview": "Your ideas and brand are often your most valuable assets. We help you register, license and defend trademarks, copyrights, patents and trade secrets.",
+                  "services": [
+                    "Trademark search and registration",
+                    "Copyright protection and licensing",
+                    "Patent strategy support",
+                    "IP infringement litigation"
+                  ]
+                },
+                {
+                  "id": "immigration-law",
+                  "title": "Immigration Law",
+                  "subtitle": "Visas & Business Establishment",
+                  "url": "/practice-areas/practice-details",
+                  "icon": "LuGlobe",
+                  "excerpt": "Visas, residency and business set-up.",
+                  "image": "/images/practice/immigration.webp",
+                  "imageAlt": "A navy passport resting on a boarding pass",
+                  "tileImage": "/images/practice/immigration-tile.webp",
+                  "overview": "Immigration processes are detailed and unforgiving of mistakes. We prepare complete, well-evidenced applications that give you the best chance of success first time.",
+                  "services": [
+                    "Work and business visas",
+                    "Family and spousal visas",
+                    "Permanent residency applications",
+                    "Citizenship and naturalisation"
+                  ]
+                },
+                {
+                  "id": "family-and-private-client",
+                  "title": "Family & Private Client",
+                  "subtitle": "Families, Wills & Estates",
+                  "url": "/practice-areas/practice-details",
+                  "icon": "LuHouse",
+                  "excerpt": "Divorce, custody, wills and estates.",
+                  "image": "/images/practice/family-private-client.webp",
+                  "imageAlt": "A happy Indian family of four",
+                  "tileImage": "/images/practice/family-private-client-tile.webp",
+                  "overview": "Family matters are personal. We combine legal skill with empathy to help you through separation, custody arrangements and financial settlements.",
+                  "services": [
+                    "Divorce and separation",
+                    "Child custody and support",
+                    "Prenuptial agreements",
+                    "Wills and trusts"
+                  ]
+                },
+                {
+                  "id": "start-up-advisory",
+                  "title": "Start-up Advisory",
+                  "subtitle": "Founders & Emerging Companies",
+                  "url": "/practice-areas/practice-details",
+                  "icon": "LuRocket",
+                  "excerpt": "Legal foundations for ambitious founders.",
+                  "image": "/images/practice/startup-advisory.webp",
+                  "imageAlt": "Two young founders discussing plans over a laptop",
+                  "tileImage": "/images/practice/startup-advisory-tile.webp",
+                  "overview": "Getting the legal foundations right early saves founders time and money later. We help you incorporate, split equity fairly and protect your IP from day one.",
+                  "services": [
+                    "Company incorporation",
+                    "Founder and shareholder agreements",
+                    "Seed and venture fundraising",
+                    "Employee stock option plans"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "PracticeDetail": {
+          "variants": {
+            "LawPracticeDetail1": {
+              "overviewLabel": "Overview",
+              "servicesLabel": "How We Help",
+              "moreLabel": "Practice Areas",
+              "moreTitle": "Other Practice Areas",
+              "moreCount": 3,
+              "cardButton": "Explore"
+            }
+          }
+        },
+        "Stats": {
+          "variants": {
+            "LawStats1": {
+              "label": "Our Record",
+              "items": [
+                {
+                  "id": "cases-won",
+                  "value": 1200,
+                  "suffix": "+",
+                  "label": "Cases won"
+                },
+                {
+                  "id": "client-satisfaction",
+                  "value": 98,
+                  "suffix": "%",
+                  "label": "Client satisfaction"
+                },
+                {
+                  "id": "years-of-experience",
+                  "value": 25,
+                  "suffix": "+",
+                  "label": "Years of experience"
+                },
+                {
+                  "id": "legal-experts",
+                  "value": 40,
+                  "suffix": "+",
+                  "label": "Legal experts"
+                }
+              ],
+              "image": "/images/home/stats-reflection.webp",
+              "imageAlt": ""
+            }
+          }
+        },
+        "BlogPreview": {
+          "variants": {
+            "LawBlogPreview1": {
+              "label": "Insights",
+              "titleLine1": "From our",
+              "titleLine2": "legal desk",
+              "text": "Guides and updates from our advocates.",
+              "count": 3,
+              "buttonText": "All Blogs",
+              "buttonUrl": "/blogs"
+            }
+          }
+        },
+        "Blogs": {
+          "variants": {
+            "LawBlogs1": {
+              "perPage": 4,
+              "cardButton": "Read",
+              "byLabel": "By",
+              "items": [
+                {
+                  "id": "know-your-rights-when-you-are-arrested",
+                  "title": "Know Your Rights When You Are Arrested",
+                  "url": "/blogs/blog-details",
+                  "category": "Criminal Law",
+                  "date": "October 08, 2026",
+                  "author": "Vikram Singh",
+                  "image": "/images/blog/know-your-rights-dark.webp",
+                  "imageAlt": "Bronze statue of Lady Justice with scales in low light",
+                  "excerpt": "An arrest is frightening. Knowing a few key rights can protect you from mistakes that are hard to undo later.",
+                  "content": [
+                    {
+                      "type": "p",
+                      "text": "Being arrested is one of the most stressful experiences a person can face. In the moment, it is easy to say or do something that harms your defence later. Knowing your basic rights helps you stay calm and protected."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "1. You have the right to remain silent"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Apart from confirming your identity, you do not have to answer questions. Politely say that you wish to remain silent and want to speak to a lawyer."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "2. You have the right to a lawyer"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Ask for a lawyer immediately and do not discuss the case until one is present. A lawyer can attend interviews and advise you on bail."
+                    },
+                    {
+                      "type": "quote",
+                      "text": "The most important call you make after an arrest is to your lawyer - before you say anything else."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "3. Do not consent to searches"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Unless officers have a warrant or another lawful basis, you can decline consent to a search. Do not physically resist - simply state that you do not consent."
+                    },
+                    {
+                      "type": "list",
+                      "items": [
+                        "Stay calm and polite",
+                        "Do not resist or argue",
+                        "Remember names and badge numbers",
+                        "Write down everything as soon as you can"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "preparing-for-your-first-court-hearing",
+                  "title": "Preparing for Your First Court Hearing",
+                  "url": "/blogs/blog-details",
+                  "category": "Litigation",
+                  "date": "September 26, 2026",
+                  "author": "Priya Sharma",
+                  "image": "/images/blog/court-hearing-gavel-dark.webp",
+                  "imageAlt": "Wooden gavel and sound block on a dark background",
+                  "excerpt": "What to bring, what to wear and what to expect - a simple checklist for your first day in court.",
+                  "content": [
+                    {
+                      "type": "p",
+                      "text": "Your first court hearing can feel intimidating, but good preparation makes a big difference to both your confidence and the outcome."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Before the hearing"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Review your documents with your lawyer, confirm the time and courtroom, and plan to arrive at least 30 minutes early."
+                    },
+                    {
+                      "type": "list",
+                      "items": [
+                        "Copies of all key documents",
+                        "Photo identification",
+                        "A notepad and pen",
+                        "Your lawyer's contact number"
+                      ]
+                    },
+                    {
+                      "type": "h2",
+                      "text": "In the courtroom"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Dress smartly, switch off your phone, stand when the judge enters and address the judge respectfully. Let your lawyer do the talking unless you are asked to speak."
+                    },
+                    {
+                      "type": "quote",
+                      "text": "Judges notice preparation and respect - both start long before you enter the courtroom."
+                    }
+                  ]
+                },
+                {
+                  "id": "five-clauses-every-business-contract-needs",
+                  "title": "Five Clauses Every Business Contract Needs",
+                  "url": "/blogs/blog-details",
+                  "category": "Corporate",
+                  "date": "September 14, 2026",
+                  "author": "Anjali Mehta",
+                  "image": "/images/blog/business-contracts-files.webp",
+                  "imageAlt": "Shelves of labelled business files",
+                  "excerpt": "Many disputes start with a missing clause. These five provisions protect your business when things go wrong.",
+                  "content": [
+                    {
+                      "type": "p",
+                      "text": "A contract is only as strong as its weakest clause. Here are five provisions we recommend in almost every commercial agreement."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "1. Clear scope of work"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Describe exactly what is being delivered, by when and to what standard. Vague scope is the number one cause of disputes."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "2. Payment terms"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Set out amounts, due dates, interest on late payment and what happens if payment is withheld."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "3. Limitation of liability"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Cap the amount each party can claim and exclude losses you cannot control."
+                    },
+                    {
+                      "type": "list",
+                      "items": [
+                        "Termination rights",
+                        "Dispute resolution and governing law",
+                        "Confidentiality",
+                        "Intellectual property ownership"
+                      ]
+                    },
+                    {
+                      "type": "quote",
+                      "text": "The best time to agree how a dispute will be resolved is before the dispute exists."
+                    }
+                  ]
+                },
+                {
+                  "id": "when-should-you-settle-a-legal-dispute",
+                  "title": "When Should You Settle a Legal Dispute?",
+                  "url": "/blogs/blog-details",
+                  "category": "Dispute Resolution",
+                  "date": "August 30, 2026",
+                  "author": "Priya Sharma",
+                  "image": "/images/blog/settlement-negotiation.webp",
+                  "imageAlt": "Two business people shaking hands",
+                  "excerpt": "Settlement is not surrender. Here is how to weigh the costs, risks and benefits of resolving a dispute early.",
+                  "content": [
+                    {
+                      "type": "p",
+                      "text": "Most legal disputes never reach a final judgment - they settle. Knowing when and how to settle can save you significant time, money and stress."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Weigh the real cost of going to trial"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Consider legal fees, management time, reputational impact and the risk of losing. A good settlement often beats an uncertain win."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Use mediation"
+                    },
+                    {
+                      "type": "p",
+                      "text": "A neutral mediator can help both sides find common ground, often in a single day."
+                    },
+                    {
+                      "type": "quote",
+                      "text": "A fair settlement today is often worth more than a perfect judgment three years from now."
+                    }
+                  ]
+                },
+                {
+                  "id": "how-thorough-legal-research-wins-cases",
+                  "title": "How Thorough Legal Research Wins Cases",
+                  "url": "/blogs/blog-details",
+                  "category": "Litigation",
+                  "date": "August 18, 2026",
+                  "author": "Rajesh Malhotra",
+                  "image": "/images/blog/legal-research.webp",
+                  "imageAlt": "Warm-lit shelves of old law books",
+                  "excerpt": "Behind every winning argument is hours of careful research. Here is how we prepare - and why it matters to you.",
+                  "content": [
+                    {
+                      "type": "p",
+                      "text": "Cases are rarely won by courtroom drama alone. They are won by preparation - and preparation starts with research."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Finding the right precedent"
+                    },
+                    {
+                      "type": "p",
+                      "text": "We review recent and historic decisions to find the authorities that support your position and anticipate the arguments of the other side."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Testing every argument"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Before a hearing, we test each argument internally, so there are no surprises in court."
+                    },
+                    {
+                      "type": "quote",
+                      "text": "We never stop until we win - and winning starts at the library desk."
+                    }
+                  ]
+                },
+                {
+                  "id": "understanding-employee-rights-at-work",
+                  "title": "Understanding Employee Rights at Work",
+                  "url": "/blogs/blog-details",
+                  "category": "Employment Law",
+                  "date": "August 02, 2026",
+                  "author": "Arjun Verma",
+                  "image": "/images/blog/workplace-rights-warm.webp",
+                  "imageAlt": "A professional woman in a blazer in an office",
+                  "excerpt": "Fair pay, safe conditions and protection from discrimination - a quick guide to your rights at work.",
+                  "content": [
+                    {
+                      "type": "p",
+                      "text": "Every employee is entitled to certain basic protections. Understanding them helps you spot problems early and resolve them before they escalate."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Key rights to know"
+                    },
+                    {
+                      "type": "list",
+                      "items": [
+                        "A written statement of your terms",
+                        "Minimum wage and overtime rules",
+                        "A safe working environment",
+                        "Protection from discrimination and harassment",
+                        "Fair process before dismissal"
+                      ]
+                    },
+                    {
+                      "type": "h2",
+                      "text": "What to do if your rights are breached"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Keep records, raise the issue in writing and seek advice quickly - many claims have short time limits."
+                    },
+                    {
+                      "type": "quote",
+                      "text": "Good employers benefit from clear rules just as much as employees do."
+                    }
+                  ]
+                },
+                {
+                  "id": "an-estate-planning-checklist-for-families",
+                  "title": "An Estate Planning Checklist for Families",
+                  "url": "/blogs/blog-details",
+                  "category": "Private Client",
+                  "date": "July 20, 2026",
+                  "author": "Kavya Reddy",
+                  "image": "/images/blog/estate-planning.webp",
+                  "imageAlt": "Leather-bound books and a fountain pen",
+                  "excerpt": "A will is just the start. Use this checklist to make sure your family is fully protected.",
+                  "content": [
+                    {
+                      "type": "p",
+                      "text": "Estate planning is not only for the wealthy. It is about making sure the people you love are cared for and your wishes are respected."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Your checklist"
+                    },
+                    {
+                      "type": "list",
+                      "items": [
+                        "Make or update your will",
+                        "Name guardians for children",
+                        "Set up powers of attorney",
+                        "Review beneficiary designations",
+                        "Consider a trust for complex assets"
+                      ]
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Review regularly"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Marriage, divorce, children and property purchases all affect your plan. Review it every few years or after any major change."
+                    },
+                    {
+                      "type": "quote",
+                      "text": "Planning ahead is one of the kindest things you can do for your family."
+                    }
+                  ]
+                },
+                {
+                  "id": "trademark-basics-for-small-businesses",
+                  "title": "Trademark Basics for Small Businesses",
+                  "url": "/blogs/blog-details",
+                  "category": "Intellectual Property",
+                  "date": "July 06, 2026",
+                  "author": "Neha Iyer",
+                  "image": "/images/blog/trademark-library-busts.webp",
+                  "imageAlt": "Marble busts and old books in a library",
+                  "excerpt": "Your brand name is valuable. Here is how to check it, register it and stop others from copying it.",
+                  "content": [
+                    {
+                      "type": "p",
+                      "text": "A strong brand takes years to build and can be copied overnight. Registering a trademark gives you the legal tools to protect it."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Search before you launch"
+                    },
+                    {
+                      "type": "p",
+                      "text": "A clearance search shows whether someone already owns a similar mark - saving you from an expensive rebrand later."
+                    },
+                    {
+                      "type": "h2",
+                      "text": "Register in the right classes"
+                    },
+                    {
+                      "type": "p",
+                      "text": "Trademarks are registered for specific goods and services. Choose classes that cover what you sell now and plan to sell soon."
+                    },
+                    {
+                      "type": "quote",
+                      "text": "Register early, monitor often and act quickly against copycats."
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "BlogDetail": {
+          "variants": {
+            "LawBlogDetail1": {
+              "byLabel": "By",
+              "backText": "All Blogs",
+              "backUrl": "/blogs"
+            }
+          }
+        },
+        "WhyChooseUs": {
+          "variants": {
+            "LawWhyChooseUs1": {
+              "label": "Why Choose Us",
+              "titleLine1": "You can trust",
+              "titleLine2": "our team",
+              "text": "Preparation, honesty and results - at every important moment.",
+              "image": "/images/home/why-advocate.webp",
+              "imageAlt": "An advocate in a black coat in a law library",
+              "points": [
+                {
+                  "id": "client-focused-results",
+                  "icon": "LuTarget",
+                  "title": "Client-focused results"
+                },
+                {
+                  "id": "value-driven-fees",
+                  "icon": "LuScale",
+                  "title": "Value-driven fees"
+                },
+                {
+                  "id": "proactive-risk-warnings",
+                  "icon": "LuShieldCheck",
+                  "title": "Proactive risk warnings"
+                },
+                {
+                  "id": "experienced-specialists",
+                  "icon": "LuUsers",
+                  "title": "Experienced specialists"
+                }
+              ],
+              "buttonText": "Book a Consultation",
+              "buttonUrl": "/book-appointment"
+            }
+          }
+        },
+        "Cta": {
+          "variants": {
+            "LawCta1": {
+              "label": "Free Initial Consultation",
+              "titleLine1": "Looking for help",
+              "titleLine2": "from a lawyer?",
+              "buttonText": "Book Appointment",
+              "buttonUrl": "/book-appointment",
+              "secondaryButtonText": "Contact Us",
+              "secondaryButtonUrl": "/contact-us",
+              "image": "/images/shared/cta-library.webp",
+              "imageAlt": "Warm-lit shelves of leather-bound law books"
+            }
+          }
+        },
+        "AboutStory": {
+          "variants": {
+            "LawAboutStory1": {
+              "label": "Our Journey",
+              "titleLine1": "Twenty-five years,",
+              "titleLine2": "one standard",
+              "text": "From a two-lawyer chamber to forty advocates.",
+              "previousLabel": "Previous milestones",
+              "nextLabel": "Next milestones",
+              "milestones": [
+                {
+                  "id": "2001",
+                  "year": "2001",
+                  "title": "Founded",
+                  "text": "Rajesh Malhotra opens a two-lawyer chamber in Connaught Place."
+                },
+                {
+                  "id": "2008",
+                  "year": "2008",
+                  "title": "Corporate Desk",
+                  "text": "A dedicated corporate and contracts team is formed."
+                },
+                {
+                  "id": "2014",
+                  "year": "2014",
+                  "title": "Supreme Court",
+                  "text": "Our advocates begin appearing regularly before the Supreme Court."
+                },
+                {
+                  "id": "2019",
+                  "year": "2019",
+                  "title": "New Chambers",
+                  "text": "The firm moves to Barakhamba Road with twenty advocates."
+                },
+                {
+                  "id": "2026",
+                  "year": "2026",
+                  "title": "Forty Advocates",
+                  "text": "Nine practice areas, forty advocates, one standard of care."
+                }
+              ]
+            }
+          }
+        },
+        "MissionVision": {
+          "variants": {
+            "LawMissionVision1": {
+              "label": "Mission & Vision",
+              "titleLine1": "What drives",
+              "titleLine2": "every brief",
+              "text": "Two commitments behind every matter we take on.",
+              "image": "/images/about/mission-court-columns.webp",
+              "imageAlt": "Stone columns and a skylit ceiling in a classical court building",
+              "items": [
+                {
+                  "id": "our-mission",
+                  "title": "Our Mission",
+                  "icon": "LuTarget",
+                  "text": "Excellent legal counsel - accessible, transparent and focused on your outcome."
+                },
+                {
+                  "id": "our-vision",
+                  "title": "Our Vision",
+                  "icon": "LuAward",
+                  "text": "The firm clients trust first, known for preparation, honesty and results."
+                }
+              ]
+            }
+          }
+        },
+        "CoreValues": {
+          "variants": {
+            "LawCoreValues1": {
+              "label": "Our Values",
+              "titleLine1": "Principles we",
+              "titleLine2": "practise by",
+              "text": "Four principles behind every case.",
+              "items": [
+                {
+                  "id": "quality",
+                  "title": "Quality",
+                  "icon": "LuAward",
+                  "text": "Meticulous preparation and careful drafting on every single file."
+                },
+                {
+                  "id": "experience",
+                  "title": "Experience",
+                  "icon": "LuScale",
+                  "text": "Decades of practice in court, in arbitration and at the negotiating table."
+                },
+                {
+                  "id": "integrity",
+                  "title": "Integrity",
+                  "icon": "LuShieldCheck",
+                  "text": "Honest advice about your chances - even when it is not what you hoped to hear."
+                },
+                {
+                  "id": "dedication",
+                  "title": "Dedication",
+                  "icon": "LuHandshake",
+                  "text": "A lawyer who knows your name, returns your calls and sees the matter through."
+                }
+              ]
+            }
+          }
+        },
+        "Team": {
+          "variants": {
+            "LawTeam1": {
+              "label": "Our Advocates",
+              "titleLine1": "Leadership &",
+              "titleLine2": "key members",
+              "text": "Meet the partners and associates who will stand beside you.",
+              "perPage": 6,
+              "items": [
+                {
+                  "id": "rajesh-malhotra",
+                  "name": "Rajesh Malhotra",
+                  "url": "/our-team/team-details",
+                  "role": "Founder & Managing Partner",
+                  "practice": "Arbitration & Economic Offences",
+                  "experience": "25+ Years",
+                  "languages": "English, Hindi, Punjabi",
+                  "image": "/images/team/rajesh-malhotra.webp",
+                  "imageAlt": "Portrait of Rajesh Malhotra",
+                  "bio": "Rajesh founded Aurelian Legal in 2001 after a decade in corporate and private practice. He has led arbitration, litigation, criminal, insolvency, M&A, IPR and regulatory matters for clients ranging from individuals to listed companies.",
+                  "expertise": [
+                    "Commercial arbitration",
+                    "Economic offences",
+                    "Insolvency disputes",
+                    "Regulatory matters"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    },
+                    {
+                      "id": "x",
+                      "label": "X (Twitter)",
+                      "icon": "FaXTwitter",
+                      "url": "https://x.com/"
+                    },
+                    {
+                      "id": "facebook",
+                      "label": "Facebook",
+                      "icon": "FaFacebookF",
+                      "url": "https://www.facebook.com/"
+                    }
+                  ]
+                },
+                {
+                  "id": "anjali-mehta",
+                  "name": "Anjali Mehta",
+                  "url": "/our-team/team-details",
+                  "role": "Co-Founder & Senior Partner",
+                  "practice": "Corporate, M&A & Start-ups",
+                  "experience": "20+ Years",
+                  "languages": "English, Hindi, Gujarati",
+                  "image": "/images/team/anjali-mehta.webp",
+                  "imageAlt": "Portrait of Anjali Mehta",
+                  "bio": "Anjali heads the firm's mergers and acquisitions, company law and start-up support practices. She has advised on transactions across technology, healthcare and manufacturing.",
+                  "expertise": [
+                    "Mergers & acquisitions",
+                    "Venture financing",
+                    "Corporate governance",
+                    "Joint ventures"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    },
+                    {
+                      "id": "x",
+                      "label": "X (Twitter)",
+                      "icon": "FaXTwitter",
+                      "url": "https://x.com/"
+                    }
+                  ]
+                },
+                {
+                  "id": "vikram-singh",
+                  "name": "Vikram Singh",
+                  "url": "/our-team/team-details",
+                  "role": "Senior Partner",
+                  "practice": "Head of Criminal Law",
+                  "experience": "18+ Years",
+                  "languages": "English, Hindi",
+                  "image": "/images/team/vikram-singh.webp",
+                  "imageAlt": "Portrait of Vikram Singh",
+                  "bio": "Vikram leads the criminal defence practice, representing individuals and corporations in conventional and white-collar matters from investigation through trial and appeal.",
+                  "expertise": [
+                    "Criminal trials",
+                    "White-collar crime",
+                    "Bail applications",
+                    "Internal investigations"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    },
+                    {
+                      "id": "x",
+                      "label": "X (Twitter)",
+                      "icon": "FaXTwitter",
+                      "url": "https://x.com/"
+                    }
+                  ]
+                },
+                {
+                  "id": "priya-sharma",
+                  "name": "Priya Sharma",
+                  "url": "/our-team/team-details",
+                  "role": "Senior Partner",
+                  "practice": "Head of Dispute Resolution",
+                  "experience": "17+ Years",
+                  "languages": "English, Hindi",
+                  "image": "/images/team/priya-sharma.webp",
+                  "imageAlt": "Portrait of Priya Sharma",
+                  "bio": "Priya heads the dispute resolution practice, handling civil litigation and arbitration in contract, property and shareholder disputes.",
+                  "expertise": [
+                    "Civil litigation",
+                    "Arbitration",
+                    "Mediation",
+                    "Shareholder disputes"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    },
+                    {
+                      "id": "facebook",
+                      "label": "Facebook",
+                      "icon": "FaFacebookF",
+                      "url": "https://www.facebook.com/"
+                    }
+                  ]
+                },
+                {
+                  "id": "arjun-verma",
+                  "name": "Arjun Verma",
+                  "url": "/our-team/team-details",
+                  "role": "Partner",
+                  "practice": "Employment & Labour Law",
+                  "experience": "15+ Years",
+                  "languages": "English, Hindi",
+                  "image": "/images/team/arjun-verma.webp",
+                  "imageAlt": "Portrait of Arjun Verma",
+                  "bio": "Arjun advises employers and employees on contracts, policies, terminations and workplace disputes, and also covers export-import and international trade matters.",
+                  "expertise": [
+                    "Employment disputes",
+                    "HR compliance",
+                    "Executive exits",
+                    "International trade"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    }
+                  ]
+                },
+                {
+                  "id": "neha-iyer",
+                  "name": "Neha Iyer",
+                  "url": "/our-team/team-details",
+                  "role": "Partner",
+                  "practice": "Intellectual Property",
+                  "experience": "14+ Years",
+                  "languages": "English, Tamil, Hindi",
+                  "image": "/images/team/neha-iyer.webp",
+                  "imageAlt": "Portrait of Neha Iyer",
+                  "bio": "Neha leads the intellectual property practice and advises on contract and commercial law. She protects brands, creative works and technology for clients worldwide.",
+                  "expertise": [
+                    "Trademarks",
+                    "Copyright",
+                    "Licensing",
+                    "IP litigation"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    },
+                    {
+                      "id": "instagram",
+                      "label": "Instagram",
+                      "icon": "FaInstagram",
+                      "url": "https://www.instagram.com/"
+                    }
+                  ]
+                },
+                {
+                  "id": "rohan-gupta",
+                  "name": "Rohan Gupta",
+                  "url": "/our-team/team-details",
+                  "role": "Senior Associate",
+                  "practice": "Insolvency & Restructuring",
+                  "experience": "11+ Years",
+                  "languages": "English, Hindi",
+                  "image": "/images/team/rohan-gupta.webp",
+                  "imageAlt": "Portrait of Rohan Gupta",
+                  "bio": "Rohan advises creditors, debtors and directors on restructuring, debt recovery and insolvency proceedings, and also handles customs and real estate matters.",
+                  "expertise": [
+                    "Restructuring",
+                    "Debt recovery",
+                    "Director liability",
+                    "Real estate"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    },
+                    {
+                      "id": "x",
+                      "label": "X (Twitter)",
+                      "icon": "FaXTwitter",
+                      "url": "https://x.com/"
+                    }
+                  ]
+                },
+                {
+                  "id": "kavya-reddy",
+                  "name": "Kavya Reddy",
+                  "url": "/our-team/team-details",
+                  "role": "Senior Associate",
+                  "practice": "Family & Private Client",
+                  "experience": "10+ Years",
+                  "languages": "English, Telugu, Hindi",
+                  "image": "/images/team/kavya-reddy.webp",
+                  "imageAlt": "Portrait of Kavya Reddy",
+                  "bio": "Kavya guides families through divorce, custody and financial settlements, and prepares wills, trusts and estate plans.",
+                  "expertise": [
+                    "Divorce & separation",
+                    "Child custody",
+                    "Wills & trusts",
+                    "Estate planning"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    },
+                    {
+                      "id": "facebook",
+                      "label": "Facebook",
+                      "icon": "FaFacebookF",
+                      "url": "https://www.facebook.com/"
+                    }
+                  ]
+                },
+                {
+                  "id": "aditya-joshi",
+                  "name": "Aditya Joshi",
+                  "url": "/our-team/team-details",
+                  "role": "Associate",
+                  "practice": "Immigration Law",
+                  "experience": "8+ Years",
+                  "languages": "English, Marathi, Hindi",
+                  "image": "/images/team/aditya-joshi.webp",
+                  "imageAlt": "Portrait of Aditya Joshi",
+                  "bio": "Aditya handles work, family and residency visas, and advises overseas companies on establishing a business presence in India.",
+                  "expertise": [
+                    "Work visas",
+                    "Family visas",
+                    "Residency",
+                    "Business establishment"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    }
+                  ]
+                },
+                {
+                  "id": "sneha-nair",
+                  "name": "Sneha Nair",
+                  "url": "/our-team/team-details",
+                  "role": "Associate",
+                  "practice": "Contracts & Compliance",
+                  "experience": "6+ Years",
+                  "languages": "English, Malayalam, Hindi",
+                  "image": "/images/team/sneha-nair.webp",
+                  "imageAlt": "Portrait of Sneha Nair",
+                  "bio": "Sneha drafts and negotiates commercial contracts and advises on employment and immigration compliance for growing businesses.",
+                  "expertise": [
+                    "Commercial contracts",
+                    "Compliance",
+                    "Start-up support",
+                    "Privacy policies"
+                  ],
+                  "socials": [
+                    {
+                      "id": "linkedin",
+                      "label": "LinkedIn",
+                      "icon": "FaLinkedinIn",
+                      "url": "https://www.linkedin.com/"
+                    },
+                    {
+                      "id": "instagram",
+                      "label": "Instagram",
+                      "icon": "FaInstagram",
+                      "url": "https://www.instagram.com/"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "TeamDetail": {
+          "variants": {
+            "LawTeamDetail1": {
+              "aboutLabel": "Profile",
+              "expertiseLabel": "Expertise",
+              "labels": {
+                "practice": "Practice",
+                "experience": "Experience",
+                "languages": "Languages"
+              },
+              "buttonText": "Book a Consultation",
+              "buttonUrl": "/book-appointment"
+            }
+          }
+        },
+        "ContactDetails": {
+          "variants": {
+            "LawContactDetails1": {
+              "label": "Get in Touch",
+              "titleLine1": "Let's talk about",
+              "titleLine2": "your matter",
+              "text": "We respond within one business day.",
+              "labels": {
+                "address": "Visit",
+                "phone": "Call",
+                "email": "Write"
+              }
+            }
+          }
+        },
+        "ContactForm": {
+          "variants": {
+            "LawContactForm1": {
+              "label": "Send a Message",
+              "titleLine1": "We reply within",
+              "titleLine2": "one business day",
+              "text": "Everything you share is kept strictly confidential.",
+              "fields": {
+                "name": {
+                  "label": "Full Name",
+                  "placeholder": "Enter your name"
+                },
+                "email": {
+                  "label": "Email Address",
+                  "placeholder": "Enter your email"
+                },
+                "phone": {
+                  "label": "Phone Number",
+                  "placeholder": "Enter your mobile number"
+                },
+                "subject": {
+                  "label": "Subject",
+                  "placeholder": "Enter your subject"
+                },
+                "message": {
+                  "label": "Message",
+                  "placeholder": "Enter your message"
+                }
+              },
+              "submitLabel": "Send Message",
+              "sendingLabel": "Sending...",
+              "thankYou": {
+                "title": "Thank you, {name}!",
+                "message": "Your message has been received. A member of our team will contact you within one business day."
+              },
+              "mapTitle": "Aurelian Legal office location on the map"
+            }
+          }
+        },
+        "Appointment": {
+          "variants": {
+            "LawAppointment1": {
+              "label": "Book a Consultation",
+              "titleLine1": "Schedule your",
+              "titleLine2": "appointment",
+              "text": "A senior lawyer reviews your details before you meet.",
+              "image": "/images/appointment/consultation.webp",
+              "imageAlt": "An Aurelian advocate ready to meet a client",
+              "fields": {
+                "name": {
+                  "label": "Full Name",
+                  "placeholder": "Enter your name"
+                },
+                "email": {
+                  "label": "Email Address",
+                  "placeholder": "Enter your email"
+                },
+                "phone": {
+                  "label": "Phone Number",
+                  "placeholder": "Enter your mobile number"
+                },
+                "practice": {
+                  "label": "Practice Area",
+                  "placeholder": "Select your practice area"
+                },
+                "date": {
+                  "label": "Preferred Date"
+                },
+                "time": {
+                  "label": "Preferred Time",
+                  "placeholder": "Select your preferred time"
+                },
+                "message": {
+                  "label": "Brief Description",
+                  "placeholder": "Enter a brief description of your matter"
+                }
+              },
+              "timeSlots": [
+                "09:00 AM - 10:00 AM",
+                "10:00 AM - 11:00 AM",
+                "11:00 AM - 12:00 PM",
+                "02:00 PM - 03:00 PM",
+                "03:00 PM - 04:00 PM",
+                "04:00 PM - 05:00 PM",
+                "05:00 PM - 06:00 PM"
+              ],
+              "submitLabel": "Book Appointment",
+              "sendingLabel": "Booking...",
+              "thankYou": {
+                "title": "Thank you, {name}!",
+                "message": "Your appointment request has been received. We will confirm the date and time with you shortly."
+              }
+            }
+          }
+        }
+      },
+      "templateComponents": {
+        "shared": {
+          "Header": "LawHeader1",
+          "Footer": "common.Footer"
+        },
+        "pages": {
+          "home": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Hero",
+                "component": "LawHero1"
+              },
+              {
+                "key": "AboutIntro",
+                "component": "LawAboutIntro1"
+              },
+              {
+                "key": "FounderMessage",
+                "component": "LawFounderMessage1"
+              },
+              {
+                "key": "PracticePreview",
+                "component": "LawPracticePreview1"
+              },
+              {
+                "key": "Stats",
+                "component": "LawStats1"
+              },
+              {
+                "key": "BlogPreview",
+                "component": "LawBlogPreview1"
+              },
+              {
+                "key": "WhyChooseUs",
+                "component": "LawWhyChooseUs1"
+              },
+              {
+                "key": "Cta",
+                "component": "LawCta1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "about-us": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Breadcrumb",
+                "component": "common.aboutBreadcrumb"
+              },
+              {
+                "key": "AboutIntro",
+                "component": "LawAboutIntro1"
+              },
+              {
+                "key": "AboutStory",
+                "component": "LawAboutStory1"
+              },
+              {
+                "key": "WhyChooseUs",
+                "component": "LawWhyChooseUs1"
+              },
+              {
+                "key": "MissionVision",
+                "component": "LawMissionVision1"
+              },
+              {
+                "key": "Stats",
+                "component": "LawStats1"
+              },
+              {
+                "key": "CoreValues",
+                "component": "LawCoreValues1"
+              },
+              {
+                "key": "Cta",
+                "component": "LawCta1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "practice-areas": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Breadcrumb",
+                "component": "common.practiceAreasBreadcrumb"
+              },
+              {
+                "key": "PracticeAreas",
+                "component": "LawPracticeAreas1"
+              },
+              {
+                "key": "WhyChooseUs",
+                "component": "LawWhyChooseUs1"
+              },
+              {
+                "key": "Cta",
+                "component": "LawCta1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "practice-details": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Breadcrumb",
+                "component": "common.practiceDetailBreadcrumb"
+              },
+              {
+                "key": "PracticeDetail",
+                "component": "LawPracticeDetail1"
+              },
+              {
+                "key": "Cta",
+                "component": "LawCta1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "our-team": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Breadcrumb",
+                "component": "common.teamBreadcrumb"
+              },
+              {
+                "key": "Team",
+                "component": "LawTeam1"
+              },
+              {
+                "key": "Cta",
+                "component": "LawCta1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "team-details": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Breadcrumb",
+                "component": "common.teamDetailBreadcrumb"
+              },
+              {
+                "key": "TeamDetail",
+                "component": "LawTeamDetail1"
+              },
+              {
+                "key": "Cta",
+                "component": "LawCta1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "blogs": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Breadcrumb",
+                "component": "common.blogsBreadcrumb"
+              },
+              {
+                "key": "Blogs",
+                "component": "LawBlogs1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "blog-details": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Breadcrumb",
+                "component": "common.blogDetailBreadcrumb"
+              },
+              {
+                "key": "BlogDetail",
+                "component": "LawBlogDetail1"
+              },
+              {
+                "key": "Cta",
+                "component": "LawCta1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "contact-us": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Breadcrumb",
+                "component": "common.contactBreadcrumb"
+              },
+              {
+                "key": "ContactDetails",
+                "component": "LawContactDetails1"
+              },
+              {
+                "key": "ContactForm",
+                "component": "LawContactForm1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "book-appointment": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "Breadcrumb",
+                "component": "common.appointmentBreadcrumb"
+              },
+              {
+                "key": "Appointment",
+                "component": "LawAppointment1"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          },
+          "not-found": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "LawHeader1"
+              },
+              {
+                "key": "NotFoundSection",
+                "component": "common.notFound"
+              },
+              {
+                "key": "Footer",
+                "component": "common.Footer"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

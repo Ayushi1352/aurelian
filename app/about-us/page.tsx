@@ -1,29 +1,32 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
-import AboutIntro from "@/components/AboutIntro";
-import AboutStory from "@/components/AboutStory";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import MissionVision from "@/components/MissionVision";
-import Stats from "@/components/Stats";
-import CoreValues from "@/components/CoreValues";
-import CallToAction from "@/components/CallToAction";
-import { site } from "@/data";
+import rawData from "@/data/templates.json";
+import type { LawTemplateData } from "@/types/templates.types";
+import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { AboutIntro } from "@/components/sections/AboutIntro";
+import { AboutStory } from "@/components/sections/AboutStory";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { MissionVision } from "@/components/sections/MissionVision";
+import { Stats } from "@/components/sections/Stats";
+import { CoreValues } from "@/components/sections/CoreValues";
+import { Cta } from "@/components/sections/Cta";
 
-export const metadata: Metadata = { title: site.aboutStorySection.bannerTitle };
+const templateData: LawTemplateData = rawData;
+const sectionData = templateData.categories.Law.sections;
+const commonData = templateData.common;
+
+export const metadata: Metadata = { ...commonData.aboutBreadcrumb?.seo };
 
 export default function AboutUsPage() {
-  const { bannerTitle, bannerImage } = site.aboutStorySection;
-
   return (
-    <>
-      <PageBanner data={site.pageBanner} title={bannerTitle} image={bannerImage} />
-      <AboutIntro data={site.aboutIntroSection} hideButton />
-      <AboutStory data={site.aboutStorySection} />
-      <WhyChooseUs data={site.whyChooseUsSection} />
-      <MissionVision data={site.missionVisionSection} />
-      <Stats data={site.statsSection} />
-      <CoreValues data={site.valuesSection} />
-      <CallToAction data={site.ctaSection} />
-    </>
+    <main className="flex-1">
+      <Breadcrumb data={commonData.aboutBreadcrumb} ui={commonData.globalUI} />
+      <AboutIntro data={sectionData.AboutIntro?.variants?.LawAboutIntro1} hideButton />
+      <AboutStory data={sectionData.AboutStory?.variants?.LawAboutStory1} />
+      <WhyChooseUs data={sectionData.WhyChooseUs?.variants?.LawWhyChooseUs1} />
+      <MissionVision data={sectionData.MissionVision?.variants?.LawMissionVision1} />
+      <Stats data={sectionData.Stats?.variants?.LawStats1} />
+      <CoreValues data={sectionData.CoreValues?.variants?.LawCoreValues1} />
+      <Cta data={sectionData.Cta?.variants?.LawCta1} />
+    </main>
   );
 }
