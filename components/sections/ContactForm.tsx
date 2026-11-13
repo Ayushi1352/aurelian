@@ -1,9 +1,9 @@
 "use client";
 
 import type { ContactFormData } from "@/types/templates.types";
-import { useDummySubmit } from "@/components/ui/useDummySubmit";
+import { useFormSubmit } from "@/components/ui/useFormSubmit";
 import { FormThankYou } from "@/components/ui/FormThankYou";
-import { InputField, TextareaField } from "@/components/ui/FormField";
+import { InputField, TextareaField } from "@/components/ui/Field";
 import { Icon } from "@/components/ui/Icon";
 import { ui } from "@/components/ui/ui";
 
@@ -15,7 +15,7 @@ type ContactFormProps = {
 
 /** Dummy form: nothing is sent; a thank-you message shows and then hides itself. */
 export const ContactForm = ({ data, closeLabel }: ContactFormProps) => {
-  const { status, name, onSubmit, dismiss, showThanks, hiding } = useDummySubmit();
+  const { status, name, onSubmit, dismiss, showThanks, hiding } = useFormSubmit();
   const { fields, submitLabel, sendingLabel, thankYou } = data;
 
   if (showThanks) {

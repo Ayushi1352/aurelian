@@ -2,9 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import type { AppointmentData } from "@/types/templates.types";
-import { useDummySubmit } from "@/components/ui/useDummySubmit";
+import { useFormSubmit } from "@/components/ui/useFormSubmit";
 import { FormThankYou } from "@/components/ui/FormThankYou";
-import { InputField, SelectField, TextareaField } from "@/components/ui/FormField";
+import { InputField, SelectField, TextareaField } from "@/components/ui/Field";
 import { Icon } from "@/components/ui/Icon";
 import { ui } from "@/components/ui/ui";
 
@@ -24,7 +24,7 @@ const today = () => {
 
 /** Dummy booking form: nothing is sent anywhere; a thank-you message shows and then hides itself. */
 export const AppointmentForm = ({ data, practiceAreas, closeLabel }: AppointmentFormProps) => {
-  const { status, name, onSubmit, dismiss, showThanks, hiding } = useDummySubmit();
+  const { status, name, onSubmit, dismiss, showThanks, hiding } = useFormSubmit();
   const dateRef = useRef<HTMLInputElement>(null);
   const { fields, timeSlots, submitLabel, sendingLabel, thankYou } = data;
 

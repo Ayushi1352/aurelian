@@ -10,7 +10,7 @@ const FADE_MS = 400;
  * Simulates sending a form (no backend yet): "sending" → "sent" (thank-you message)
  * → message fades out after `showFor` ms and an empty form is shown again.
  */
-export const useDummySubmit = ({ delay = 1200, showFor = 5000 } = {}) => {
+export const useFormSubmit = ({ delay = 1200, showFor = 5000 } = {}) => {
   const [status, setStatus] = useState<Status>("idle");
   const [name, setName] = useState("");
 
