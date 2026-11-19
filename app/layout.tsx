@@ -1,25 +1,26 @@
-import type { CSSProperties } from "react";
-import type { Metadata } from "next";
-import { Cormorant_Infant, Nunito_Sans } from "next/font/google";
-import rawData from "@/data/templates.json";
-import type { LawTemplateData } from "@/types/templates.types";
-import { Header } from "@/components/common/Header";
-import { Footer } from "@/components/common/Footer";
-import { ScrollToTop } from "@/components/ui/ScrollToTop";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Cormorant_Infant, Nunito_Sans } from 'next/font/google';
+import rawData from '@/data/templates.json';
+import type { LawTemplateData, ThemeFontVariables } from '@/types/templates.types';
+import { Header } from '@/components/common/Header';
+import { Footer } from '@/components/common/Footer';
+import { ScrollToTop } from '@/components/ui/ScrollToTop';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import './globals.css';
 
-const cormorantInfant = Cormorant_Infant({ subsets: ["latin"], weight: ["500", "600", "700"], style: ["normal", "italic"], display: "swap", fallback: ["Georgia", "serif"], variable: "--font-cormorant-infant" });
-const nunitoSans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "600", "700", "800"], display: "swap", fallback: ["Arial", "sans-serif"], variable: "--font-nunito-sans" });
+const cormorantInfant = Cormorant_Infant({ subsets: ['latin'], weight: ['500', '600', '700'], style: ['normal', 'italic'], display: 'swap', fallback: ['Georgia', 'serif'], variable: '--font-cormorant-infant' });
+const nunitoSans = Nunito_Sans({ subsets: ['latin'], weight: ['400', '600', '700', '800'], display: 'swap', fallback: ['Arial', 'sans-serif'], variable: '--font-nunito-sans' });
 
 const templateData: LawTemplateData = rawData;
 const sectionData = templateData.categories.Law.sections;
 const commonData = templateData.common;
 
-const fontVariables = {
-  "--font-primary": commonData.theme.fonts.primary,
-  "--font-heading": commonData.theme.fonts.heading,
-} as CSSProperties;
+// Which font each part of the site uses comes from templates.json (common.theme.fonts).
+const { fonts } = commonData.theme;
+const fontVariables: ThemeFontVariables = {
+  '--font-primary': fonts.primary,
+  '--font-heading': fonts.heading,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html
       lang={commonData.metadata.lang}
@@ -54,9 +55,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           in the middle with equal space on both sides instead of stretching.
         */}
         <div className="mx-auto flex min-h-screen w-full max-w-[120rem] flex-col overflow-x-clip bg-white">
-          <Header data={sectionData.Header?.variants?.LawHeader1} company={commonData.company} ui={commonData.globalUI} />
+          <Header data={sectionData.Header?.variants?.LawHeader1} />
           <ScrollToTop>{children}</ScrollToTop>
-          <Footer data={commonData.Footer} company={commonData.company} />
+          <Footer data={commonData.Footer} />
         </div>
       </body>
     </html>

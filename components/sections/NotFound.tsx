@@ -1,11 +1,11 @@
-import Link from "next/link";
-import type { NotFoundData } from "@/types/templates.types";
-import { Headline } from "@/components/ui/SplitWords";
-import { Icon } from "@/components/ui/Icon";
-import { ui } from "@/components/ui/ui";
-import { introHidden } from "@/components/ui/motion";
+import Link from 'next/link';
+import type { NotFoundProps } from '@/types/templates.types';
+import { Headline } from '@/components/ui/SplitWords';
+import { Icon } from '@/components/ui/Icon';
+import { ui } from '@/components/ui/ui';
+import { introHidden } from '@/components/ui/motion';
 
-export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
+export const NotFound = ({ data }: NotFoundProps) => {
   if (!data) return null;
 
   return (
@@ -26,7 +26,7 @@ export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
         </p>
         <Link data-intro="up" data-intro-delay="750" href={data.buttonUrl} className={`${ui.btnGold} ${introHidden} mt-9`}>
           {data.buttonText}
-          <Icon name="LuArrowRight" className="size-4" strokeWidth={2} />
+          <Icon name={data.buttonIcon} className="size-4" strokeWidth={2} />
         </Link>
       </div>
     </section>

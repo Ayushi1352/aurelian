@@ -1,20 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
-import type { PracticeArea } from "@/types/templates.types";
-import { Icon } from "@/components/ui/Icon";
-import { ui } from "@/components/ui/ui";
+import Image from 'next/image';
+import Link from 'next/link';
+import type { PracticeCardProps } from '@/types/templates.types';
+import { Icon } from '@/components/ui/Icon';
+import { ui } from '@/components/ui/ui';
+import { fill } from '@/components/ui/text';
 
-type PracticeCardProps = {
-  item: PracticeArea;
-  buttonText: string;
-  delay?: number;
-};
-
-export const PracticeCard = ({ item, buttonText, delay = 0 }: PracticeCardProps) => (
+/** Tall photo tile of a practice area (home page, Practice Areas page and the "other areas" of the detail page). */
+export const PracticeCard = ({ item, label, icon, delay = 0 }: PracticeCardProps) => (
   <article data-reveal="up" data-delay={delay} className="h-full">
     <Link
       href={item.url}
-      aria-label={`${item.title} - ${buttonText}`}
+      aria-label={fill(label, { title: item.title })}
       className="group relative flex aspect-[3/4] flex-col justify-end overflow-hidden bg-navy-deep p-7 text-white sm:p-8"
     >
       <Image
@@ -28,7 +24,7 @@ export const PracticeCard = ({ item, buttonText, delay = 0 }: PracticeCardProps)
       <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/45 to-navy-deep/15" />
       <span aria-hidden="true" className="absolute inset-x-7 top-7 flex items-center justify-end sm:inset-x-8 sm:top-8">
         <span className="grid size-11 scale-75 place-items-center bg-white text-navy opacity-0 transition-[opacity,transform] duration-500 group-hover:scale-100 group-hover:opacity-100">
-          <Icon name="LuArrowUpRight" className="size-4" strokeWidth={2} />
+          <Icon name={icon} className="size-4" strokeWidth={2} />
         </span>
       </span>
 

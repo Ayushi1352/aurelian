@@ -1,14 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   experimental: {
     agentFeedback: true,
-    agentUpgrade: "security",
+    agentUpgrade: 'security',
   },
   cacheComponents: true,
   partialPrefetching: true,
   images: {
-    formats: ["image/webp"],
+    formats: ['image/webp'],
     qualities: [75, 80, 90],
     // Largest served width is 2560px (no 3840px files) - full-width photos stay sharp on retina laptops.
     deviceSizes: [640, 750, 828, 1080, 1200, 1600, 1920, 2560],

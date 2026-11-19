@@ -1,6 +1,6 @@
-import type { IconType } from "react-icons";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaQuoteLeft, FaRegCircle, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import type { IconType } from 'react-icons';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaQuoteLeft, FaRegCircle, FaYoutube } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import {
   LuArrowLeft,
   LuArrowRight,
@@ -28,7 +28,7 @@ import {
   LuUser,
   LuUsers,
   LuX,
-} from "react-icons/lu";
+} from 'react-icons/lu';
 
 // Every icon the site can use, by the name templates.json stores. A new icon is added here once.
 const icons: Record<string, IconType> = {
@@ -73,12 +73,12 @@ type Props = {
   strokeWidth?: number;
 };
 
-export const Icon = ({ name, className = "size-6", strokeWidth = 1.6 }: Props) => {
+export const Icon = ({ name, className = 'size-6', strokeWidth = 1.6 }: Props) => {
   const Glyph = icons[name];
   if (!Glyph) {
-    if (process.env.NODE_ENV !== "production") console.warn(`Icon "${name}" is not in components/ui/Icon.tsx`);
+    if (process.env.NODE_ENV !== 'production') console.warn(`Icon "${name}" is not in components/ui/Icon.tsx`);
     return <FaRegCircle aria-hidden="true" className={className} />;
   }
-  const outline = !name.startsWith("Fa");
+  const outline = !name.startsWith('Fa');
   return <Glyph aria-hidden="true" className={className} {...(outline ? { strokeWidth } : {})} />;
 };

@@ -1,29 +1,29 @@
-import Image from "next/image";
-import Link from "next/link";
-import type { BlogBlock, BlogDetailData, BlogPost } from "@/types/templates.types";
-import { Eyebrow } from "@/components/ui/SectionHeading";
-import { Icon } from "@/components/ui/Icon";
-import { ui } from "@/components/ui/ui";
+import Image from 'next/image';
+import Link from 'next/link';
+import type { BlogBlock, BlogDetailProps } from '@/types/templates.types';
+import { Eyebrow } from '@/components/ui/SectionHeading';
+import { Icon } from '@/components/ui/Icon';
+import { ui } from '@/components/ui/ui';
 
-const ContentBlock = ({ block }: { block: BlogBlock }) => {
+const ContentBlock = ({ block, listIcon }: { block: BlogBlock; listIcon: string }) => {
   switch (block.type) {
-    case "h2":
+    case 'h2':
       return <h2 className="mt-12 font-display text-[1.75rem] font-semibold leading-[1.2] text-ink lg:text-[2.125rem]">{block.text}</h2>;
-    case "quote":
+    case 'quote':
       return (
         <blockquote className="my-12 border-l-4 border-gold bg-mist px-8 py-8">
           <p className="font-display text-[1.5rem] font-semibold italic leading-[1.4] text-navy lg:text-[1.75rem]">&ldquo;{block.text}&rdquo;</p>
         </blockquote>
       );
-    case "list":
+    case 'list':
       return (
         <ul className="mt-6 space-y-3">
           {block.items?.map((item) => (
-            <li key={item} className="flex items-start gap-4 text-[1.0625rem] leading-[1.7] text-ink">
+            <li key={item.id} className="flex items-start gap-4 text-[1.0625rem] leading-[1.7] text-ink">
               <span className="mt-1 grid size-6 shrink-0 place-items-center bg-navy text-gold-light">
-                <Icon name="LuCheck" className="size-3" strokeWidth={2.2} />
+                <Icon name={listIcon} className="size-3" strokeWidth={2.2} />
               </span>
-              {item}
+              {item.text}
             </li>
           ))}
         </ul>
@@ -33,11 +33,14 @@ const ContentBlock = ({ block }: { block: BlogBlock }) => {
   }
 };
 
-export const BlogDetail = ({ data, post }: { data?: BlogDetailData; post?: BlogPost }) => {
+/** Blog details page: the post `postId` from the Blogs data. */
+export const BlogDetail = ({ data, postId }: BlogDetailProps) => {
+  const post = data?.posts.find((p) => p.id === postId);
   if (!data || !post) return null;
-  const meta = [
-    { icon: "LuUser", text: [data.byLabel, post.author].join(" ") },
-    { icon: "LuCalendar", text: post.date },
+  const { meta, detail } = data;
+  const metaItems = [
+    { icon: meta.authorIcon, text: [meta.byLabel, post.author].join(' ') },
+    { icon: meta.dateIcon, text: post.date },
   ];
 
   return (
@@ -47,7 +50,7 @@ export const BlogDetail = ({ data, post }: { data?: BlogDetailData; post?: BlogP
           <div className="flex flex-col gap-5 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
             <Eyebrow label={post.category} />
             <ul data-reveal="up" className="flex flex-wrap gap-x-6 gap-y-2 text-[0.875rem] text-muted">
-              {meta.map(({ icon, text }) => (
+              {metaItems.map(({ icon, text }) => (
                 <li key={text} className="flex items-center gap-2">
                   <Icon name={icon} className="size-4 text-gold" />
                   {text}
@@ -70,13 +73,13 @@ export const BlogDetail = ({ data, post }: { data?: BlogDetailData; post?: BlogP
         </div>
 
         <article data-reveal="up" className="mx-auto mt-8 max-w-[51.25rem] lg:mt-12">
-          {post.content.map((block, i) => (
-            <ContentBlock key={i} block={block} />
+          {post.content.map((block) => (
+            <ContentBlock key={block.id} block={block} listIcon={detail.listIcon} />
           ))}
 
           <div className="mt-16 border-t border-line pt-8">
-            <Link href={data.backUrl} className={`${ui.linkArrow} text-navy`}>
-              {data.backText}
+            <Link href={detail.backUrl} className={`${ui.linkArrow} text-navy`}>
+              {detail.backText}
             </Link>
           </div>
         </article>

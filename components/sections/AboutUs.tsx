@@ -1,26 +1,20 @@
-import Image from "next/image";
-import Link from "next/link";
-import type { AboutIntroData } from "@/types/templates.types";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ui } from "@/components/ui/ui";
+import Image from 'next/image';
+import Link from 'next/link';
+import type { AboutUsProps } from '@/types/templates.types';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ui } from '@/components/ui/ui';
 
-type AboutIntroProps = {
-  data?: AboutIntroData;
-  /** Hides the "More About Us" link, for the About page itself. */
-  hideButton?: boolean;
-};
-
-export const AboutIntro = ({ data, hideButton = false }: AboutIntroProps) => {
+export const AboutUs = ({ data, hideButton = false }: AboutUsProps) => {
   if (!data) return null;
-  const { label, titleLine1, titleLine2, text, highlight } = data;
+  const { label, title, titleHighlight, text, highlight } = data;
 
   return (
     <section data-plain className={ui.sectionPlain}>
       <div className={ui.container}>
         <SectionHeading
           label={label}
-          line1={titleLine1}
-          line2={titleLine2}
+          title={title}
+          titleHighlight={titleHighlight}
           text={text}
           action={
             !hideButton && (

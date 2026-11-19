@@ -1,13 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
-import type { CompanyData, FooterData } from "@/types/templates.types";
-import { Icon } from "@/components/ui/Icon";
-import { ui } from "@/components/ui/ui";
-import { fill, socialLinks, telHref } from "@/components/ui/text";
+import Image from 'next/image';
+import Link from 'next/link';
+import type { FooterProps } from '@/types/templates.types';
+import { Icon } from '@/components/ui/Icon';
+import { ui } from '@/components/ui/ui';
+import { fill, lines } from '@/components/ui/text';
 
 /** Fills `{year}` in the copyright line; cached so the footer can still be prerendered. */
 const currentYear = async () => {
-  "use cache";
+  'use cache';
   return new Date().getFullYear();
 };
 
@@ -15,7 +15,7 @@ const linkClass = `${ui.linkLine} text-[0.9375rem] text-white/65 hover:text-whit
 
 const ColumnTitle = ({ children }: { children: string }) => <h2 className={`${ui.label} text-gold-light`}>{children}</h2>;
 
-export const Footer = async ({ data, company }: { data?: FooterData; company: CompanyData }) => {
+export const Footer = async ({ data }: FooterProps) => {
   if (!data) return null;
   const copyright = fill(data.copyrightText, { year: await currentYear() });
 
@@ -23,12 +23,12 @@ export const Footer = async ({ data, company }: { data?: FooterData; company: Co
     <footer className="relative isolate overflow-hidden border-t border-white/10 bg-navy-deep text-white">
       <div className={`${ui.container} grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_16.25rem] lg:gap-16 lg:py-20`}>
         <div className="sm:col-span-2 lg:col-span-1">
-          <Link href="/" aria-label={company.name} className="inline-block">
-            <Image src={company.logoLight} alt={company.logoAlt} width={company.logoWidth} height={company.logoHeight} quality={90} sizes="220px" className="h-auto w-[12.5rem] sm:w-[13.75rem]" />
+          <Link href={data.logoUrl} aria-label={data.logoLabel} className="inline-block">
+            <Image src={data.logo} alt={data.logoAlt} width={data.logoWidth} height={data.logoHeight} quality={90} sizes="220px" className="h-auto w-[12.5rem] sm:w-[13.75rem]" />
           </Link>
           <p className="mt-7 max-w-[21.25rem] text-[0.9375rem] leading-[1.75] text-white/60">{data.description}</p>
           <ul className="mt-7 flex flex-wrap gap-2" aria-label={data.socialsTitle}>
-            {socialLinks(data.socials, company).map((social) => (
+            {data.socialLinks.map((social) => (
               <li key={social.id}>
                 <a
                   href={social.url}
@@ -60,28 +60,24 @@ export const Footer = async ({ data, company }: { data?: FooterData; company: Co
         <div>
           <ColumnTitle>{data.contactTitle}</ColumnTitle>
           <address className="mt-7 space-y-4 text-[0.9375rem] not-italic leading-[1.6] text-white/65">
-            <p className="flex gap-3">
-              <Icon name="LuMapPin" className="mt-0.5 size-5 shrink-0 text-gold" />
-              <span>
-                {company.address.map((line) => (
-                  <span key={line} className="block">
-                    {line}
+            {data.contactItems.map((item) => (
+              <p key={item.id} className="flex gap-3">
+                <Icon name={item.icon} className="mt-0.5 size-5 shrink-0 text-gold" />
+                {item.url ? (
+                  <a href={item.url} className={linkClass}>
+                    {item.value}
+                  </a>
+                ) : (
+                  <span>
+                    {lines(item.value).map((line, i) => (
+                      <span key={i} className="block">
+                        {line}
+                      </span>
+                    ))}
                   </span>
-                ))}
-              </span>
-            </p>
-            <p className="flex gap-3">
-              <Icon name="LuPhone" className="mt-0.5 size-5 shrink-0 text-gold" />
-              <a href={telHref(company.phone)} className={linkClass}>
-                {company.phone}
-              </a>
-            </p>
-            <p className="flex gap-3">
-              <Icon name="LuMail" className="mt-0.5 size-5 shrink-0 text-gold" />
-              <a href={`mailto:${company.email}`} className={linkClass}>
-                {company.email}
-              </a>
-            </p>
+                )}
+              </p>
+            ))}
           </address>
         </div>
       </div>

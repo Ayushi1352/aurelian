@@ -1,17 +1,17 @@
-import Image from "next/image";
-import type { MissionVisionData } from "@/types/templates.types";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Icon } from "@/components/ui/Icon";
-import { ui } from "@/components/ui/ui";
+import Image from 'next/image';
+import type { MissionVisionProps } from '@/types/templates.types';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { Icon } from '@/components/ui/Icon';
+import { ui } from '@/components/ui/ui';
 
-export const MissionVision = ({ data }: { data?: MissionVisionData }) => {
+export const MissionVision = ({ data }: MissionVisionProps) => {
   if (!data) return null;
-  const { label, titleLine1, titleLine2, text, items } = data;
+  const { label, title, titleHighlight, text, items } = data;
 
   return (
     <section data-plain className={ui.sectionPlain}>
       <div className={ui.container}>
-        <SectionHeading label={label} line1={titleLine1} line2={titleLine2} text={text} />
+        <SectionHeading label={label} title={title} titleHighlight={titleHighlight} text={text} />
 
         <div data-reveal="wipe" className="relative mt-14 aspect-[4/3] overflow-hidden bg-bone sm:aspect-[16/9] lg:mt-20 lg:aspect-[21/9]">
           <span data-parallax className={`${ui.parallax} absolute inset-0 block`}>
